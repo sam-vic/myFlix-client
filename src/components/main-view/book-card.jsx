@@ -1,10 +1,13 @@
 
 
-export const BookCard = ({ book }) => {
-    console.log(book)
+export const BookCard = ({book, onBookClick}) => {
     return <div>
-        this is not working
-        <div key={book.id}>
+        <div
+            key={book.id}
+            onClick={() => {
+                onBookClick(book)
+            }}
+        >
             {book.title}
         </div>
     </div>
