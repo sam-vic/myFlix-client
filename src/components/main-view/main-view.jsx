@@ -11,7 +11,7 @@ fetch('../../json/movies.json')
 
 console.log(data) */}
 
-export const MainView = () => {
+export default MainView = () => {
     const [movies, setMovie] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
 
