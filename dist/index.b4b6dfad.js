@@ -27310,27 +27310,27 @@ parcelHelpers.export(exports, "MainView", ()=>MainView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _bookCard = require("./book-card");
-var _bookView = require("../book-view/book-view");
-var _booksJson = require("./books.json");
-var _booksJsonDefault = parcelHelpers.interopDefault(_booksJson);
+var _detailCard = require("./detail-card");
+var _infoView = require("../info-view/info-view");
+var _movieJson = require("./movie.json");
+var _movieJsonDefault = parcelHelpers.interopDefault(_movieJson);
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [books, setBooks] = (0, _react.useState)([]);
-    const [selectedBook, setSelectedBooks] = (0, _react.useState)(null);
+    const [movies, setMovie] = (0, _react.useState)([]);
+    const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        setBooks((0, _booksJsonDefault.default));
+        setMovie((0, _movieJsonDefault.default));
     }, []);
-    if (selectedBook) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookView.BookView), {
-        book: selectedBook,
-        onBackClick: ()=>setSelectedBooks(null)
+    if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _infoView.InfoView), {
+        movie: selectedMovie,
+        onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
         lineNumber: 23,
         columnNumber: 16
     }, undefined);
-    if (books.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+    if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
@@ -27338,14 +27338,14 @@ const MainView = ()=>{
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: books.map((book)=>{
-            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bookCard.BookCard), {
+        children: movies.map((movie)=>{
+            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _detailCard.DetailCard), {
                 className: "my-flix",
-                book: book,
-                onBookClick: (newSelectedBook)=>{
-                    setSelectedBooks(newSelectedBook);
+                movie: movie,
+                onmovieClick: (newSelectedMovie)=>{
+                    setSelectedMovie(newSelectedMovie);
                 }
-            }, book.id, false, {
+            }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 34,
                 columnNumber: 21
@@ -27357,7 +27357,7 @@ const MainView = ()=>{
         columnNumber: 9
     }, undefined);
 };
-_s(MainView, "/MiXeYGhnUmaSl+4Xfz0fsahbuU=");
+_s(MainView, "+wymq0Nl2UOMia6TFF/0xC4UkRk=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27367,7 +27367,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react":"21dqq","./book-card":"jKmf6","./books.json":"fLHK9","../book-view/book-view":"6u6eS"}],"aJC6G":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react":"21dqq","../info-view/info-view":"iYF6R","./detail-card":"irrFh","./movie.json":"5RNFi"}],"aJC6G":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -27397,71 +27397,30 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"jKmf6":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$e00a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{}],"iYF6R":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$fe79 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$e00a.prelude(module);
+$parcel$ReactRefreshHelpers$fe79.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "BookCard", ()=>BookCard);
+parcelHelpers.export(exports, "InfoView", ()=>InfoView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const BookCard = ({ book , onBookClick  })=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            onClick: ()=>{
-                onBookClick(book);
-            },
-            children: book.title
-        }, book.id, false, {
-            fileName: "src/components/main-view/book-card.jsx",
-            lineNumber: 5,
-            columnNumber: 9
-        }, undefined)
-    }, void 0, false, {
-        fileName: "src/components/main-view/book-card.jsx",
-        lineNumber: 4,
-        columnNumber: 12
-    }, undefined);
-};
-_c = BookCard;
-var _c;
-$RefreshReg$(_c, "BookCard");
-
-  $parcel$ReactRefreshHelpers$e00a.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"fLHK9":[function(require,module,exports) {
-module.exports = JSON.parse('[{"id":1,"title":"Eloquent JavaScript","image":"https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg","author":"Marijn Haverbeke"},{"id":2,"title":"Mastering JavaScript Functional Programming","image":"https://images-na.ssl-images-amazon.com/images/I/51WAikRq37L._SX218_BO1,204,203,200_QL40_FMwebp_.jpg","author":"Federico Kereki"},{"id":3,"title":"JavaScript: The Good Parts","image":"https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg","author":"Douglas Crockford"},{"id":4,"title":"JavaScript: The Definitive Guide","image":"https://images-na.ssl-images-amazon.com/images/I/51HbNW6RzhL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg","author":"David Flanagan"},{"id":5,"title":"The Road to React","image":"https://images-na.ssl-images-amazon.com/images/I/41MBLi5a4jL._SX384_BO1,204,203,200_.jpg","author":"Robin Wieruch"}]');
-
-},{}],"6u6eS":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$1e99 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$1e99.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "BookView", ()=>BookView);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const BookView = ({ book , onBackClick  })=>{
+const InfoView = ({ movie , onBackClick  })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: book.image
+                    src: movie.image
                 }, void 0, false, {
-                    fileName: "src/components/book-view/book-view.jsx",
+                    fileName: "src/components/info-view/info-view.jsx",
                     lineNumber: 5,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
-                fileName: "src/components/book-view/book-view.jsx",
+                fileName: "src/components/info-view/info-view.jsx",
                 lineNumber: 4,
                 columnNumber: 13
             }, undefined),
@@ -27470,20 +27429,20 @@ const BookView = ({ book , onBackClick  })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: "Title: "
                     }, void 0, false, {
-                        fileName: "src/components/book-view/book-view.jsx",
+                        fileName: "src/components/info-view/info-view.jsx",
                         lineNumber: 8,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: book.title
+                        children: movie.title
                     }, void 0, false, {
-                        fileName: "src/components/book-view/book-view.jsx",
+                        fileName: "src/components/info-view/info-view.jsx",
                         lineNumber: 9,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
-                fileName: "src/components/book-view/book-view.jsx",
+                fileName: "src/components/info-view/info-view.jsx",
                 lineNumber: 7,
                 columnNumber: 13
             }, undefined),
@@ -27492,20 +27451,20 @@ const BookView = ({ book , onBackClick  })=>{
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: "Author: "
                     }, void 0, false, {
-                        fileName: "src/components/book-view/book-view.jsx",
+                        fileName: "src/components/info-view/info-view.jsx",
                         lineNumber: 12,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: book.author
+                        children: movie.author
                     }, void 0, false, {
-                        fileName: "src/components/book-view/book-view.jsx",
+                        fileName: "src/components/info-view/info-view.jsx",
                         lineNumber: 13,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
-                fileName: "src/components/book-view/book-view.jsx",
+                fileName: "src/components/info-view/info-view.jsx",
                 lineNumber: 11,
                 columnNumber: 13
             }, undefined),
@@ -27513,26 +27472,67 @@ const BookView = ({ book , onBackClick  })=>{
                 onClick: onBackClick,
                 children: "Back"
             }, void 0, false, {
-                fileName: "src/components/book-view/book-view.jsx",
+                fileName: "src/components/info-view/info-view.jsx",
                 lineNumber: 15,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
-        fileName: "src/components/book-view/book-view.jsx",
+        fileName: "src/components/info-view/info-view.jsx",
         lineNumber: 3,
         columnNumber: 9
     }, undefined);
 };
-_c = BookView;
+_c = InfoView;
 var _c;
-$RefreshReg$(_c, "BookView");
+$RefreshReg$(_c, "InfoView");
 
-  $parcel$ReactRefreshHelpers$1e99.postlude(module);
+  $parcel$ReactRefreshHelpers$fe79.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}]},["fqdZm","7LWDX","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"irrFh":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$b7b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$b7b2.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DetailCard", ()=>DetailCard);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+const DetailCard = ({ movie , onmovieClick  })=>{
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            onClick: ()=>{
+                onmovieClick(movie);
+            },
+            children: movie.title
+        }, movie.id, false, {
+            fileName: "src/components/main-view/detail-card.jsx",
+            lineNumber: 5,
+            columnNumber: 9
+        }, undefined)
+    }, void 0, false, {
+        fileName: "src/components/main-view/detail-card.jsx",
+        lineNumber: 4,
+        columnNumber: 12
+    }, undefined);
+};
+_c = DetailCard;
+var _c;
+$RefreshReg$(_c, "DetailCard");
+
+  $parcel$ReactRefreshHelpers$b7b2.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"5RNFi":[function(require,module,exports) {
+module.exports = JSON.parse('[{"title":"Inception","author":"Christopher Nolan","description":"A thief who steals corporate secrets by entering the subconscious minds of his targets is offered a chance to regain his old life as payment for a task considered to be impossible.","image":"https://www.example.com/images/inception.jpg"},{"title":"The Shawshank Redemption","author":"Frank Darabont","description":"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.","image":"https://www.example.com/images/shawshank_redemption.jpg"},{"title":"Pulp Fiction","author":"Quentin Tarantino","description":"The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.","image":"https://www.example.com/images/pulp_fiction.jpg"},{"title":"The Godfather","author":"Francis Ford Coppola","description":"The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.","image":"https://www.example.com/images/the_godfather.jpg"},{"title":"The Dark Knight","author":"Christopher Nolan","description":"When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.","image":"https://www.example.com/images/the_dark_knight.jpg"}]');
+
+},{}]},["fqdZm","7LWDX","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

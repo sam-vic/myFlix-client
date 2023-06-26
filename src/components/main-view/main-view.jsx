@@ -1,42 +1,42 @@
 import React, { useState, useEffect } from "react"
-import { BookCard } from "./book-card"
-import { BookView } from "../book-view/book-view"
+import { DetailCard } from "./detail-card"
+import { InfoView } from "../info-view/info-view"
 
-import booksData from "./books.json"
+import moviesData from "./movie.json"
 
 {/*
-fetch('../../json/books.json')
+fetch('../../json/movies.json')
 .then((response) => response.json())
 .then((data) => {data})
 
 console.log(data) */}
 
 export const MainView = () => {
-    const [books, setBooks] = useState([])
-    const [selectedBook, setSelectedBooks] = useState(null)
+    const [movies, setMovie] = useState([])
+    const [selectedMovie, setSelectedMovie] = useState(null)
 
     useEffect(() => {
-        setBooks(booksData)
+        setMovie(moviesData)
     }, [])
 
-    if (selectedBook) {
-        return <BookView book={selectedBook} onBackClick={() => setSelectedBooks(null)}/>
+    if (selectedMovie) {
+        return <InfoView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)}/>
     }
 
-    if (books.length === 0) {
+    if (movies.length === 0) {
         return <div>The list is empty!</div>;
     }
 
     return (
         <div>
-            {books.map((book) => {
+            {movies.map((movie) => {
                 return (
-                    <BookCard 
+                    <DetailCard 
                     className='my-flix' 
-                    book={book}
-                    key={book.id}
-                    onBookClick={(newSelectedBook) => {
-                        setSelectedBooks(newSelectedBook)
+                    movie={movie}
+                    key={movie.id}
+                    onmovieClick={(newSelectedMovie) => {
+                        setSelectedMovie(newSelectedMovie)
                     }}
                     />
                 )
