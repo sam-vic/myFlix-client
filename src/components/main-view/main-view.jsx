@@ -16,7 +16,20 @@ export default MainView = () => {
     const [selectedMovie, setSelectedMovie] = useState(null)
 
     useEffect(() => {
-        setMovie(moviesData)
+        fetch("https://openlibrary.org/search.json?q=star+wars")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            const dataFromApi = data.docs.map((doc) => {
+                return {
+                    id: doc.key,
+                    title: doc.title,
+                    image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
+                    author: doc.author_name?.[0]
+                }
+            })
+            setMovie(dataFromApi)
+        })
     }, [])
 
     if (selectedMovie) {
