@@ -16,16 +16,18 @@ export default MainView = () => {
     const [selectedMovie, setSelectedMovie] = useState(null)
 
     useEffect(() => {
-        fetch("https://openlibrary.org/search.json?q=star+wars")
+        fetch("https://mycf-movie-api.herokuapp.com/movies")
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
-            const dataFromApi = data.docs.map((doc) => {
+            const dataFromApi = data.map((item) => {
                 return {
-                    id: doc.key,
-                    title: doc.title,
-                    image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
-                    author: doc.author_name?.[0]
+                    id: item._id,
+                    title: item.Title,
+                    image: item.ImagePath,
+                    actors: item.Actors || [],
+                    directors: [item.Director] || [],
+                    desc: item.Description
                 }
             })
             setMovie(dataFromApi)

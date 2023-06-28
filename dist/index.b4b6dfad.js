@@ -27321,14 +27321,18 @@ exports.default = MainView = _s(()=>{
     const [movies, setMovie] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://openlibrary.org/search.json?q=star+wars").then((response)=>response.json()).then((data)=>{
+        fetch("https://mycf-movie-api.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             console.log(data);
-            const dataFromApi = data.docs.map((doc)=>{
+            const dataFromApi = data.map((item)=>{
                 return {
-                    id: doc.key,
-                    title: doc.title,
-                    image: `https://covers.openlibrary.org/b/id/${doc.cover_i}-L.jpg`,
-                    author: doc.author_name?.[0]
+                    id: item._id,
+                    title: item.Title,
+                    image: item.ImagePath,
+                    actors: item.Actors || [],
+                    directors: [
+                        item.Director
+                    ],
+                    desc: item.Description
                 };
             });
             setMovie(dataFromApi);
@@ -27339,14 +27343,14 @@ exports.default = MainView = _s(()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 36,
+        lineNumber: 38,
         columnNumber: 16
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 40,
+        lineNumber: 42,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27359,13 +27363,13 @@ exports.default = MainView = _s(()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 47,
+                lineNumber: 49,
                 columnNumber: 21
             }, undefined);
         })
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 44,
+        lineNumber: 46,
         columnNumber: 9
     }, undefined);
 }, "+wymq0Nl2UOMia6TFF/0xC4UkRk=");
@@ -27534,9 +27538,17 @@ const DetailCard = ({ movie , onMovieClick  })=>{
 _c = DetailCard;
 DetailCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
+        id: (0, _propTypesDefault.default).string.isRequired,
         title: (0, _propTypesDefault.default).string.isRequired,
         image: (0, _propTypesDefault.default).string.isRequired,
-        author: (0, _propTypesDefault.default).string
+        actors: (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).string),
+        directors: (0, _propTypesDefault.default).arrayOf((0, _propTypesDefault.default).shape({
+            Name: (0, _propTypesDefault.default).string.isRequired,
+            Bio: (0, _propTypesDefault.default).string.isRequired,
+            Birth: (0, _propTypesDefault.default).string.isRequired,
+            Death: (0, _propTypesDefault.default).string
+        })),
+        desc: (0, _propTypesDefault.default).string.isRequired
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
 };
