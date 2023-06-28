@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { DetailCard } from "./detail-card"
 import { InfoView } from "../info-view/info-view"
+import LoginView from "../login-view/login-view"
 
 import moviesData from "./movie.json"
 
@@ -14,6 +15,7 @@ console.log(data) */}
 export default MainView = () => {
     const [movies, setMovie] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
         fetch("https://openlibrary.org/search.json?q=star+wars")
@@ -32,10 +34,17 @@ export default MainView = () => {
         })
     }, [])
 
+////// Determin if User is loged in ////
+    if (!user) {
+        return (
+            <LoginView />
+        )
+    }
+//// Display selected movie ////
     if (selectedMovie) {
         return <InfoView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)}/>
     }
-
+//// In case no data in api ////
     if (movies.length === 0) {
         return <div>The list is empty!</div>;
     }
