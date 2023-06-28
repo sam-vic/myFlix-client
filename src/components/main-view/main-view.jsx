@@ -48,7 +48,7 @@ export default MainView = () => {
                     className='my-flix' 
                     movie={movie}
                     key={movie.id}
-                    onmovieClick={(newSelectedMovie) => {
+                    onMovieClick={(newSelectedMovie) => {
                         setSelectedMovie(newSelectedMovie)
                     }}
                     />
