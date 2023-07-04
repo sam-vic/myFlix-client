@@ -27380,7 +27380,7 @@ exports.default = MainView = _s(()=>{
             "Sign up",
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpViewDefault.default), {}, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 61,
+                lineNumber: 63,
                 columnNumber: 17
             }, undefined)
         ]
