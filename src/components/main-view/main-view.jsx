@@ -2,23 +2,27 @@ import React, { useState, useEffect } from "react"
 import { DetailCard } from "./detail-card"
 import { InfoView } from "../info-view/info-view"
 import LoginView from "../login-view/login-view"
-
-import moviesData from "./movie.json"
+import SignupView from "../sign-up-view/sign-up-view"
 
 
 export default MainView = () => {
+
+    const storedUser = JSON.parse(localStorage.getItem("user"))
+    const storedToken = localStorage.getItem("token")
+
+    const [user, setUser] = useState(storedUser ? storedUser : null) // Initialize with storedUser
+    const [token, setToken] = useState(storedToken ? storedToken : null); // Initialize with storedToken
+
     const [movies, setMovie] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
-    const [user, setUser] = useState(null)
-    const [token, setToken] = useState(null)
 
     useEffect(() => {
-        if(!token) {
-            return null
+        if (!token) {
+            return
         }
 
         fetch("https://mycf-movie-api.herokuapp.com/movies", {
-            headers: { Authorization: `Bearer ${token}`}
+            headers: { Authorization: `Bearer ${token}` }
         })
             .then((response) => response.json())
             .then((data) => {
@@ -37,12 +41,25 @@ export default MainView = () => {
             })
     }, [token])
 
+
+    useEffect(() => {
+        // Update localStorage when user changes
+        localStorage.setItem("user", JSON.stringify(user));
+    }, [user])
+
+    useEffect(() => {
+        // Update localStorage when token changes
+        localStorage.setItem("token", token);
+    }, [token])
+
     ////// Determin if User is loged in ////
     if (!user) {
         return (
-            <LoginView
-                onLoggedIn={(user, token) => { setUser(user), setToken(token) }}
-            />
+            <>
+
+                <LoginView onLoggedIn={(user, token) => { setUser(user), setToken(token) }} />
+                <SignupView />
+            </>
         )
     }
     //// Display selected movie ////
@@ -69,7 +86,7 @@ export default MainView = () => {
                 )
             })}
 
-            <button onClick={() => setUser(null)}>Log Out</button>
+            <button onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</button>
         </div>
     )
 }

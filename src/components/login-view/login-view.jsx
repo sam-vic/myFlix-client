@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 
 export default function LoginView({ onLoggedIn }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [item, setItem] = useState()
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -25,6 +26,8 @@ export default function LoginView({ onLoggedIn }) {
             .then((data) => {
                 console.log('Login response:', data)
                 if (data.user) {
+                    localStorage.setItem("user", JSON.stringify(data.user))
+                    localStorage.setItem("token", data.token)
                     onLoggedIn(data.user, data.token)
                 } else {
                     alert('No User Found')
