@@ -27323,6 +27323,7 @@ exports.default = MainView = _s(()=>{
     const [movies, setMovie] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const [user, setUser] = (0, _react.useState)(null);
+    const [token, setToken] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         fetch("https://mycf-movie-api.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             console.log(data);
@@ -27343,10 +27344,12 @@ exports.default = MainView = _s(()=>{
     }, []);
     ////// Determin if User is loged in ////
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewDefault.default), {
-        onLoggedIn: (user)=>setUser(user)
+        onLoggedIn: (user, token)=>{
+            setUser(user), setToken(token);
+        }
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 36,
+        lineNumber: 37,
         columnNumber: 13
     }, undefined);
     //// Display selected movie ////
@@ -27355,7 +27358,7 @@ exports.default = MainView = _s(()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 41,
+        lineNumber: 44,
         columnNumber: 16
     }, undefined);
     //// In case no data in api ////
@@ -27363,7 +27366,7 @@ exports.default = MainView = _s(()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 45,
+        lineNumber: 48,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27377,7 +27380,7 @@ exports.default = MainView = _s(()=>{
                     }
                 }, movie.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 52,
+                    lineNumber: 55,
                     columnNumber: 21
                 }, undefined);
             }),
@@ -27386,16 +27389,16 @@ exports.default = MainView = _s(()=>{
                 children: "Log Out"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 63,
+                lineNumber: 66,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 49,
+        lineNumber: 52,
         columnNumber: 9
     }, undefined);
-}, "PmBTVnwz9og9/UNAUZ3q8YdMPeE=");
+}, "20MkrxFudtGJkTzg/e6m30Z+oGA=");
 
   $parcel$ReactRefreshHelpers$f7a6.postlude(module);
 } finally {
@@ -28357,13 +28360,20 @@ function LoginView({ onLoggedIn  }) {
             access: username,
             secret: password
         };
+        console.log("what is this", data);
         // compares input with database
-        fetch("https://openlibrary.org/account/login.json", {
+        fetch(`https://mycf-movie-api.herokuapp.com/login?Username=${username}&Password=${password}`, {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(data)
-        }).then((response)=>{
-            if (response.ok) onLoggedIn(username);
-            else alert("Login failed");
+        }).then((response)=>response.json()).then((data)=>{
+            console.log("Login response:", data);
+            if (data.user) onLoggedIn(data.user, data.token);
+            else alert("No User Found");
+        }).catch((event)=>{
+            alert("Something went wrong");
         });
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -28379,13 +28389,13 @@ function LoginView({ onLoggedIn  }) {
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 33,
+                        lineNumber: 42,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 31,
+                lineNumber: 40,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -28398,13 +28408,13 @@ function LoginView({ onLoggedIn  }) {
                         required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 42,
+                        lineNumber: 51,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 40,
+                lineNumber: 49,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28412,13 +28422,13 @@ function LoginView({ onLoggedIn  }) {
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 49,
+                lineNumber: 58,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 30,
+        lineNumber: 39,
         columnNumber: 9
     }, this);
 }

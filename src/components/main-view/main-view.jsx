@@ -10,37 +10,40 @@ export default MainView = () => {
     const [movies, setMovie] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
     const [user, setUser] = useState(null)
+    const [token, setToken] = useState(null)
 
     useEffect(() => {
         fetch("https://mycf-movie-api.herokuapp.com/movies")
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-            const dataFromApi = data.map((item) => {
-                return {
-                    id: item._id,
-                    title: item.Title,
-                    image: item.ImagePath,
-                    actors: item.Actors || [],
-                    directors: [item.Director] || [],
-                    desc: item.Description
-                }
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                const dataFromApi = data.map((item) => {
+                    return {
+                        id: item._id,
+                        title: item.Title,
+                        image: item.ImagePath,
+                        actors: item.Actors || [],
+                        directors: [item.Director] || [],
+                        desc: item.Description
+                    }
+                })
+                setMovie(dataFromApi)
             })
-            setMovie(dataFromApi)
-        })
     }, [])
 
-////// Determin if User is loged in ////
+    ////// Determin if User is loged in ////
     if (!user) {
         return (
-            <LoginView onLoggedIn={(user) => setUser(user)} />
+            <LoginView
+                onLoggedIn={(user, token) => { setUser(user), setToken(token) }}
+            />
         )
     }
-//// Display selected movie ////
+    //// Display selected movie ////
     if (selectedMovie) {
-        return <InfoView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)}/>
+        return <InfoView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
     }
-//// In case no data in api ////
+    //// In case no data in api ////
     if (movies.length === 0) {
         return <div>The list is empty!</div>;
     }
@@ -49,13 +52,13 @@ export default MainView = () => {
         <div>
             {movies.map((movie) => {
                 return (
-                    <DetailCard 
-                    className='my-flix' 
-                    movie={movie}
-                    key={movie.id}
-                    onMovieClick={(newSelectedMovie) => {
-                        setSelectedMovie(newSelectedMovie)
-                    }}
+                    <DetailCard
+                        className='my-flix'
+                        movie={movie}
+                        key={movie.id}
+                        onMovieClick={(newSelectedMovie) => {
+                            setSelectedMovie(newSelectedMovie)
+                        }}
                     />
                 )
             })}

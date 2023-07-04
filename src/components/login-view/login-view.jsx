@@ -11,18 +11,27 @@ export default function LoginView({ onLoggedIn }) {
             access: username,
             secret: password
         }
+        console.log('what is this', data)
 
         // compares input with database
-        fetch("https://openlibrary.org/account/login.json", {
+        fetch(`https://mycf-movie-api.herokuapp.com/login?Username=${username}&Password=${password}`, {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(data)
         })
-            .then((response) => {
-                if (response.ok) {
-                    onLoggedIn(username)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Login response:', data)
+                if (data.user) {
+                    onLoggedIn(data.user, data.token)
                 } else {
-                    alert('Login failed')
+                    alert('No User Found')
                 }
+            })
+            .catch((event) => {
+                alert('Something went wrong')
             })
     }
 
