@@ -13,7 +13,13 @@ export default MainView = () => {
     const [token, setToken] = useState(null)
 
     useEffect(() => {
-        fetch("https://mycf-movie-api.herokuapp.com/movies")
+        if(!token) {
+            return null
+        }
+
+        fetch("https://mycf-movie-api.herokuapp.com/movies", {
+            headers: { Authorization: `Bearer ${token}`}
+        })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data)
@@ -29,7 +35,7 @@ export default MainView = () => {
                 })
                 setMovie(dataFromApi)
             })
-    }, [])
+    }, [token])
 
     ////// Determin if User is loged in ////
     if (!user) {

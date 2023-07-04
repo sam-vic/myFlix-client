@@ -27325,7 +27325,12 @@ exports.default = MainView = _s(()=>{
     const [user, setUser] = (0, _react.useState)(null);
     const [token, setToken] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
-        fetch("https://mycf-movie-api.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
+        if (!token) return null;
+        fetch("https://mycf-movie-api.herokuapp.com/movies", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>response.json()).then((data)=>{
             console.log(data);
             const dataFromApi = data.map((item)=>{
                 return {
@@ -27341,7 +27346,9 @@ exports.default = MainView = _s(()=>{
             });
             setMovie(dataFromApi);
         });
-    }, []);
+    }, [
+        token
+    ]);
     ////// Determin if User is loged in ////
     if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewDefault.default), {
         onLoggedIn: (user, token)=>{
@@ -27349,7 +27356,7 @@ exports.default = MainView = _s(()=>{
         }
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 37,
+        lineNumber: 43,
         columnNumber: 13
     }, undefined);
     //// Display selected movie ////
@@ -27358,7 +27365,7 @@ exports.default = MainView = _s(()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 44,
+        lineNumber: 50,
         columnNumber: 16
     }, undefined);
     //// In case no data in api ////
@@ -27366,7 +27373,7 @@ exports.default = MainView = _s(()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 48,
+        lineNumber: 54,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27380,7 +27387,7 @@ exports.default = MainView = _s(()=>{
                     }
                 }, movie.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 55,
+                    lineNumber: 61,
                     columnNumber: 21
                 }, undefined);
             }),
@@ -27389,13 +27396,13 @@ exports.default = MainView = _s(()=>{
                 children: "Log Out"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 66,
+                lineNumber: 72,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 52,
+        lineNumber: 58,
         columnNumber: 9
     }, undefined);
 }, "20MkrxFudtGJkTzg/e6m30Z+oGA=");
