@@ -27338,7 +27338,9 @@ exports.default = MainView = _s(()=>{
         });
     }, []);
     ////// Determin if User is loged in ////
-    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewDefault.default), {}, void 0, false, {
+    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewDefault.default), {
+        onLoggedIn: (user)=>setUser(user)
+    }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
         lineNumber: 40,
         columnNumber: 13
@@ -27361,20 +27363,30 @@ exports.default = MainView = _s(()=>{
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: movies.map((movie)=>{
-            return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _detailCard.DetailCard), {
-                className: "my-flix",
-                movie: movie,
-                onMovieClick: (newSelectedMovie)=>{
-                    setSelectedMovie(newSelectedMovie);
-                }
-            }, movie.id, false, {
+        children: [
+            movies.map((movie)=>{
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _detailCard.DetailCard), {
+                    className: "my-flix",
+                    movie: movie,
+                    onMovieClick: (newSelectedMovie)=>{
+                        setSelectedMovie(newSelectedMovie);
+                    }
+                }, movie.id, false, {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 56,
+                    columnNumber: 21
+                }, undefined);
+            }),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                onClick: ()=>setUser(null),
+                children: "Log Out"
+            }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 56,
-                columnNumber: 21
-            }, undefined);
-        })
-    }, void 0, false, {
+                lineNumber: 67,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
         lineNumber: 53,
         columnNumber: 9
@@ -28322,39 +28334,65 @@ parcelHelpers.export(exports, "default", ()=>LoginView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-function LoginView() {
+var _s = $RefreshSig$();
+function LoginView({ onLoggedIn  }) {
+    _s();
+    const [username, setUsername] = (0, _react.useState)("");
+    const [password, setPassword] = (0, _react.useState)("");
+    const handleSubmit = (event)=>{
+        event.preventDefault();
+        const data = {
+            access: username,
+            secret: password
+        };
+        // compares input with database
+        fetch("https://openlibrary.org/account/login.json", {
+            method: "POST",
+            body: JSON.stringify(data)
+        }).then((response)=>{
+            if (response.ok) onLoggedIn(username);
+            else alert("Login failed");
+        });
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+        onSubmit: handleSubmit,
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 children: [
                     "Username:",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text"
+                        type: "text",
+                        value: username,
+                        onChange: (e)=>setUsername(e.target.value),
+                        required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 10,
+                        lineNumber: 33,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 8,
+                lineNumber: 31,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                 children: [
                     "Password:",
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "password"
+                        type: "password",
+                        value: password,
+                        onChange: (e)=>setPassword(e.target.value),
+                        required: true
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 14,
+                        lineNumber: 42,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 12,
+                lineNumber: 40,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -28362,16 +28400,17 @@ function LoginView() {
                 children: "Submit"
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 16,
+                lineNumber: 49,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 7,
+        lineNumber: 30,
         columnNumber: 9
     }, this);
 }
+_s(LoginView, "wuQOK7xaXdVz4RMrZQhWbI751Oc=");
 _c = LoginView;
 var _c;
 $RefreshReg$(_c, "LoginView");

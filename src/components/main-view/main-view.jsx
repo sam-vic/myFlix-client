@@ -37,7 +37,7 @@ export default MainView = () => {
 ////// Determin if User is loged in ////
     if (!user) {
         return (
-            <LoginView />
+            <LoginView onLoggedIn={(user) => setUser(user)} />
         )
     }
 //// Display selected movie ////
@@ -63,6 +63,8 @@ export default MainView = () => {
                     />
                 )
             })}
+
+            <button onClick={() => setUser(null)}>Log Out</button>
         </div>
     )
 }
