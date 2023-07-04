@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { DetailCard } from "./detail-card"
 import { InfoView } from "../info-view/info-view"
+import LoginView from "../login-view/login-view"
 
 import moviesData from "./movie.json"
 
@@ -8,6 +9,7 @@ import moviesData from "./movie.json"
 export default MainView = () => {
     const [movies, setMovie] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
         fetch("https://mycf-movie-api.herokuapp.com/movies")
@@ -28,10 +30,17 @@ export default MainView = () => {
         })
     }, [])
 
+////// Determin if User is loged in ////
+    if (!user) {
+        return (
+            <LoginView onLoggedIn={(user) => setUser(user)} />
+        )
+    }
+//// Display selected movie ////
     if (selectedMovie) {
         return <InfoView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)}/>
     }
-
+//// In case no data in api ////
     if (movies.length === 0) {
         return <div>The list is empty!</div>;
     }
@@ -50,6 +59,8 @@ export default MainView = () => {
                     />
                 )
             })}
+
+            <button onClick={() => setUser(null)}>Log Out</button>
         </div>
     )
 }
