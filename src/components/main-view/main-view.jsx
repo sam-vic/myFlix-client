@@ -56,8 +56,10 @@ export default MainView = () => {
     if (!user) {
         return (
             <>
-
+                Login
                 <LoginView onLoggedIn={(user, token) => { setUser(user), setToken(token) }} />
+
+                Sign up
                 <SignupView />
             </>
         )
