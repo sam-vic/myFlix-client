@@ -4,12 +4,6 @@ import { InfoView } from "../info-view/info-view"
 
 import moviesData from "./movie.json"
 
-{/*
-fetch('../../json/movies.json')
-.then((response) => response.json())
-.then((data) => {data})
-
-console.log(data) */}
 
 export default MainView = () => {
     const [movies, setMovie] = useState([])
