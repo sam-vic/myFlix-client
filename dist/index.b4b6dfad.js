@@ -27346,7 +27346,7 @@ exports.default = MainView = _s(()=>{
         onLoggedIn: (user)=>setUser(user)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 40,
+        lineNumber: 36,
         columnNumber: 13
     }, undefined);
     //// Display selected movie ////
@@ -27355,7 +27355,7 @@ exports.default = MainView = _s(()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 45,
+        lineNumber: 41,
         columnNumber: 16
     }, undefined);
     //// In case no data in api ////
@@ -27363,7 +27363,7 @@ exports.default = MainView = _s(()=>{
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 49,
+        lineNumber: 45,
         columnNumber: 16
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27377,7 +27377,7 @@ exports.default = MainView = _s(()=>{
                     }
                 }, movie.id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 56,
+                    lineNumber: 52,
                     columnNumber: 21
                 }, undefined);
             }),
@@ -27386,13 +27386,13 @@ exports.default = MainView = _s(()=>{
                 children: "Log Out"
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 67,
+                lineNumber: 63,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 53,
+        lineNumber: 49,
         columnNumber: 9
     }, undefined);
 }, "PmBTVnwz9og9/UNAUZ3q8YdMPeE=");
