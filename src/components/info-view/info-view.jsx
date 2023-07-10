@@ -1,23 +1,22 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './info-view.scss'
 
+import PropTypes from 'prop-types'
+import { Button, Card } from 'react-bootstrap'
+
 export const InfoView = ({ movie, onBackClick }) => {
     return (
-        <>
-            <div>
-                <img src={movie.image} />
-            </div>
-            <div>
+        <Card>
+            <Card.Img src={movie.image} />
+            <Card.Body>
                 <span>Title: </span>
-                <span>{movie.title}</span>
-            </div>
-            <div>
+                <Card.Title>{movie.title}</Card.Title>
                 <span>Author: </span>
-                <span>{movie.author}</span>
-            </div>
-            <button className='back-button' onClick={onBackClick}>
+                <Card.Text>{movie.author}</Card.Text>
+            </Card.Body>
+            <Button className='back-button' onClick={onBackClick}>
                 Back
-            </button>
-        </>
+            </Button>
+        </Card>
     )
 }

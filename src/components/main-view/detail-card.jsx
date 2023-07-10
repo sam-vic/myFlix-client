@@ -1,16 +1,21 @@
 import PropTypes from 'prop-types'
+import { Button, Card } from 'react-bootstrap'
 
 export const DetailCard = ({ movie, onMovieClick }) => {
-    return <div>
-        <div
-            key={movie.id}
+    return (
+        <Card
             onClick={() => {
                 onMovieClick(movie)
             }}
         >
-            {movie.title}
-        </div>
-    </div>
+            <Card.Img variant='top' src={movie.image} />
+            <Card.Body>
+                <Card.Title key={movie.id}>
+                    {movie.title}
+                </Card.Title>
+            </Card.Body>
+        </Card>
+    )
 }
 
 DetailCard.propTypes = {
