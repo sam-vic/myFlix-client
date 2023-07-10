@@ -4,6 +4,8 @@ import { InfoView } from "../info-view/info-view"
 import LoginView from "../login-view/login-view"
 import SignupView from "../sign-up-view/sign-up-view"
 
+import { Row, Col } from 'react-bootstrap'
+
 export default MainView = () => {
 
     const storedUser = JSON.parse(localStorage.getItem("user"))
@@ -51,14 +53,15 @@ export default MainView = () => {
         localStorage.setItem("token", token);
     }, [token])
 
+    {/*
     ////// Determin if User is loged in ////
     if (!user) {
         return (
             <>
-                <br/>
+                <br />
                 Login
                 <LoginView onLoggedIn={(user, token) => { setUser(user), setToken(token) }} />
-                <br/>
+                <br />
                 Sign up
                 <SignupView />
             </>
@@ -70,25 +73,44 @@ export default MainView = () => {
     }
     //// In case no data in api ////
     if (movies.length === 0) {
-        return <div>The list is empty!</div>;
+        return <div>The list is empty!</div>
     }
+    */}
 
     return (
-        <div>
-            {movies.map((movie) => {
-                return (
-                    <DetailCard
-                        className='my-flix'
-                        movie={movie}
-                        key={movie.id}
-                        onMovieClick={(newSelectedMovie) => {
-                            setSelectedMovie(newSelectedMovie)
-                        }}
-                    />
-                )
-            })}
+        <Row>
+            {!user ? (
+                <>
+                    <br />
+                    Login
+                    <LoginView onLoggedIn={(user, token) => { setUser(user), setToken(token) }} />
+                    <br />
+                    Sign up
+                    <SignupView />
+                </>
+            ) : selectedMovie ? (
+                <InfoView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+            ) : movies.length === 0 ? (
+                <div>The list is empty!</div>
+            ) : (
+                <div>
+                    {movies.map((movie) => {
+                        return (
+                            <DetailCard
+                                className='my-flix'
+                                movie={movie}
+                                key={movie.id}
+                                onMovieClick={(newSelectedMovie) => {
+                                    setSelectedMovie(newSelectedMovie)
+                                }}
+                            />
+                        )
+                    })}
 
-            <button onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</button>
-        </div>
+                    <button onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</button>
+                </div>
+            )}
+        </Row>
     )
 }
+
