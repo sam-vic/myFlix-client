@@ -1,6 +1,9 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import './info-view.scss'
+
 export const InfoView = ({ movie, onBackClick }) => {
     return (
-        <div>
+        <>
             <div>
                 <img src={movie.image} />
             </div>
@@ -12,9 +15,9 @@ export const InfoView = ({ movie, onBackClick }) => {
                 <span>Author: </span>
                 <span>{movie.author}</span>
             </div>
-            <button onClick={onBackClick}>
+            <button className="back-button" onClick={onBackClick}>
                 Back
             </button>
-        </div>
+        </>
     )
 }
