@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
-import { Button, Card } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
+import './detail-card.scss'
 
 export const DetailCard = ({ movie, onMovieClick }) => {
     return (
-        <Card
+        <Card className='h-100'
             onClick={() => {
                 onMovieClick(movie)
             }}

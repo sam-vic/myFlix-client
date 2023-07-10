@@ -1,4 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
 import './info-view.scss'
 
 import PropTypes from 'prop-types'
@@ -14,7 +13,7 @@ export const InfoView = ({ movie, onBackClick }) => {
                 <span>Author: </span>
                 <Card.Text>{movie.author}</Card.Text>
             </Card.Body>
-            <Button className='back-button' onClick={onBackClick}>
+            <Button variant='primary' className='back-button' onClick={onBackClick}>
                 Back
             </Button>
         </Card>

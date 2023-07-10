@@ -80,7 +80,7 @@ export default function SignupView() {
                     required
                 />
             </Form.Group>
-            <Button type='submit'>Submit</Button>
+            <Button variant='primary' type='submit'>Submit</Button>
         </Form>
     )
 }

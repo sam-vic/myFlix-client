@@ -4,7 +4,7 @@ import { InfoView } from "../info-view/info-view"
 import LoginView from "../login-view/login-view"
 import SignupView from "../sign-up-view/sign-up-view"
 
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 
 export default MainView = () => {
 
@@ -78,36 +78,43 @@ export default MainView = () => {
     */}
 
     return (
-        <Row>
+        <Row className="justify-content-md-center">
             {!user ? (
-                <>
-                    <br />
+                <Col md={5}>
+
                     Login
                     <LoginView onLoggedIn={(user, token) => { setUser(user), setToken(token) }} />
-                    <br />
+
                     Sign up
                     <SignupView />
-                </>
+                </Col>
             ) : selectedMovie ? (
-                <InfoView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+                <Col md={8}>
+                    <InfoView
+                        movie={selectedMovie}
+                        onBackClick={() => setSelectedMovie(null)}
+                    />
+                </Col>
             ) : movies.length === 0 ? (
                 <div>The list is empty!</div>
             ) : (
                 <div>
                     {movies.map((movie) => {
                         return (
-                            <DetailCard
-                                className='my-flix'
-                                movie={movie}
-                                key={movie.id}
-                                onMovieClick={(newSelectedMovie) => {
-                                    setSelectedMovie(newSelectedMovie)
-                                }}
-                            />
+                            <Col className='mb-5' key={movie.id} md={3}>
+                                <DetailCard
+                                    className='my-flix'
+                                    movie={movie}
+                                    key={movie.id}
+                                    onMovieClick={(newSelectedMovie) => {
+                                        setSelectedMovie(newSelectedMovie)
+                                    }}
+                                />
+                            </Col>
                         )
                     })}
 
-                    <button onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</button>
+                    <Button variant='primary' onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</Button>
                 </div>
             )}
         </Row>
