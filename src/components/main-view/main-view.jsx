@@ -4,7 +4,7 @@ import { InfoView } from "../info-view/info-view"
 import LoginView from "../login-view/login-view"
 import SignupView from "../sign-up-view/sign-up-view"
 
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col, Button, Container, Card } from 'react-bootstrap'
 
 export default MainView = () => {
 
@@ -78,46 +78,50 @@ export default MainView = () => {
     */}
 
     return (
-        <Row className="justify-content-md-center">
-            {!user ? (
-                <Col md={5}>
+        <Container>
+            <Row className="justify-content-md-center">
+                {!user ? (
+                    <Col md={5}>
+                        <Row>
+                            <Card.Title>Login</Card.Title>
+                            <LoginView onLoggedIn={(user, token) => { setUser(user), setToken(token) }} />
+                        </Row>
+                        <Row>
+                            <Card.Title>Sign Up</Card.Title>
+                            <SignupView />
+                        </Row>
+                    </Col>
+                ) : selectedMovie ? (
+                    <Col md={8}>
+                        <InfoView
+                            movie={selectedMovie}
+                            onBackClick={() => setSelectedMovie(null)}
+                        />
+                    </Col>
+                ) : movies.length === 0 ? (
+                    <div>The list is empty!</div>
+                ) : (
+                    <div>
+                        {movies.map((movie) => {
+                            return (
+                                <Col className='mb-5' key={movie.id} md={3}>
+                                    <DetailCard
+                                        className='my-flix'
+                                        movie={movie}
+                                        key={movie.id}
+                                        onMovieClick={(newSelectedMovie) => {
+                                            setSelectedMovie(newSelectedMovie)
+                                        }}
+                                    />
+                                </Col>
+                            )
+                        })}
 
-                    Login
-                    <LoginView onLoggedIn={(user, token) => { setUser(user), setToken(token) }} />
-
-                    Sign up
-                    <SignupView />
-                </Col>
-            ) : selectedMovie ? (
-                <Col md={8}>
-                    <InfoView
-                        movie={selectedMovie}
-                        onBackClick={() => setSelectedMovie(null)}
-                    />
-                </Col>
-            ) : movies.length === 0 ? (
-                <div>The list is empty!</div>
-            ) : (
-                <div>
-                    {movies.map((movie) => {
-                        return (
-                            <Col className='mb-5' key={movie.id} md={3}>
-                                <DetailCard
-                                    className='my-flix'
-                                    movie={movie}
-                                    key={movie.id}
-                                    onMovieClick={(newSelectedMovie) => {
-                                        setSelectedMovie(newSelectedMovie)
-                                    }}
-                                />
-                            </Col>
-                        )
-                    })}
-
-                    <Button variant='primary' onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</Button>
-                </div>
-            )}
-        </Row>
+                        <Button variant='primary' onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</Button>
+                    </div>
+                )}
+            </Row>
+        </Container>
     )
 }
 

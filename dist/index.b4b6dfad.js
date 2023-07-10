@@ -27232,91 +27232,125 @@ exports.default = MainView = _s(()=>{
     }, [
         token
     ]);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
-        className: "justify-content-md-center",
-        children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-            md: 5,
-            children: [
-                "Login",
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewDefault.default), {
-                    onLoggedIn: (user, token)=>{
-                        setUser(user), setToken(token);
-                    }
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Container), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
+            className: "justify-content-md-center",
+            children: !user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                md: 5,
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
+                                children: "Login"
+                            }, void 0, false, {
+                                fileName: "src/components/main-view/main-view.jsx",
+                                lineNumber: 86,
+                                columnNumber: 29
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _loginViewDefault.default), {
+                                onLoggedIn: (user, token)=>{
+                                    setUser(user), setToken(token);
+                                }
+                            }, void 0, false, {
+                                fileName: "src/components/main-view/main-view.jsx",
+                                lineNumber: 87,
+                                columnNumber: 29
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 85,
+                        columnNumber: 25
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Title, {
+                                children: "Sign Up"
+                            }, void 0, false, {
+                                fileName: "src/components/main-view/main-view.jsx",
+                                lineNumber: 90,
+                                columnNumber: 29
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpViewDefault.default), {}, void 0, false, {
+                                fileName: "src/components/main-view/main-view.jsx",
+                                lineNumber: 91,
+                                columnNumber: 29
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 89,
+                        columnNumber: 25
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 84,
+                columnNumber: 21
+            }, undefined) : selectedMovie ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                md: 8,
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _infoView.InfoView), {
+                    movie: selectedMovie,
+                    onBackClick: ()=>setSelectedMovie(null)
                 }, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 86,
-                    columnNumber: 21
-                }, undefined),
-                "Sign up",
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _signUpViewDefault.default), {}, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 89,
-                    columnNumber: 21
+                    lineNumber: 96,
+                    columnNumber: 25
                 }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 83,
-            columnNumber: 17
-        }, undefined) : selectedMovie ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-            md: 8,
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _infoView.InfoView), {
-                movie: selectedMovie,
-                onBackClick: ()=>setSelectedMovie(null)
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 93,
+                lineNumber: 95,
+                columnNumber: 21
+            }, undefined) : movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: "The list is empty!"
+            }, void 0, false, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 102,
+                columnNumber: 21
+            }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                children: [
+                    movies.map((movie)=>{
+                        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
+                            className: "mb-5",
+                            md: 3,
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _detailCard.DetailCard), {
+                                className: "my-flix",
+                                movie: movie,
+                                onMovieClick: (newSelectedMovie)=>{
+                                    setSelectedMovie(newSelectedMovie);
+                                }
+                            }, movie.id, false, {
+                                fileName: "src/components/main-view/main-view.jsx",
+                                lineNumber: 108,
+                                columnNumber: 37
+                            }, undefined)
+                        }, movie.id, false, {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 107,
+                            columnNumber: 33
+                        }, undefined);
+                    }),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                        variant: "primary",
+                        onClick: ()=>{
+                            setUser(null), setToken(null), localStorage.clear();
+                        },
+                        children: "Log Out"
+                    }, void 0, false, {
+                        fileName: "src/components/main-view/main-view.jsx",
+                        lineNumber: 120,
+                        columnNumber: 25
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/main-view/main-view.jsx",
+                lineNumber: 104,
                 columnNumber: 21
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 92,
-            columnNumber: 17
-        }, undefined) : movies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: "The list is empty!"
-        }, void 0, false, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 99,
-            columnNumber: 17
-        }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: [
-                movies.map((movie)=>{
-                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
-                        className: "mb-5",
-                        md: 3,
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _detailCard.DetailCard), {
-                            className: "my-flix",
-                            movie: movie,
-                            onMovieClick: (newSelectedMovie)=>{
-                                setSelectedMovie(newSelectedMovie);
-                            }
-                        }, movie.id, false, {
-                            fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 105,
-                            columnNumber: 33
-                        }, undefined)
-                    }, movie.id, false, {
-                        fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 104,
-                        columnNumber: 29
-                    }, undefined);
-                }),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
-                    variant: "primary",
-                    onClick: ()=>{
-                        setUser(null), setToken(null), localStorage.clear();
-                    },
-                    children: "Log Out"
-                }, void 0, false, {
-                    fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 117,
-                    columnNumber: 21
-                }, undefined)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 101,
-            columnNumber: 17
+            lineNumber: 82,
+            columnNumber: 13
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
