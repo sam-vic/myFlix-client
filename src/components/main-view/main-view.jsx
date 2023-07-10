@@ -4,7 +4,6 @@ import { InfoView } from "../info-view/info-view"
 import LoginView from "../login-view/login-view"
 import SignupView from "../sign-up-view/sign-up-view"
 
-
 export default MainView = () => {
 
     const storedUser = JSON.parse(localStorage.getItem("user"))
@@ -56,9 +55,10 @@ export default MainView = () => {
     if (!user) {
         return (
             <>
+                <br/>
                 Login
                 <LoginView onLoggedIn={(user, token) => { setUser(user), setToken(token) }} />
-
+                <br/>
                 Sign up
                 <SignupView />
             </>
