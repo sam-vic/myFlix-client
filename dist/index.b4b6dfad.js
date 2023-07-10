@@ -41033,52 +41033,52 @@ function LoginView({ onLoggedIn  }) {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
                 controlId: "formUsername",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                        children: "Username:"
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 45,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                        type: "text",
-                        value: username,
-                        onChange: (e)=>setUsername(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 48,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                    children: [
+                        "Username:",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                            type: "text",
+                            value: username,
+                            onChange: (e)=>setUsername(e.target.value),
+                            required: true
+                        }, void 0, false, {
+                            fileName: "src/components/login-view/login-view.jsx",
+                            lineNumber: 47,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/login-view/login-view.jsx",
+                    lineNumber: 45,
+                    columnNumber: 17
+                }, this)
+            }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
                 lineNumber: 44,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
                 controlId: "formPassword",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                        children: "Password:"
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 56,
-                        columnNumber: 17
-                    }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                        type: "password",
-                        value: password,
-                        onChange: (e)=>setPassword(e.target.value),
-                        required: true
-                    }, void 0, false, {
-                        fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 59,
-                        columnNumber: 17
-                    }, this)
-                ]
-            }, void 0, true, {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
+                    children: [
+                        "Password:",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
+                            type: "password",
+                            value: password,
+                            onChange: (e)=>setPassword(e.target.value),
+                            required: true
+                        }, void 0, false, {
+                            fileName: "src/components/login-view/login-view.jsx",
+                            lineNumber: 58,
+                            columnNumber: 21
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/login-view/login-view.jsx",
+                    lineNumber: 56,
+                    columnNumber: 17
+                }, this)
+            }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
                 lineNumber: 55,
                 columnNumber: 13
@@ -41121,6 +41121,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>SignupView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
+var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
 function SignupView() {
     _s();
@@ -41147,14 +41148,15 @@ function SignupView() {
             else alert("Sign up Error");
         });
     };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-            onSubmit: handleSubmit,
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
+        onSubmit: handleSubmit,
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "formUsername",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
                     children: [
                         "Username:",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                             type: "text",
                             value: username,
                             onChange: (e)=>setUsername(e.target.value),
@@ -41162,89 +41164,110 @@ function SignupView() {
                             minLength: "3"
                         }, void 0, false, {
                             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                            lineNumber: 40,
+                            lineNumber: 41,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                    lineNumber: 38,
+                    lineNumber: 39,
                     columnNumber: 17
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/sign-up-view/sign-up-view.jsx",
+                lineNumber: 38,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "formPassword",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
                     children: [
                         "Password:",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                             type: "password",
                             value: password,
                             onChange: (e)=>setPassword(e.target.value),
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                            lineNumber: 50,
+                            lineNumber: 53,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                    lineNumber: 48,
+                    lineNumber: 51,
                     columnNumber: 17
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/sign-up-view/sign-up-view.jsx",
+                lineNumber: 50,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "formEmail",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
                     children: [
                         "Email:",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                             type: "email",
                             value: email,
                             onChange: (e)=>setEmail(e.target.value),
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                            lineNumber: 59,
+                            lineNumber: 64,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                    lineNumber: 57,
+                    lineNumber: 62,
                     columnNumber: 17
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                }, this)
+            }, void 0, false, {
+                fileName: "src/components/sign-up-view/sign-up-view.jsx",
+                lineNumber: 61,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
+                controlId: "formBirthday",
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
                     children: [
                         "Birthday:",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
                             type: "date",
                             value: birthday,
                             onChange: (e)=>setBirthday(e.target.value),
                             required: true
                         }, void 0, false, {
                             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                            lineNumber: 68,
+                            lineNumber: 75,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                    lineNumber: 66,
-                    columnNumber: 17
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                    type: "submit",
-                    children: "Submit"
-                }, void 0, false, {
-                    fileName: "src/components/sign-up-view/sign-up-view.jsx",
-                    lineNumber: 75,
+                    lineNumber: 73,
                     columnNumber: 17
                 }, this)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 37,
-            columnNumber: 13
-        }, this)
-    }, void 0, false, {
+            }, void 0, false, {
+                fileName: "src/components/sign-up-view/sign-up-view.jsx",
+                lineNumber: 72,
+                columnNumber: 13
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                type: "submit",
+                children: "Submit"
+            }, void 0, false, {
+                fileName: "src/components/sign-up-view/sign-up-view.jsx",
+                lineNumber: 83,
+                columnNumber: 13
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "src/components/sign-up-view/sign-up-view.jsx",
-        lineNumber: 36,
+        lineNumber: 37,
         columnNumber: 9
     }, this);
 }
@@ -41258,6 +41281,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"lJZlQ":[function() {},{}]},["fqdZm","7LWDX","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"lJZlQ":[function() {},{}]},["fqdZm","7LWDX","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

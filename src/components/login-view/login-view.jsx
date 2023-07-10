@@ -44,24 +44,24 @@ export default function LoginView({ onLoggedIn }) {
             <Form.Group controlId="formUsername">
                 <Form.Label>
                     Username:
+                    <Form.Control
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
                 </Form.Label>
-                <Form.Control
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
             </Form.Group>
             <Form.Group controlId="formPassword">
                 <Form.Label>
                     Password:
+                    <Form.Control
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
                 </Form.Label>
-                <Form.Control
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
             </Form.Group>
             <Button variant='primary' type="submit">Submit</Button>
         </Form>
