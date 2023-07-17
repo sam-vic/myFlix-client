@@ -1,21 +1,32 @@
 import './info-view.scss'
 import React from 'react'
-import { Button, Card } from 'react-bootstrap'
+import { useParams } from 'react-router'
+import { Link } from 'react-router-dom'
 
-export const InfoView = ({ movie }) => {
+export const InfoView = ({ movies }) => {
+    const { movieId } = useParams()
+    const movie = movies.find((m) => m.id === movieId)
+
+    if (!movie) {
+        // Handle the case when the movie is not found
+        return <div>Movie not found</div>;
+      }
+
     return (
-        <Card>
-            <Card.Img src={movie.image} />
-            <Card.Body>
+        <div>
+            <div>
+                <img className='w-100' src={movie.image} alt={movie.title}/>
+            </div>
+            <div>
                 <span>Title: </span>
-                <Card.Title>{movie.title}</Card.Title>
+                <span>{movie.title}</span>
                 <span>Author: </span>
-                <Card.Text>{movie.author}</Card.Text>
-            </Card.Body>
-            <Button variant='primary' className='back-button'>
-                Back
-            </Button>
-        </Card>
+                <span>{movie.author}</span>
+            </div>
+            <Link to={`/`}>
+                <button className='back-button'>Back</button>
+            </Link>
+        </div>
     )
 }
 

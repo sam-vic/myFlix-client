@@ -24200,7 +24200,7 @@ const DetailCard = ({ movie  })=>{
         },
         __self: undefined
     }, movie.desc), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Link), {
-        to: "/movies/${encodeURIComponent(movie.id)}",
+        to: `/movies/${encodeURIComponent(movie.id)}`,
         __source: {
             fileName: "src/components/main-view/detail-card.jsx",
             lineNumber: 14,
@@ -43991,68 +43991,96 @@ parcelHelpers.export(exports, "InfoView", ()=>InfoView);
 var _infoViewScss = require("./info-view.scss");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactBootstrap = require("react-bootstrap");
-const InfoView = ({ movie  })=>{
-    return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
+var _reactRouter = require("react-router");
+var _reactRouterDom = require("react-router-dom");
+const InfoView = ({ movies  })=>{
+    const { movieId  } = (0, _reactRouter.useParams)();
+    const movie = movies.find((m)=>m.id === movieId);
+    if (!movie) // Handle the case when the movie is not found
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 7,
+            lineNumber: 12,
+            columnNumber: 16
+        },
+        __self: undefined
+    }, "Movie not found");
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 16,
             columnNumber: 9
         },
         __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Img, {
-        src: movie.image,
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 8,
+            lineNumber: 17,
             columnNumber: 13
         },
         __self: undefined
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("img", {
+        className: "w-100",
+        src: movie.image,
+        alt: movie.title,
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 9,
+            lineNumber: 18,
+            columnNumber: 17
+        },
+        __self: undefined
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 20,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("span", {
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 10,
+            lineNumber: 21,
             columnNumber: 17
         },
         __self: undefined
-    }, "Title: "), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
+    }, "Title: "), /*#__PURE__*/ (0, _reactDefault.default).createElement("span", {
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 11,
+            lineNumber: 22,
             columnNumber: 17
         },
         __self: undefined
     }, movie.title), /*#__PURE__*/ (0, _reactDefault.default).createElement("span", {
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 12,
+            lineNumber: 23,
             columnNumber: 17
         },
         __self: undefined
-    }, "Author: "), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
+    }, "Author: "), /*#__PURE__*/ (0, _reactDefault.default).createElement("span", {
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 13,
+            lineNumber: 24,
             columnNumber: 17
         },
         __self: undefined
-    }, movie.author)), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
-        variant: "primary",
-        className: "back-button",
+    }, movie.author)), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Link), {
+        to: `/`,
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 15,
+            lineNumber: 26,
             columnNumber: 13
         },
         __self: undefined
-    }, "Back"));
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("button", {
+        className: "back-button",
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 27,
+            columnNumber: 17
+        },
+        __self: undefined
+    }, "Back")));
 };
 
   $parcel$ReactRefreshHelpers$fe79.postlude(module);
@@ -44060,7 +44088,7 @@ const InfoView = ({ movie  })=>{
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","./info-view.scss":"haMXJ","react-bootstrap":"3AD9A","react":"21dqq","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"haMXJ":[function() {},{}],"9YtA0":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","./info-view.scss":"haMXJ","react":"21dqq","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-router":"dbWyW","react-router-dom":"9xmpe"}],"haMXJ":[function() {},{}],"9YtA0":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$9fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

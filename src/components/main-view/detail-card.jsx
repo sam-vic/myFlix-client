@@ -11,7 +11,7 @@ export const DetailCard = ({ movie }) => {
             <Card.Body>
                 <Card.Title key={movie.id}>{movie.title}</Card.Title>
                 <Card.Text>{movie.desc}</Card.Text>
-                <Link to={'/movies/${encodeURIComponent(movie.id)}'}>
+                <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
                     <Button variant='link'>Open</Button>
                 </Link>
             </Card.Body>
