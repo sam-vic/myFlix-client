@@ -10,12 +10,12 @@ export const InfoView = ({ movies }) => {
     if (!movie) {
         // Handle the case when the movie is not found
         return <div>Movie not found</div>;
-      }
+    }
 
     return (
         <div>
             <div>
-                <img className='w-100' src={movie.image} alt={movie.title}/>
+                <img className='w-100' src={movie.image} alt={movie.title} />
             </div>
             <div>
                 <span>Title: </span>

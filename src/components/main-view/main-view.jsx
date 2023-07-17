@@ -103,7 +103,7 @@ export default MainView = () => {
                                 ) :  (
                                     <Col md={8}>
                                         <InfoView
-                                            movie={selectedMovie}
+                                            movies={movies}
                                         />
                                     </Col>
                                 )}

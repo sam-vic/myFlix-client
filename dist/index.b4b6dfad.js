@@ -24099,7 +24099,7 @@ exports.default = MainView = ()=>{
         }) : movies.length === 0 ? /*#__PURE__*/ (0, _reactDefault.default).createElement("div", null, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Col), {
             md: 8
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _infoView.InfoView), {
-            movie: selectedMovie
+            movies: movies
         }))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
