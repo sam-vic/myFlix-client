@@ -24158,12 +24158,13 @@ var _reactBootstrap = require("react-bootstrap");
 var _detailCardScss = require("./detail-card.scss");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-const DetailCard = ({ movie , onMovieClick  })=>{
+var _reactRouterDom = require("react-router-dom");
+const DetailCard = ({ movie  })=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
         className: "h-100",
         __source: {
             fileName: "src/components/main-view/detail-card.jsx",
-            lineNumber: 8,
+            lineNumber: 9,
             columnNumber: 9
         },
         __self: undefined
@@ -24172,14 +24173,14 @@ const DetailCard = ({ movie , onMovieClick  })=>{
         src: movie.image,
         __source: {
             fileName: "src/components/main-view/detail-card.jsx",
-            lineNumber: 9,
+            lineNumber: 10,
             columnNumber: 13
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
         __source: {
             fileName: "src/components/main-view/detail-card.jsx",
-            lineNumber: 10,
+            lineNumber: 11,
             columnNumber: 13
         },
         __self: undefined
@@ -24187,11 +24188,34 @@ const DetailCard = ({ movie , onMovieClick  })=>{
         key: movie.id,
         __source: {
             fileName: "src/components/main-view/detail-card.jsx",
-            lineNumber: 11,
+            lineNumber: 12,
             columnNumber: 17
         },
         __self: undefined
-    }, movie.title)));
+    }, movie.title), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
+        __source: {
+            fileName: "src/components/main-view/detail-card.jsx",
+            lineNumber: 13,
+            columnNumber: 17
+        },
+        __self: undefined
+    }, movie.desc), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Link), {
+        to: "/movies/${encodeURIComponent(movie.id)}",
+        __source: {
+            fileName: "src/components/main-view/detail-card.jsx",
+            lineNumber: 14,
+            columnNumber: 17
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+        variant: "link",
+        __source: {
+            fileName: "src/components/main-view/detail-card.jsx",
+            lineNumber: 15,
+            columnNumber: 21
+        },
+        __self: undefined
+    }, "Open"))));
 };
 DetailCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
@@ -24206,8 +24230,7 @@ DetailCard.propTypes = {
             Death: (0, _propTypesDefault.default).string
         })),
         desc: (0, _propTypesDefault.default).string.isRequired
-    }).isRequired,
-    onMovieClick: (0, _propTypesDefault.default).func.isRequired
+    }).isRequired
 };
 
   $parcel$ReactRefreshHelpers$b7b2.postlude(module);
@@ -24215,7 +24238,7 @@ DetailCard.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","react-bootstrap":"3AD9A","./detail-card.scss":"gzBHe","react":"21dqq","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"7wKI2":[function(require,module,exports) {
+},{"prop-types":"7wKI2","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","react-bootstrap":"3AD9A","./detail-card.scss":"gzBHe","react":"21dqq","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-router-dom":"9xmpe"}],"7wKI2":[function(require,module,exports) {
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -38200,364 +38223,7 @@ module.exports = require("1da373dfe83b810b");
     exports.setSignature = setSignature;
 })();
 
-},{}],"iYF6R":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "InfoView", ()=>InfoView);
-var _infoViewScss = require("./info-view.scss");
-var _propTypes = require("prop-types");
-var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _reactBootstrap = require("react-bootstrap");
-const InfoView = ({ movie , onBackClick  })=>{
-    return /*#__PURE__*/ React.createElement((0, _reactBootstrap.Card), {
-        __source: {
-            fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 8,
-            columnNumber: 9
-        },
-        __self: undefined
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Card).Img, {
-        src: movie.image,
-        __source: {
-            fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 9,
-            columnNumber: 13
-        },
-        __self: undefined
-    }), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Card).Body, {
-        __source: {
-            fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 10,
-            columnNumber: 13
-        },
-        __self: undefined
-    }, /*#__PURE__*/ React.createElement("span", {
-        __source: {
-            fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 11,
-            columnNumber: 17
-        },
-        __self: undefined
-    }, "Title: "), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Card).Title, {
-        __source: {
-            fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 12,
-            columnNumber: 17
-        },
-        __self: undefined
-    }, movie.title), /*#__PURE__*/ React.createElement("span", {
-        __source: {
-            fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 13,
-            columnNumber: 17
-        },
-        __self: undefined
-    }, "Author: "), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Card).Text, {
-        __source: {
-            fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 14,
-            columnNumber: 17
-        },
-        __self: undefined
-    }, movie.author)), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Button), {
-        variant: "primary",
-        className: "back-button",
-        onClick: onBackClick,
-        __source: {
-            fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 16,
-            columnNumber: 13
-        },
-        __self: undefined
-    }, "Back"));
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","./info-view.scss":"haMXJ","prop-types":"7wKI2","react-bootstrap":"3AD9A"}],"haMXJ":[function() {},{}],"9YtA0":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$9fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$9fee.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>LoginView);
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactBootstrap = require("react-bootstrap");
-function LoginView({ onLoggedIn  }) {
-    const [username, setUsername] = (0, _react.useState)("");
-    const [password, setPassword] = (0, _react.useState)("");
-    const [item, setItem] = (0, _react.useState)();
-    const handleSubmit = (event)=>{
-        event.preventDefault();
-        const data = {
-            access: username,
-            secret: password
-        };
-        console.log("what is this", data);
-        // compares input with database
-        fetch(`https://mycf-movie-api.herokuapp.com/login?Username=${username}&Password=${password}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then((response)=>response.json()).then((data)=>{
-            console.log("Login response:", data);
-            if (data.user) {
-                localStorage.setItem("user", JSON.stringify(data.user));
-                localStorage.setItem("token", data.token);
-                onLoggedIn(data.user, data.token);
-            } else alert("No User Found");
-        }).catch((event)=>{
-            alert("Something went wrong");
-        });
-    };
-    return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form), {
-        onSubmit: handleSubmit,
-        __source: {
-            fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 43,
-            columnNumber: 9
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Group, {
-        controlId: "formUsername",
-        __source: {
-            fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 44,
-            columnNumber: 13
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
-        __source: {
-            fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 45,
-            columnNumber: 17
-        },
-        __self: this
-    }, "Username:"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Control, {
-        type: "text",
-        value: username,
-        onChange: (e)=>setUsername(e.target.value),
-        required: true,
-        __source: {
-            fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 48,
-            columnNumber: 17
-        },
-        __self: this
-    })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Group, {
-        controlId: "formPassword",
-        __source: {
-            fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 55,
-            columnNumber: 13
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
-        __source: {
-            fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 56,
-            columnNumber: 17
-        },
-        __self: this
-    }, "Password:"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Control, {
-        type: "password",
-        value: password,
-        onChange: (e)=>setPassword(e.target.value),
-        required: true,
-        __source: {
-            fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 59,
-            columnNumber: 17
-        },
-        __self: this
-    })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
-        variant: "primary",
-        type: "submit",
-        __source: {
-            fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 66,
-            columnNumber: 13
-        },
-        __self: this
-    }, "Submit"));
-}
-
-  $parcel$ReactRefreshHelpers$9fee.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"14l2W":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$5a88 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$5a88.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>SignupView);
-var _react = require("react");
-var _reactBootstrap = require("react-bootstrap");
-function SignupView() {
-    const [username, setUsername] = (0, _react.useState)("");
-    const [password, setPassword] = (0, _react.useState)("");
-    const [email, setEmail] = (0, _react.useState)("");
-    const [birthday, setBirthday] = (0, _react.useState)("");
-    const handleSubmit = (event)=>{
-        event.preventDefault();
-        const data = {
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday
-        };
-        fetch("https://mycf-movie-api.herokuapp.com/users", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then((response)=>{
-            if (response.ok) alert("Sign Up Successful");
-            else alert("Sign up Error");
-        });
-    };
-    return /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form), {
-        onSubmit: handleSubmit,
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 37,
-            columnNumber: 9
-        },
-        __self: this
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
-        controlId: "formUsername",
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 38,
-            columnNumber: 13
-        },
-        __self: this
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 39,
-            columnNumber: 17
-        },
-        __self: this
-    }, "Username:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
-        type: "text",
-        value: username,
-        onChange: (e)=>setUsername(e.target.value),
-        required: true,
-        minLength: "3",
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 42,
-            columnNumber: 17
-        },
-        __self: this
-    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
-        controlId: "formPassword",
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 50,
-            columnNumber: 13
-        },
-        __self: this
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 51,
-            columnNumber: 17
-        },
-        __self: this
-    }, "Password:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
-        type: "password",
-        value: password,
-        onChange: (e)=>setPassword(e.target.value),
-        required: true,
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 54,
-            columnNumber: 17
-        },
-        __self: this
-    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
-        controlId: "formEmail",
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 61,
-            columnNumber: 13
-        },
-        __self: this
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 62,
-            columnNumber: 17
-        },
-        __self: this
-    }, "Email:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
-        type: "email",
-        value: email,
-        onChange: (e)=>setEmail(e.target.value),
-        required: true,
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 65,
-            columnNumber: 17
-        },
-        __self: this
-    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
-        controlId: "formBirthday",
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 72,
-            columnNumber: 13
-        },
-        __self: this
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 73,
-            columnNumber: 17
-        },
-        __self: this
-    }, "Birthday:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
-        type: "date",
-        value: birthday,
-        onChange: (e)=>setBirthday(e.target.value),
-        required: true,
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 76,
-            columnNumber: 17
-        },
-        __self: this
-    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Button), {
-        variant: "primary",
-        type: "submit",
-        __source: {
-            fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 83,
-            columnNumber: 13
-        },
-        __self: this
-    }, "Submit"));
-}
-
-  $parcel$ReactRefreshHelpers$5a88.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"9xmpe":[function(require,module,exports) {
+},{}],"9xmpe":[function(require,module,exports) {
 /**
  * React Router DOM v6.14.1
  *
@@ -44312,6 +43978,373 @@ function getDoneFetcher(data) {
     return fetcher;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G"}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G"}],"iYF6R":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$fe79 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$fe79.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "InfoView", ()=>InfoView);
+var _infoViewScss = require("./info-view.scss");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
+const InfoView = ({ movie  })=>{
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 7,
+            columnNumber: 9
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Img, {
+        src: movie.image,
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 8,
+            columnNumber: 13
+        },
+        __self: undefined
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 9,
+            columnNumber: 13
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("span", {
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 10,
+            columnNumber: 17
+        },
+        __self: undefined
+    }, "Title: "), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 11,
+            columnNumber: 17
+        },
+        __self: undefined
+    }, movie.title), /*#__PURE__*/ (0, _reactDefault.default).createElement("span", {
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 12,
+            columnNumber: 17
+        },
+        __self: undefined
+    }, "Author: "), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 13,
+            columnNumber: 17
+        },
+        __self: undefined
+    }, movie.author)), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+        variant: "primary",
+        className: "back-button",
+        __source: {
+            fileName: "src/components/info-view/info-view.jsx",
+            lineNumber: 15,
+            columnNumber: 13
+        },
+        __self: undefined
+    }, "Back"));
+};
+
+  $parcel$ReactRefreshHelpers$fe79.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","./info-view.scss":"haMXJ","react-bootstrap":"3AD9A","react":"21dqq","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"haMXJ":[function() {},{}],"9YtA0":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9fee = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9fee.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>LoginView);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
+function LoginView({ onLoggedIn  }) {
+    const [username, setUsername] = (0, _react.useState)("");
+    const [password, setPassword] = (0, _react.useState)("");
+    const [item, setItem] = (0, _react.useState)();
+    const handleSubmit = (event)=>{
+        event.preventDefault();
+        const data = {
+            access: username,
+            secret: password
+        };
+        console.log("what is this", data);
+        // compares input with database
+        fetch(`https://mycf-movie-api.herokuapp.com/login?Username=${username}&Password=${password}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then((response)=>response.json()).then((data)=>{
+            console.log("Login response:", data);
+            if (data.user) {
+                localStorage.setItem("user", JSON.stringify(data.user));
+                localStorage.setItem("token", data.token);
+                onLoggedIn(data.user, data.token);
+            } else alert("No User Found");
+        }).catch((event)=>{
+            alert("Something went wrong");
+        });
+    };
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form), {
+        onSubmit: handleSubmit,
+        __source: {
+            fileName: "src/components/login-view/login-view.jsx",
+            lineNumber: 43,
+            columnNumber: 9
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Group, {
+        controlId: "formUsername",
+        __source: {
+            fileName: "src/components/login-view/login-view.jsx",
+            lineNumber: 44,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
+        __source: {
+            fileName: "src/components/login-view/login-view.jsx",
+            lineNumber: 45,
+            columnNumber: 17
+        },
+        __self: this
+    }, "Username:"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Control, {
+        type: "text",
+        value: username,
+        onChange: (e)=>setUsername(e.target.value),
+        required: true,
+        __source: {
+            fileName: "src/components/login-view/login-view.jsx",
+            lineNumber: 48,
+            columnNumber: 17
+        },
+        __self: this
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Group, {
+        controlId: "formPassword",
+        __source: {
+            fileName: "src/components/login-view/login-view.jsx",
+            lineNumber: 55,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
+        __source: {
+            fileName: "src/components/login-view/login-view.jsx",
+            lineNumber: 56,
+            columnNumber: 17
+        },
+        __self: this
+    }, "Password:"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Control, {
+        type: "password",
+        value: password,
+        onChange: (e)=>setPassword(e.target.value),
+        required: true,
+        __source: {
+            fileName: "src/components/login-view/login-view.jsx",
+            lineNumber: 59,
+            columnNumber: 17
+        },
+        __self: this
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+        variant: "primary",
+        type: "submit",
+        __source: {
+            fileName: "src/components/login-view/login-view.jsx",
+            lineNumber: 66,
+            columnNumber: 13
+        },
+        __self: this
+    }, "Submit"));
+}
+
+  $parcel$ReactRefreshHelpers$9fee.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"14l2W":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$5a88 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$5a88.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>SignupView);
+var _react = require("react");
+var _reactBootstrap = require("react-bootstrap");
+function SignupView() {
+    const [username, setUsername] = (0, _react.useState)("");
+    const [password, setPassword] = (0, _react.useState)("");
+    const [email, setEmail] = (0, _react.useState)("");
+    const [birthday, setBirthday] = (0, _react.useState)("");
+    const handleSubmit = (event)=>{
+        event.preventDefault();
+        const data = {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday
+        };
+        fetch("https://mycf-movie-api.herokuapp.com/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then((response)=>{
+            if (response.ok) alert("Sign Up Successful");
+            else alert("Sign up Error");
+        });
+    };
+    return /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form), {
+        onSubmit: handleSubmit,
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 37,
+            columnNumber: 9
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
+        controlId: "formUsername",
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 38,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 39,
+            columnNumber: 17
+        },
+        __self: this
+    }, "Username:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
+        type: "text",
+        value: username,
+        onChange: (e)=>setUsername(e.target.value),
+        required: true,
+        minLength: "3",
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 42,
+            columnNumber: 17
+        },
+        __self: this
+    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
+        controlId: "formPassword",
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 50,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 51,
+            columnNumber: 17
+        },
+        __self: this
+    }, "Password:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
+        type: "password",
+        value: password,
+        onChange: (e)=>setPassword(e.target.value),
+        required: true,
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 54,
+            columnNumber: 17
+        },
+        __self: this
+    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
+        controlId: "formEmail",
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 61,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 62,
+            columnNumber: 17
+        },
+        __self: this
+    }, "Email:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
+        type: "email",
+        value: email,
+        onChange: (e)=>setEmail(e.target.value),
+        required: true,
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 65,
+            columnNumber: 17
+        },
+        __self: this
+    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
+        controlId: "formBirthday",
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 72,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 73,
+            columnNumber: 17
+        },
+        __self: this
+    }, "Birthday:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
+        type: "date",
+        value: birthday,
+        onChange: (e)=>setBirthday(e.target.value),
+        required: true,
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 76,
+            columnNumber: 17
+        },
+        __self: this
+    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Button), {
+        variant: "primary",
+        type: "submit",
+        __source: {
+            fileName: "src/components/sign-up-view/sign-up-view.jsx",
+            lineNumber: 83,
+            columnNumber: 13
+        },
+        __self: this
+    }, "Submit"));
+}
+
+  $parcel$ReactRefreshHelpers$5a88.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
