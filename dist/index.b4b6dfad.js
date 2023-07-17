@@ -23992,6 +23992,8 @@ var _loginView = require("../login-view/login-view");
 var _loginViewDefault = parcelHelpers.interopDefault(_loginView);
 var _signUpView = require("../sign-up-view/sign-up-view");
 var _signUpViewDefault = parcelHelpers.interopDefault(_signUpView);
+var _navigationBar = require("../navigation-bar/navigation-bar");
+var _navigationBarDefault = parcelHelpers.interopDefault(_navigationBar);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 exports.default = MainView = ()=>{
@@ -24042,22 +24044,29 @@ exports.default = MainView = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.BrowserRouter), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 58,
+            lineNumber: 59,
             columnNumber: 9
         },
         __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _navigationBarDefault.default), {
+        __source: {
+            fileName: "src/components/main-view/main-view.jsx",
+            lineNumber: 60,
+            columnNumber: 13
+        },
+        __self: undefined
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), {
         className: "justify-content-md-center",
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 59,
+            lineNumber: 61,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Routes), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 60,
+            lineNumber: 62,
             columnNumber: 17
         },
         __self: undefined
@@ -24070,7 +24079,7 @@ exports.default = MainView = ()=>{
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, null, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), null)))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 61,
+            lineNumber: 63,
             columnNumber: 21
         },
         __self: undefined
@@ -24080,14 +24089,14 @@ exports.default = MainView = ()=>{
             to: "/"
         }) : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Col), {
             md: 5
-        }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, null, "Login"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _loginViewDefault.default), {
+        }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _loginViewDefault.default), {
             onLoggedIn: (user, token)=>{
                 setUser(user), setToken(token);
             }
         })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 78,
+            lineNumber: 80,
             columnNumber: 21
         },
         __self: undefined
@@ -24103,7 +24112,7 @@ exports.default = MainView = ()=>{
         }))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 95,
+            lineNumber: 96,
             columnNumber: 21
         },
         __self: undefined
@@ -24130,7 +24139,7 @@ exports.default = MainView = ()=>{
         }, "Log Out"))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 113,
+            lineNumber: 114,
             columnNumber: 21
         },
         __self: undefined
@@ -24142,7 +24151,7 @@ exports.default = MainView = ()=>{
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","./detail-card":"irrFh","../info-view/info-view":"iYF6R","../login-view/login-view":"9YtA0","../sign-up-view/sign-up-view":"14l2W","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-router-dom":"9xmpe","react-bootstrap":"3AD9A"}],"irrFh":[function(require,module,exports) {
+},{"react":"21dqq","./detail-card":"irrFh","../info-view/info-view":"iYF6R","../login-view/login-view":"9YtA0","../sign-up-view/sign-up-view":"14l2W","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-router-dom":"9xmpe","react-bootstrap":"3AD9A","../navigation-bar/navigation-bar":"bsPVM"}],"irrFh":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$b7b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -44213,6 +44222,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>SignupView);
 var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
+var _reactDefault = parcelHelpers.interopDefault(_react);
 function SignupView() {
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -44237,30 +44247,30 @@ function SignupView() {
             else alert("Sign up Error");
         });
     };
-    return /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form), {
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form), {
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 37,
+            lineNumber: 38,
             columnNumber: 9
         },
         __self: this
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Group, {
         controlId: "formUsername",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 38,
+            lineNumber: 39,
             columnNumber: 13
         },
         __self: this
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 39,
+            lineNumber: 40,
             columnNumber: 17
         },
         __self: this
-    }, "Username:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
+    }, "Username:"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Control, {
         type: "text",
         value: username,
         onChange: (e)=>setUsername(e.target.value),
@@ -44268,94 +44278,94 @@ function SignupView() {
         minLength: "3",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 42,
+            lineNumber: 43,
             columnNumber: 17
         },
         __self: this
-    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Group, {
         controlId: "formPassword",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 50,
+            lineNumber: 51,
             columnNumber: 13
         },
         __self: this
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 51,
+            lineNumber: 52,
             columnNumber: 17
         },
         __self: this
-    }, "Password:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
+    }, "Password:"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Control, {
         type: "password",
         value: password,
         onChange: (e)=>setPassword(e.target.value),
         required: true,
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 54,
+            lineNumber: 55,
             columnNumber: 17
         },
         __self: this
-    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Group, {
         controlId: "formEmail",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 61,
+            lineNumber: 62,
             columnNumber: 13
         },
         __self: this
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 62,
+            lineNumber: 63,
             columnNumber: 17
         },
         __self: this
-    }, "Email:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
+    }, "Email:"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Control, {
         type: "email",
         value: email,
         onChange: (e)=>setEmail(e.target.value),
         required: true,
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 65,
+            lineNumber: 66,
             columnNumber: 17
         },
         __self: this
-    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Group, {
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Group, {
         controlId: "formBirthday",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 72,
+            lineNumber: 73,
             columnNumber: 13
         },
         __self: this
-    }, /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Label, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 73,
+            lineNumber: 74,
             columnNumber: 17
         },
         __self: this
-    }, "Birthday:"), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Form).Control, {
+    }, "Birthday:"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Control, {
         type: "date",
         value: birthday,
         onChange: (e)=>setBirthday(e.target.value),
         required: true,
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 76,
+            lineNumber: 77,
             columnNumber: 17
         },
         __self: this
-    })), /*#__PURE__*/ React.createElement((0, _reactBootstrap.Button), {
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
         variant: "primary",
         type: "submit",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 83,
+            lineNumber: 84,
             columnNumber: 13
         },
         __self: this
@@ -44367,6 +44377,112 @@ function SignupView() {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"bsPVM":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$abf5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$abf5.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>NavBar);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
+var _reactRouterDom = require("react-router-dom");
+function NavBar({ user , onLoggedOut  }) {
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Navbar), {
+        bg: "light",
+        expand: "lg",
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 8,
+            columnNumber: 9
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Container), {
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 9,
+            columnNumber: 13
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Navbar).Brand, {
+        href: "#",
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 10,
+            columnNumber: 17
+        },
+        __self: this
+    }, "MyFlix App"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Navbar).Toggle, {
+        "aria-controls": "basic-navbar-nav",
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 11,
+            columnNumber: 17
+        },
+        __self: this
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Navbar).Collapse, {
+        id: "basic-navbar-nav",
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 12,
+            columnNumber: 17
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav), {
+        className: "ml-auto",
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 13,
+            columnNumber: 21
+        },
+        __self: this
+    }, !user && /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav).Link, {
+        as: (0, _reactRouterDom.Link),
+        to: "/login",
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 16,
+            columnNumber: 33
+        },
+        __self: this
+    }, "Login"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav).Link, {
+        as: (0, _reactRouterDom.Link),
+        to: "/signup",
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 17,
+            columnNumber: 33
+        },
+        __self: this
+    }, "Sign Up")), user && /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav).Link, {
+        as: (0, _reactRouterDom.Link),
+        to: "/",
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 22,
+            columnNumber: 33
+        },
+        __self: this
+    }, "Home"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav).Link, {
+        onClick: onLoggedOut,
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 23,
+            columnNumber: 33
+        },
+        __self: this
+    }, "Log Out"))))));
+}
+
+  $parcel$ReactRefreshHelpers$abf5.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-router-dom":"9xmpe"}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
