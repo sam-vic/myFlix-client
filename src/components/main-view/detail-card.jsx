@@ -1,14 +1,11 @@
 import PropTypes from 'prop-types'
 import { Card } from 'react-bootstrap'
 import './detail-card.scss'
+import React from 'react'
 
 export const DetailCard = ({ movie, onMovieClick }) => {
     return (
-        <Card className='h-100'
-            onClick={() => {
-                onMovieClick(movie)
-            }}
-        >
+        <Card className='h-100'>
             <Card.Img variant='top' src={movie.image} />
             <Card.Body>
                 <Card.Title key={movie.id}>
