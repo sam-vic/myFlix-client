@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { DetailCard } from "./detail-card"
+import { DetailCard } from "../detail-card/detail-card"
 import { InfoView } from "../info-view/info-view"
 import LoginView from "../login-view/login-view"
 import SignupView from "../sign-up-view/sign-up-view"
