@@ -44050,33 +44050,27 @@ const InfoView = ({ movies  })=>{
             columnNumber: 17
         },
         __self: undefined
-    }, movie.title), /*#__PURE__*/ (0, _reactDefault.default).createElement("span", {
+    }, movie.title), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
             lineNumber: 23,
             columnNumber: 17
         },
         __self: undefined
-    }, "Author: "), /*#__PURE__*/ (0, _reactDefault.default).createElement("span", {
-        __source: {
-            fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 24,
-            columnNumber: 17
-        },
-        __self: undefined
-    }, movie.author)), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Link), {
+    }, movie.desc)), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Link), {
         to: `/`,
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 26,
+            lineNumber: 25,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("button", {
+        variant: "primary",
         className: "back-button",
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 27,
+            lineNumber: 26,
             columnNumber: 17
         },
         __self: undefined

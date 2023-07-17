@@ -20,11 +20,10 @@ export const InfoView = ({ movies }) => {
             <div>
                 <span>Title: </span>
                 <span>{movie.title}</span>
-                <span>Author: </span>
-                <span>{movie.author}</span>
+                <div>{movie.desc}</div>
             </div>
             <Link to={`/`}>
-                <button className='back-button'>Back</button>
+                <button variant='primary' className='back-button'>Back</button>
             </Link>
         </div>
     )
