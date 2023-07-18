@@ -1,10 +1,37 @@
 import PropTypes from 'prop-types'
 import { Card, Button } from 'react-bootstrap'
 import './detail-card.scss'
-import React from 'react'
+import React, { useState }from 'react'
 import { Link } from 'react-router-dom'
 
-export const DetailCard = ({ movie }) => {
+export const DetailCard = ({ movie, user, token }) => {
+    const [isFavorited, setIsFavorited] = useState(false);
+    const handleFavouriteClick = () => {
+        // Check if the movie is already in favorites
+        if (!isFavorited) {
+            // Add the movie to the user's favoriteMovies array
+            fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}/favoriteMovies`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({ movieId: movie.id })
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        setIsFavorited(true);
+                    } else if (response.status === 409) {
+                        console.log('Movie already in favorites');
+                    } else {
+                        console.error('Error adding movie to favorites');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error adding movie to favorites:', error);
+                });
+        }
+    };
     return (
         <Card className='h-100'>
             <Card.Img variant='top' src={movie.image} />
@@ -14,6 +41,9 @@ export const DetailCard = ({ movie }) => {
                 <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
                     <Button variant='link'>Open</Button>
                 </Link>
+                <Button variant='primary' onClick={handleFavouriteClick} disabled={isFavorited}>
+                    {isFavorited ? 'Favorited' : 'Favourite'}
+                </Button>
             </Card.Body>
         </Card>
     )

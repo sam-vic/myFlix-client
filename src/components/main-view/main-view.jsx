@@ -136,6 +136,8 @@ export default MainView = () => {
                                                         className='my-flix'
                                                         movie={movie}
                                                         key={movie.id}
+                                                        user={user}
+                                                        token={token}
                                                     />
                                                 </Col>
                                             )

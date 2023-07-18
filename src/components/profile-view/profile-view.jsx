@@ -88,7 +88,6 @@ export default function ProfileView({ token, user }) {
     return <div>Loading...</div>;
   }
 
-
   return (
     <div>
       <h1>Hello, {userData.Username}!</h1>
