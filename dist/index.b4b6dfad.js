@@ -44463,7 +44463,7 @@ function NavBar({ user , onLoggedOut  }) {
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Navbar).Brand, {
-        href: "#",
+        href: "",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
             lineNumber: 10,

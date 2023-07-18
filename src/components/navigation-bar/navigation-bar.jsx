@@ -7,7 +7,7 @@ export default function NavBar({ user, onLoggedOut }) {
     return (
         <Navbar bg='light' expand='lg'>
             <Container>
-                <Navbar.Brand href='#'>MyFlix App</Navbar.Brand>
+                <Navbar.Brand href=''>MyFlix App</Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse id='basic-navbar-nav'>
                     <Nav className='ml-auto'>
