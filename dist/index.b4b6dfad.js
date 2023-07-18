@@ -23996,6 +23996,8 @@ var _navigationBar = require("../navigation-bar/navigation-bar");
 var _navigationBarDefault = parcelHelpers.interopDefault(_navigationBar);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
+var _profileView = require("../profile-view/profile-view");
+var _profileViewDefault = parcelHelpers.interopDefault(_profileView);
 exports.default = MainView = ()=>{
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
@@ -24044,14 +24046,15 @@ exports.default = MainView = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.BrowserRouter), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 59,
+            lineNumber: 60,
             columnNumber: 9
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _navigationBarDefault.default), {
+        user: user,
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 60,
+            lineNumber: 61,
             columnNumber: 13
         },
         __self: undefined
@@ -24059,14 +24062,14 @@ exports.default = MainView = ()=>{
         className: "justify-content-md-center",
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 61,
+            lineNumber: 62,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Routes), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 62,
+            lineNumber: 63,
             columnNumber: 17
         },
         __self: undefined
@@ -24079,7 +24082,7 @@ exports.default = MainView = ()=>{
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, null, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), null)))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 63,
+            lineNumber: 64,
             columnNumber: 21
         },
         __self: undefined
@@ -24096,7 +24099,7 @@ exports.default = MainView = ()=>{
         })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 80,
+            lineNumber: 81,
             columnNumber: 21
         },
         __self: undefined
@@ -24112,7 +24115,7 @@ exports.default = MainView = ()=>{
         }))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 96,
+            lineNumber: 97,
             columnNumber: 21
         },
         __self: undefined
@@ -24139,7 +24142,19 @@ exports.default = MainView = ()=>{
         }, "Log Out"))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 114,
+            lineNumber: 115,
+            columnNumber: 21
+        },
+        __self: undefined
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Route), {
+        path: "/users/:userId",
+        element: /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _profileViewDefault.default), {
+            token: token,
+            user: user
+        })),
+        __source: {
+            fileName: "src/components/main-view/main-view.jsx",
+            lineNumber: 142,
             columnNumber: 21
         },
         __self: undefined
@@ -24151,7 +24166,7 @@ exports.default = MainView = ()=>{
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","../info-view/info-view":"iYF6R","../login-view/login-view":"9YtA0","../sign-up-view/sign-up-view":"14l2W","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-router-dom":"9xmpe","react-bootstrap":"3AD9A","../navigation-bar/navigation-bar":"bsPVM","../detail-card/detail-card":"i974M"}],"iYF6R":[function(require,module,exports) {
+},{"react":"21dqq","../info-view/info-view":"iYF6R","../login-view/login-view":"9YtA0","../sign-up-view/sign-up-view":"14l2W","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-router-dom":"9xmpe","react-bootstrap":"3AD9A","../navigation-bar/navigation-bar":"bsPVM","../detail-card/detail-card":"i974M","../profile-view/profile-view":"2vVqf"}],"iYF6R":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$fe79 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -44372,10 +44387,19 @@ function NavBar({ user , onLoggedOut  }) {
         },
         __self: this
     }, "Home"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav).Link, {
-        onClick: onLoggedOut,
+        as: (0, _reactRouterDom.Link),
+        to: `/users/${user.Username}`,
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
             lineNumber: 23,
+            columnNumber: 33
+        },
+        __self: this
+    }, "Profile"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav).Link, {
+        onClick: onLoggedOut,
+        __source: {
+            fileName: "src/components/navigation-bar/navigation-bar.jsx",
+            lineNumber: 24,
             columnNumber: 33
         },
         __self: this
@@ -44483,6 +44507,108 @@ DetailCard.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"prop-types":"7wKI2","react-bootstrap":"3AD9A","./detail-card.scss":"82J2n","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"82J2n":[function() {},{}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"prop-types":"7wKI2","react-bootstrap":"3AD9A","./detail-card.scss":"82J2n","react":"21dqq","react-router-dom":"9xmpe","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"82J2n":[function() {},{}],"2vVqf":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$3c12 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$3c12.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>ProfileView);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+function ProfileView({ token , user  }) {
+    const [userData, setUserData] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        if (!token) return;
+        fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>response.json()).then((data)=>{
+            console.log("imported user data:", data);
+            setUserData({
+                id: data._id,
+                username: data.Username,
+                password: data.Password,
+                email: data.Email,
+                birthday: data.Birthday,
+                favouriteMovies: data.FavoriteMovies || []
+            });
+        }).catch((error)=>{
+            console.error("Error fetching user data:", error);
+        });
+    }, [
+        user
+    ]);
+    if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 32,
+            columnNumber: 16
+        },
+        __self: this
+    }, "Loading...");
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 35,
+            columnNumber: 9
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 36,
+            columnNumber: 13
+        },
+        __self: this
+    }, "Hello, ", userData.username, "!"), /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 37,
+            columnNumber: 13
+        },
+        __self: this
+    }, "Email: ", userData.email), /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 38,
+            columnNumber: 13
+        },
+        __self: this
+    }, "Birthday: ", userData.birthday), /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 39,
+            columnNumber: 13
+        },
+        __self: this
+    }, "Your Favorite Movies:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("ul", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 40,
+            columnNumber: 13
+        },
+        __self: this
+    }, userData.favouriteMovies.map((movieId)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("li", {
+            key: movieId,
+            __source: {
+                fileName: "src/components/profile-view/profile-view.jsx",
+                lineNumber: 42,
+                columnNumber: 21
+            },
+            __self: this
+        }, movieId))));
+}
+
+  $parcel$ReactRefreshHelpers$3c12.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

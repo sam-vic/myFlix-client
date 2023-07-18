@@ -7,6 +7,7 @@ import NavBar from "../navigation-bar/navigation-bar"
 
 import { Row, Col, Button, Container, Card } from 'react-bootstrap'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import ProfileView from "../profile-view/profile-view"
 
 export default MainView = () => {
 
@@ -57,7 +58,7 @@ export default MainView = () => {
 
     return (
         <BrowserRouter>
-            <NavBar />
+            <NavBar user={user}/>
             <Row className="justify-content-md-center">
                 <Routes>
                     <Route
@@ -135,6 +136,14 @@ export default MainView = () => {
                                         <Button variant='primary' onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</Button>
                                     </div>
                                 )}
+                            </>
+                        }
+                    />
+                    <Route
+                        path='/users/:userId'
+                        element={
+                            <>
+                                <ProfileView token={token} user={user}/>
                             </>
                         }
                     />
