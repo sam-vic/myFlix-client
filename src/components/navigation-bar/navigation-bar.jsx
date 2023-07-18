@@ -3,7 +3,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
-export default function NavBar({ user, onLoggedOut}) {
+export default function NavBar({ user, onLoggedOut }) {
     return (
         <Navbar bg='light' expand='lg'>
             <Container>

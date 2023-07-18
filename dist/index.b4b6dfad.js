@@ -23999,6 +23999,7 @@ var _reactRouterDom = require("react-router-dom");
 var _profileView = require("../profile-view/profile-view");
 var _profileViewDefault = parcelHelpers.interopDefault(_profileView);
 exports.default = MainView = ()=>{
+    const [initialCheckDone, setInitialCheckDone] = (0, _react.useState)(false);
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const storedToken = localStorage.getItem("token");
     const [user, setUser] = (0, _react.useState)(storedUser ? storedUser : null) // Initialize with storedUser
@@ -24006,6 +24007,9 @@ exports.default = MainView = ()=>{
     const [token, setToken] = (0, _react.useState)(storedToken ? storedToken : null); // Initialize with storedToken
     const [movies, setMovie] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    const onLoggedOut = ()=>{
+        setUser(null), setToken(null), localStorage.clear(), window.location.href = "/login";
+    };
     (0, _react.useEffect)(()=>{
         if (!token) return;
         fetch("https://mycf-movie-api.herokuapp.com/movies", {
@@ -24046,15 +24050,16 @@ exports.default = MainView = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.BrowserRouter), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 60,
+            lineNumber: 67,
             columnNumber: 9
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _navigationBarDefault.default), {
         user: user,
+        onLoggedOut: onLoggedOut,
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 61,
+            lineNumber: 68,
             columnNumber: 13
         },
         __self: undefined
@@ -24062,14 +24067,14 @@ exports.default = MainView = ()=>{
         className: "justify-content-md-center",
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 62,
+            lineNumber: 69,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Routes), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 63,
+            lineNumber: 70,
             columnNumber: 17
         },
         __self: undefined
@@ -24082,7 +24087,7 @@ exports.default = MainView = ()=>{
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, null, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), null)))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 64,
+            lineNumber: 71,
             columnNumber: 21
         },
         __self: undefined
@@ -24099,7 +24104,7 @@ exports.default = MainView = ()=>{
         })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 81,
+            lineNumber: 88,
             columnNumber: 21
         },
         __self: undefined
@@ -24115,7 +24120,7 @@ exports.default = MainView = ()=>{
         }))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 97,
+            lineNumber: 104,
             columnNumber: 21
         },
         __self: undefined
@@ -24142,7 +24147,7 @@ exports.default = MainView = ()=>{
         }, "Log Out"))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 115,
+            lineNumber: 122,
             columnNumber: 21
         },
         __self: undefined
@@ -24154,7 +24159,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 142,
+            lineNumber: 149,
             columnNumber: 21
         },
         __self: undefined

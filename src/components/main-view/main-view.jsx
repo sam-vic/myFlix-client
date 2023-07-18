@@ -10,7 +10,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import ProfileView from "../profile-view/profile-view"
 
 export default MainView = () => {
-
+    const [initialCheckDone, setInitialCheckDone] = useState(false)
     const storedUser = JSON.parse(localStorage.getItem("user"))
     const storedToken = localStorage.getItem("token")
 
@@ -19,6 +19,13 @@ export default MainView = () => {
 
     const [movies, setMovie] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
+
+    const onLoggedOut = () => { 
+        setUser(null), 
+        setToken(null), 
+        localStorage.clear(),
+        window.location.href = '/login'
+    }
 
     useEffect(() => {
         if (!token) {
@@ -58,7 +65,7 @@ export default MainView = () => {
 
     return (
         <BrowserRouter>
-            <NavBar user={user}/>
+            <NavBar user={user} onLoggedOut={onLoggedOut}/>
             <Row className="justify-content-md-center">
                 <Routes>
                     <Route
@@ -143,7 +150,7 @@ export default MainView = () => {
                         path='/users/:userId'
                         element={
                             <>
-                                <ProfileView token={token} user={user}/>
+                                <ProfileView token={token} user={user} />
                             </>
                         }
                     />
