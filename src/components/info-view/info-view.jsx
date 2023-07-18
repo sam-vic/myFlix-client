@@ -9,7 +9,7 @@ export const InfoView = ({ movies }) => {
 
     if (!movie) {
         // Handle the case when the movie is not found
-        return <div>Movie not found</div>;
+        return <div>Movie not found</div>
     }
 
     return (

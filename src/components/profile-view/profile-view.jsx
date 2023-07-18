@@ -8,6 +8,7 @@ export default function ProfileView({ token, user }) {
     email: "",
     birthday: ""
   })
+  const [favoriteMovies, setFavoriteMovies] = useState([])
 
   useEffect(() => {
     if (!token) {
@@ -29,7 +30,44 @@ export default function ProfileView({ token, user }) {
       .catch((error) => {
         console.error('Error fetching user data:', error)
       })
+
+      fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}/favoriteMovies`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+        .then((response) => response.json())
+        .then((movieIds) => {
+          // Fetch the movie details for each movie ID
+          console.log(movieIds)
+          try {
+            Promise.all(movieIds.map((id) => fetchMovieById(id)))
+              .then((movies) => {
+                setFavoriteMovies(movies.filter((movie) => movie !== null)); // Filter out any null movie objects
+              })
+              .catch((error) => {
+                console.error('Error fetching favorite movies:', error);
+              });
+          } catch (error) {
+            console.error('Error processing movie data:', error);
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching favorite movie IDs:', error);
+        });
   }, [token, user.Username])
+
+  const fetchMovieById = (movieId) => {
+    return fetch(`https://mycf-movie-api.herokuapp.com/movies/${movieId}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then((response) => response.json())
+      .then((movie) => {
+        return movie
+      })
+      .catch((error) => {
+        console.error(`Error fetching movie with ID ${movieId}:`, error)
+        return null
+      })
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -70,9 +108,10 @@ export default function ProfileView({ token, user }) {
     }
   }
 
-  if (!userData) {
-    return <div>Loading...</div>
+  if (!userData || favoriteMovies === null) {
+    return <div>Loading...</div>;
   }
+
 
   return (
     <div>
@@ -110,6 +149,31 @@ export default function ProfileView({ token, user }) {
         </div>
         <button type="submit">Save Changes</button>
       </form>
+
+      <div className="mt-4">
+        <h2>Favorite Movies</h2>
+        <div className="row">
+          {favoriteMovies.length > 0 ? (
+            favoriteMovies.map((movie) => (
+              <div key={movie._id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div className="card">
+                  <img
+                    src={movie.imageUrl}
+                    className="card-img-top"
+                    alt={movie.title}
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title">{movie.title}</h5>
+                    <p className="card-text">{movie.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div>No favorite movies found.</div>
+          )}
+        </div>
+      </div>
     </div>
   )
 }

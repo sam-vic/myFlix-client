@@ -15,7 +15,7 @@ export default MainView = () => {
     const storedToken = localStorage.getItem("token")
 
     const [user, setUser] = useState(storedUser ? storedUser : null) // Initialize with storedUser
-    const [token, setToken] = useState(storedToken ? storedToken : null); // Initialize with storedToken
+    const [token, setToken] = useState(storedToken ? storedToken : null) // Initialize with storedToken
 
     const [movies, setMovie] = useState([])
     const [selectedMovie, setSelectedMovie] = useState(null)
@@ -55,12 +55,12 @@ export default MainView = () => {
 
     useEffect(() => {
         // Update localStorage when user changes
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(user))
     }, [user])
 
     useEffect(() => {
         // Update localStorage when token changes
-        localStorage.setItem("token", token);
+        localStorage.setItem("token", token)
     }, [token])
 
     return (
