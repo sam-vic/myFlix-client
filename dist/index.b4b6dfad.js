@@ -44526,6 +44526,12 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 function ProfileView({ token , user  }) {
     const [userData, setUserData] = (0, _react.useState)(null);
+    const [formData, setFormData] = (0, _react.useState)({
+        username: "",
+        password: "",
+        email: "",
+        birthday: ""
+    });
     (0, _react.useEffect)(()=>{
         if (!token) return;
         fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
@@ -44533,80 +44539,162 @@ function ProfileView({ token , user  }) {
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>response.json()).then((data)=>{
-            console.log("imported user data:", data);
-            setUserData({
-                id: data._id,
+            setUserData(data);
+            setFormData({
                 username: data.Username,
-                password: data.Password,
                 email: data.Email,
-                birthday: data.Birthday,
-                favouriteMovies: data.FavoriteMovies || []
+                birthday: data.Birthday
             });
         }).catch((error)=>{
             console.error("Error fetching user data:", error);
         });
     }, [
-        user
+        token,
+        user.Username
     ]);
+    const handleChange = (e)=>{
+        const { name , value  } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        // Only send fields that have changed
+        const updatedData = {};
+        for(const key in formData)if (formData[key] !== userData[key]) updatedData[key] = formData[key];
+        // Update user data if there are changes
+        if (Object.keys(updatedData).length > 0) fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(updatedData)
+        }).then((response)=>response.json()).then((data)=>{
+            setUserData(data);
+        }).catch((error)=>{
+            console.error("Error updating user data:", error);
+        });
+    };
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 32,
-            columnNumber: 16
+            lineNumber: 74,
+            columnNumber: 12
         },
         __self: this
     }, "Loading...");
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 35,
-            columnNumber: 9
+            lineNumber: 78,
+            columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 36,
-            columnNumber: 13
+            lineNumber: 79,
+            columnNumber: 7
         },
         __self: this
-    }, "Hello, ", userData.username, "!"), /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
+    }, "Hello, ", userData.Username, "!"), /*#__PURE__*/ (0, _reactDefault.default).createElement("form", {
+        onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 37,
-            columnNumber: 13
+            lineNumber: 80,
+            columnNumber: 7
         },
         __self: this
-    }, "Email: ", userData.email), /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 38,
-            columnNumber: 13
+            lineNumber: 81,
+            columnNumber: 9
         },
         __self: this
-    }, "Birthday: ", userData.birthday), /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 39,
-            columnNumber: 13
+            lineNumber: 82,
+            columnNumber: 11
         },
         __self: this
-    }, "Your Favorite Movies:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("ul", {
+    }, "Username:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("input", {
+        type: "text",
+        name: "username",
+        value: formData.username,
+        onChange: handleChange,
+        placeholder: userData.Username,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 40,
-            columnNumber: 13
+            lineNumber: 83,
+            columnNumber: 11
         },
         __self: this
-    }, userData.favouriteMovies.map((movieId)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("li", {
-            key: movieId,
-            __source: {
-                fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 42,
-                columnNumber: 21
-            },
-            __self: this
-        }, movieId))));
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 91,
+            columnNumber: 9
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 92,
+            columnNumber: 11
+        },
+        __self: this
+    }, "Email:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("input", {
+        type: "text",
+        name: "email",
+        value: formData.email,
+        onChange: handleChange,
+        placeholder: userData.Email,
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 93,
+            columnNumber: 11
+        },
+        __self: this
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 101,
+            columnNumber: 9
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 102,
+            columnNumber: 11
+        },
+        __self: this
+    }, "Birthday:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("input", {
+        type: "text",
+        name: "birthday",
+        value: formData.birthday,
+        onChange: handleChange,
+        placeholder: userData.Birthday,
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 103,
+            columnNumber: 11
+        },
+        __self: this
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement("button", {
+        type: "submit",
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 111,
+            columnNumber: 9
+        },
+        __self: this
+    }, "Save Changes")));
 }
 
   $parcel$ReactRefreshHelpers$3c12.postlude(module);
