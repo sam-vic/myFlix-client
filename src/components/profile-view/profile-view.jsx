@@ -37,37 +37,13 @@ export default function ProfileView({ token, user }) {
         .then((response) => response.json())
         .then((movieIds) => {
           // Fetch the movie details for each movie ID
-          console.log(movieIds)
-          try {
-            Promise.all(movieIds.map((id) => fetchMovieById(id)))
-              .then((movies) => {
-                setFavoriteMovies(movies.filter((movie) => movie !== null)); // Filter out any null movie objects
-              })
-              .catch((error) => {
-                console.error('Error fetching favorite movies:', error);
-              });
-          } catch (error) {
-            console.error('Error processing movie data:', error);
-          }
+          console.log('these are the favMovies',movieIds)
+          setFavoriteMovies(movieIds)
         })
         .catch((error) => {
           console.error('Error fetching favorite movie IDs:', error);
         });
   }, [token, user.Username])
-
-  const fetchMovieById = (movieId) => {
-    return fetch(`https://mycf-movie-api.herokuapp.com/movies/${movieId}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then((response) => response.json())
-      .then((movie) => {
-        return movie
-      })
-      .catch((error) => {
-        console.error(`Error fetching movie with ID ${movieId}:`, error)
-        return null
-      })
-  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -108,7 +84,7 @@ export default function ProfileView({ token, user }) {
     }
   }
 
-  if (!userData || favoriteMovies === null) {
+  if (!userData) {
     return <div>Loading...</div>;
   }
 
@@ -155,7 +131,7 @@ export default function ProfileView({ token, user }) {
         <div className="row">
           {favoriteMovies.length > 0 ? (
             favoriteMovies.map((movie) => (
-              <div key={movie._id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+              <div key={movie} className="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div className="card">
                   <img
                     src={movie.imageUrl}
@@ -163,7 +139,7 @@ export default function ProfileView({ token, user }) {
                     alt={movie.title}
                   />
                   <div className="card-body">
-                    <h5 className="card-title">{movie.title}</h5>
+                    <h5 className="card-title">{movie}</h5>
                     <p className="card-text">{movie.description}</p>
                   </div>
                 </div>
