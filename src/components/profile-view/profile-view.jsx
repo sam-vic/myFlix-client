@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import FavMovies from './favMovie/fav-movie'
-import { useNavigate } from 'react-router-dom'
 
 
 export default function ProfileView({ token, user, userUnregistered }) {
@@ -75,7 +74,6 @@ export default function ProfileView({ token, user, userUnregistered }) {
   }
 
   /////Unregistering user /////////
-  const navigate = useNavigate()
   const handleUnregister = () => {
     fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
       method: 'DELETE',
@@ -105,9 +103,8 @@ export default function ProfileView({ token, user, userUnregistered }) {
     if (unregistered) {
       console.log('redirecting to login')
       setIsUserUnregistered(true)
-      navigate('/login') // Use the navigate function to redirect
     }
-  }, [unregistered, navigate])
+  }, [unregistered])
 
 
   if (!userData) {
