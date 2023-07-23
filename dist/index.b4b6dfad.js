@@ -581,15 +581,16 @@ $parcel$ReactRefreshHelpers$98a3.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _client = require("react-dom/client");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-// Import statement to indicate that you need to bundle `./index.scss`
+var _reactDom = require("react-dom");
+var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
+var _reactRouterDom = require("react-router-dom");
+var _client = require("react-dom/client");
+var _reactBootstrap = require("react-bootstrap");
 var _mainView = require("./components/main-view/main-view");
 var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
 var _indexScss = require("./index.scss");
-var _reactBootstrap = require("react-bootstrap");
-// Main component (will eventually use all the others)
 const MyFlixApplication = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Container), {
         __source: {
@@ -607,25 +608,32 @@ const MyFlixApplication = ()=>{
         __self: undefined
     }));
 };
-// Finds the root of your app
 const container = document.querySelector("#root");
 const root = (0, _client.createRoot)(container);
-// Tells React to render your app in the root DOM element
-root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(MyFlixApplication, {
+// Wrap the entire MyFlixApplication component with BrowserRouter
+const AppWithRouter = /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.BrowserRouter), {
     __source: {
         fileName: "src/index.jsx",
         lineNumber: 23,
-        columnNumber: 13
+        columnNumber: 3
+    },
+    __self: undefined
+}, /*#__PURE__*/ (0, _reactDefault.default).createElement(MyFlixApplication, {
+    __source: {
+        fileName: "src/index.jsx",
+        lineNumber: 24,
+        columnNumber: 5
     },
     __self: undefined
 }));
+root.render(AppWithRouter);
 
   $parcel$ReactRefreshHelpers$98a3.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","react-bootstrap":"3AD9A","react":"21dqq","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"lOjBx":[function(require,module,exports) {
+},{"react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","react-bootstrap":"3AD9A","react":"21dqq","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-dom":"j6uA9","react-router-dom":"9xmpe"}],"lOjBx":[function(require,module,exports) {
 "use strict";
 var m = require("aaccff5d309d9239");
 var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
@@ -24008,8 +24016,17 @@ exports.default = MainView = ()=>{
     ;
     const [movies, setMovie] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    const navigate = (0, _reactRouterDom.useNavigate)();
+    const [isUserUnregistered, setIsUserUnregistered] = (0, _react.useState)(false);
     const onLoggedOut = ()=>{
-        setUser(null), setToken(null), localStorage.clear(), window.location.href = "/login";
+        setUser(null), setToken(null), localStorage.clear(), navigate("/login");
+    };
+    const userUnregistered = ()=>{
+        setIsUserUnregistered(true);
+        setUser(null);
+        setToken(null);
+        localStorage.clear();
+        navigate("/login");
     };
     (0, _react.useEffect)(()=>{
         if (!token) return;
@@ -24018,7 +24035,6 @@ exports.default = MainView = ()=>{
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>response.json()).then((data)=>{
-            console.log(data);
             const dataFromApi = data.map((item)=>{
                 return {
                     id: item._id,
@@ -24048,10 +24064,10 @@ exports.default = MainView = ()=>{
     }, [
         token
     ]);
-    return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.BrowserRouter), {
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 67,
+            lineNumber: 79,
             columnNumber: 9
         },
         __self: undefined
@@ -24060,7 +24076,7 @@ exports.default = MainView = ()=>{
         onLoggedOut: onLoggedOut,
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 68,
+            lineNumber: 80,
             columnNumber: 13
         },
         __self: undefined
@@ -24068,14 +24084,14 @@ exports.default = MainView = ()=>{
         className: "justify-content-md-center",
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 69,
+            lineNumber: 81,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Routes), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 70,
+            lineNumber: 82,
             columnNumber: 17
         },
         __self: undefined
@@ -24088,7 +24104,7 @@ exports.default = MainView = ()=>{
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, null, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), null)))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 71,
+            lineNumber: 83,
             columnNumber: 21
         },
         __self: undefined
@@ -24105,32 +24121,32 @@ exports.default = MainView = ()=>{
         })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 88,
+            lineNumber: 100,
             columnNumber: 21
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Route), {
         path: "/movies/:movieId",
-        element: /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, !user ? /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Navigate), {
-            to: "/login",
-            replace: true
-        }) : movies.length === 0 ? /*#__PURE__*/ (0, _reactDefault.default).createElement("div", null, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Col), {
+        element: /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, user ? // Render movies view for registered users
+        movies.length === 0 ? /*#__PURE__*/ (0, _reactDefault.default).createElement("div", null, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Col), {
             md: 8
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _infoView.InfoView), {
             movies: movies
-        }))),
+        })) : // Redirect unregistered users to login page
+        /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Navigate), {
+            to: "/login",
+            replace: true
+        })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 104,
+            lineNumber: 116,
             columnNumber: 21
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Route), {
         path: "/",
-        element: /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, !user ? /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Navigate), {
-            to: "/login",
-            replace: true
-        }) : movies.length === 0 ? /*#__PURE__*/ (0, _reactDefault.default).createElement("div", null, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement("div", null, movies.map((movie)=>{
+        element: /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, user ? // Render movies list for registered users
+        movies.length === 0 ? /*#__PURE__*/ (0, _reactDefault.default).createElement("div", null, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement("div", null, movies.map((movie)=>{
             return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Col), {
                 className: "mb-5",
                 key: movie.id,
@@ -24147,22 +24163,31 @@ exports.default = MainView = ()=>{
             onClick: ()=>{
                 setUser(null), setToken(null), localStorage.clear();
             }
-        }, "Log Out"))),
+        }, "Log Out")) : // Redirect unregistered users to login page
+        /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Navigate), {
+            to: "/login",
+            replace: true
+        })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 122,
+            lineNumber: 136,
             columnNumber: 21
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Route), {
         path: "/users/:userId",
-        element: /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _profileViewDefault.default), {
+        element: /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, user ? /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _profileViewDefault.default), {
             token: token,
-            user: user
+            user: user,
+            userUnregistered: userUnregistered
+        }) : // Redirect unregistered users to login page
+        /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Navigate), {
+            to: "/login",
+            replace: true
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 151,
+            lineNumber: 169,
             columnNumber: 21
         },
         __self: undefined
@@ -24310,7 +24335,7 @@ exports.export = function(dest, destName, get) {
 
 },{}],"haMXJ":[function() {},{}],"dbWyW":[function(require,module,exports) {
 /**
- * React Router v6.14.1
+ * React Router v6.14.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -25501,7 +25526,7 @@ function createMemoryRouter(routes, opts) {
 
 },{"react":"21dqq","@remix-run/router":"5ncDG","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G"}],"5ncDG":[function(require,module,exports) {
 /**
- * @remix-run/router v1.7.1
+ * @remix-run/router v1.7.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -26449,7 +26474,7 @@ class DeferredData {
         let promise = Promise.race([
             value,
             this.abortPromise
-        ]).then((data)=>this.onSettle(promise, key, null, data), (error)=>this.onSettle(promise, key, error));
+        ]).then((data)=>this.onSettle(promise, key, undefined, data), (error)=>this.onSettle(promise, key, error));
         // Register rejection listeners to avoid uncaught promise rejections on
         // errors or aborted deferred values
         promise.catch(()=>{});
@@ -26469,7 +26494,17 @@ class DeferredData {
         this.pendingKeysSet.delete(key);
         if (this.done) // Nothing left to abort!
         this.unlistenAbortSignal();
-        if (error) {
+        // If the promise was resolved/rejected with undefined, we'll throw an error as you
+        // should always resolve with a value or null
+        if (error === undefined && data === undefined) {
+            let undefinedError = new Error('Deferred data for key "' + key + '" resolved/rejected with `undefined`, ' + "you must resolve/reject with a value or `null`.");
+            Object.defineProperty(promise, "_error", {
+                get: ()=>undefinedError
+            });
+            this.emit(false, key);
+            return Promise.reject(undefinedError);
+        }
+        if (data === undefined) {
             Object.defineProperty(promise, "_error", {
                 get: ()=>error
             });
@@ -27161,6 +27196,7 @@ const defaultMapRouteProperties = (route)=>({
         // about to reload.  Note that if this is an action reload we would have
         // already cancelled all pending deferreds so this would be a no-op
         cancelActiveDeferreds((routeId)=>!(matches && matches.some((m)=>m.route.id === routeId)) || matchesToLoad && matchesToLoad.some((m)=>m.route.id === routeId));
+        pendingNavigationLoadId = ++incrementingLoadId;
         // Short circuit if we have no loaders to run
         if (matchesToLoad.length === 0 && revalidatingFetchers.length === 0) {
             let updatedFetchers = markFetchRedirectsDone();
@@ -27199,7 +27235,6 @@ const defaultMapRouteProperties = (route)=>({
                 fetchers: new Map(state.fetchers)
             } : {}));
         }
-        pendingNavigationLoadId = ++incrementingLoadId;
         revalidatingFetchers.forEach((rf)=>{
             if (fetchControllers.has(rf.key)) abortFetcher(rf.key);
             if (rf.controller) // Fetchers use an independent AbortController so that aborting a fetcher
@@ -27222,7 +27257,14 @@ const defaultMapRouteProperties = (route)=>({
         // If any loaders returned a redirect Response, start a new REPLACE navigation
         let redirect = findRedirect(results);
         if (redirect) {
-            await startRedirectNavigation(state, redirect, {
+            if (redirect.idx >= matchesToLoad.length) {
+                // If this redirect came from a fetcher make sure we mark it in
+                // fetchRedirectIds so it doesn't get revalidated on the next set of
+                // loader executions
+                let fetcherKey = revalidatingFetchers[redirect.idx - matchesToLoad.length].key;
+                fetchRedirectIds.add(fetcherKey);
+            }
+            await startRedirectNavigation(state, redirect.result, {
                 replace
             });
             return {
@@ -27310,6 +27352,7 @@ const defaultMapRouteProperties = (route)=>({
         let abortController = new AbortController();
         let fetchRequest = createClientSideRequest(init.history, path, abortController.signal, submission);
         fetchControllers.set(key, abortController);
+        let originatingLoadId = incrementingLoadId;
         let actionResult = await callLoaderOrAction("action", fetchRequest, match, requestMatches, manifest, mapRouteProperties, basename);
         if (fetchRequest.signal.aborted) {
             // We can delete this so long as we weren't aborted by ou our own fetcher
@@ -27319,16 +27362,29 @@ const defaultMapRouteProperties = (route)=>({
         }
         if (isRedirectResult(actionResult)) {
             fetchControllers.delete(key);
-            fetchRedirectIds.add(key);
-            let loadingFetcher = getLoadingFetcher(submission);
-            state.fetchers.set(key, loadingFetcher);
-            updateState({
-                fetchers: new Map(state.fetchers)
-            });
-            return startRedirectNavigation(state, actionResult, {
-                submission,
-                isFetchActionRedirect: true
-            });
+            if (pendingNavigationLoadId > originatingLoadId) {
+                // A new navigation was kicked off after our action started, so that
+                // should take precedence over this redirect navigation.  We already
+                // set isRevalidationRequired so all loaders for the new route should
+                // fire unless opted out via shouldRevalidate
+                let doneFetcher = getDoneFetcher(undefined);
+                state.fetchers.set(key, doneFetcher);
+                updateState({
+                    fetchers: new Map(state.fetchers)
+                });
+                return;
+            } else {
+                fetchRedirectIds.add(key);
+                let loadingFetcher = getLoadingFetcher(submission);
+                state.fetchers.set(key, loadingFetcher);
+                updateState({
+                    fetchers: new Map(state.fetchers)
+                });
+                return startRedirectNavigation(state, actionResult, {
+                    submission,
+                    isFetchActionRedirect: true
+                });
+            }
         }
         // Process any non-redirect errors thrown
         if (isErrorResult(actionResult)) {
@@ -27376,7 +27432,16 @@ const defaultMapRouteProperties = (route)=>({
         fetchControllers.delete(key);
         revalidatingFetchers.forEach((r)=>fetchControllers.delete(r.key));
         let redirect = findRedirect(results);
-        if (redirect) return startRedirectNavigation(state, redirect);
+        if (redirect) {
+            if (redirect.idx >= matchesToLoad.length) {
+                // If this redirect came from a fetcher make sure we mark it in
+                // fetchRedirectIds so it doesn't get revalidated on the next set of
+                // loader executions
+                let fetcherKey = revalidatingFetchers[redirect.idx - matchesToLoad.length].key;
+                fetchRedirectIds.add(fetcherKey);
+            }
+            return startRedirectNavigation(state, redirect.result);
+        }
         // Process and commit output from loaders
         let { loaderData , errors  } = processLoaderData(state, state.matches, matchesToLoad, loaderResults, undefined, revalidatingFetchers, fetcherResults, activeDeferreds);
         // Since we let revalidations complete even if the submitting fetcher was
@@ -27424,6 +27489,7 @@ const defaultMapRouteProperties = (route)=>({
         let abortController = new AbortController();
         let fetchRequest = createClientSideRequest(init.history, path, abortController.signal);
         fetchControllers.set(key, abortController);
+        let originatingLoadId = incrementingLoadId;
         let result = await callLoaderOrAction("loader", fetchRequest, match, matches, manifest, mapRouteProperties, basename);
         // Deferred isn't supported for fetcher loads, await everything and treat it
         // as a normal load.  resolveDeferredData will return undefined if this
@@ -27436,9 +27502,20 @@ const defaultMapRouteProperties = (route)=>({
         if (fetchRequest.signal.aborted) return;
         // If the loader threw a redirect Response, start a new REPLACE navigation
         if (isRedirectResult(result)) {
-            fetchRedirectIds.add(key);
-            await startRedirectNavigation(state, result);
-            return;
+            if (pendingNavigationLoadId > originatingLoadId) {
+                // A new navigation was kicked off after our loader started, so that
+                // should take precedence over this redirect navigation
+                let doneFetcher = getDoneFetcher(undefined);
+                state.fetchers.set(key, doneFetcher);
+                updateState({
+                    fetchers: new Map(state.fetchers)
+                });
+                return;
+            } else {
+                fetchRedirectIds.add(key);
+                await startRedirectNavigation(state, result);
+                return;
+            }
         }
         // Process any non-redirect errors thrown
         if (isErrorResult(result)) {
@@ -28327,7 +28404,9 @@ function getMatchesToLoad(history, state, matches, submission, location, isReval
         if (!matches.some((m)=>m.route.id === f.routeId)) return;
         let fetcherMatches = matchRoutes(routesToUse, f.path, basename);
         // If the fetcher path no longer matches, push it in with null matches so
-        // we can trigger a 404 in callLoadersAndMaybeResolveData
+        // we can trigger a 404 in callLoadersAndMaybeResolveData.  Note this is
+        // currently only a use-case for Remix HMR where the route tree can change
+        // at runtime and remove a route previously loaded via a fetcher
         if (!fetcherMatches) {
             revalidatingFetchers.push({
                 key,
@@ -28340,21 +28419,22 @@ function getMatchesToLoad(history, state, matches, submission, location, isReval
             return;
         }
         // Revalidating fetchers are decoupled from the route matches since they
-        // load from a static href.  They only set `defaultShouldRevalidate` on
-        // explicit revalidation due to submission, useRevalidator, or X-Remix-Revalidate
-        //
-        // They automatically revalidate without even calling shouldRevalidate if:
-        // - They were cancelled
-        // - They're in the middle of their first load and therefore this is still
-        //   an initial load and not a revalidation
-        //
-        // If neither of those is true, then they _always_ check shouldRevalidate
+        // load from a static href.  They revalidate based on explicit revalidation
+        // (submission, useRevalidator, or X-Remix-Revalidate)
         let fetcher = state.fetchers.get(key);
-        let isPerformingInitialLoad = fetcher && fetcher.state !== "idle" && fetcher.data === undefined && // If a fetcher.load redirected then it'll be "loading" without any data
-        // so ensure we're not processing the redirect from this fetcher
-        !fetchRedirectIds.has(key);
         let fetcherMatch = getTargetMatch(fetcherMatches, f.path);
-        let shouldRevalidate = cancelledFetcherLoads.includes(key) || isPerformingInitialLoad || shouldRevalidateLoader(fetcherMatch, _extends({
+        let shouldRevalidate = false;
+        if (fetchRedirectIds.has(key)) // Never trigger a revalidation of an actively redirecting fetcher
+        shouldRevalidate = false;
+        else if (cancelledFetcherLoads.includes(key)) // Always revalidate if the fetcher was cancelled
+        shouldRevalidate = true;
+        else if (fetcher && fetcher.state !== "idle" && fetcher.data === undefined) // If the fetcher hasn't ever completed loading yet, then this isn't a
+        // revalidation, it would just be a brand new load if an explicit
+        // revalidation is required
+        shouldRevalidate = isRevalidationRequired;
+        else // Otherwise fall back on any user-defined shouldRevalidate, defaulting
+        // to explicit revalidations only
+        shouldRevalidate = shouldRevalidateLoader(fetcherMatch, _extends({
             currentUrl,
             currentParams: state.matches[state.matches.length - 1].params,
             nextUrl,
@@ -28779,7 +28859,10 @@ function getInternalRouterError(status, _temp4) {
 function findRedirect(results) {
     for(let i = results.length - 1; i >= 0; i--){
         let result = results[i];
-        if (isRedirectResult(result)) return result;
+        if (isRedirectResult(result)) return {
+            result,
+            idx: i
+        };
     }
 }
 function stripHashFromPath(path) {
@@ -29026,7 +29109,7 @@ function getDoneFetcher(data) {
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G"}],"9xmpe":[function(require,module,exports) {
 /**
- * React Router DOM v6.14.1
+ * React Router DOM v6.14.2
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -29303,6 +29386,7 @@ const _excluded = [
 ], _excluded3 = [
     "reloadDocument",
     "replace",
+    "state",
     "method",
     "action",
     "onSubmit",
@@ -29355,11 +29439,27 @@ function deserializeErrors(errors) {
         // serializeErrors in react-router-dom/server.tsx :)
         if (val && val.__type === "RouteErrorResponse") serialized[key] = new (0, _router.ErrorResponse)(val.status, val.statusText, val.data, val.internal === true);
         else if (val && val.__type === "Error") {
-            let error = new Error(val.message);
-            // Wipe away the client-side stack trace.  Nothing to fill it in with
-            // because we don't serialize SSR stack traces for security reasons
-            error.stack = "";
-            serialized[key] = error;
+            // Attempt to reconstruct the right type of Error (i.e., ReferenceError)
+            if (val.__subType) {
+                let ErrorConstructor = window[val.__subType];
+                if (typeof ErrorConstructor === "function") try {
+                    // @ts-expect-error
+                    let error = new ErrorConstructor(val.message);
+                    // Wipe away the client-side stack trace.  Nothing to fill it in with
+                    // because we don't serialize SSR stack traces for security reasons
+                    error.stack = "";
+                    serialized[key] = error;
+                } catch (e) {
+                // no-op - fall through and create a normal Error
+                }
+            }
+            if (serialized[key] == null) {
+                let error = new Error(val.message);
+                // Wipe away the client-side stack trace.  Nothing to fill it in with
+                // because we don't serialize SSR stack traces for security reasons
+                error.stack = "";
+                serialized[key] = error;
+            }
         } else serialized[key] = val;
     }
     return serialized;
@@ -29603,7 +29703,7 @@ NavLink.displayName = "NavLink";
 });
 Form.displayName = "Form";
 const FormImpl = /*#__PURE__*/ _react.forwardRef((_ref6, forwardedRef)=>{
-    let { reloadDocument , replace , method =defaultMethod , action , onSubmit , submit , relative , preventScrollReset  } = _ref6, props = _objectWithoutPropertiesLoose(_ref6, _excluded3);
+    let { reloadDocument , replace , state , method =defaultMethod , action , onSubmit , submit , relative , preventScrollReset  } = _ref6, props = _objectWithoutPropertiesLoose(_ref6, _excluded3);
     let formMethod = method.toLowerCase() === "get" ? "get" : "post";
     let formAction = useFormAction(action, {
         relative
@@ -29617,6 +29717,7 @@ const FormImpl = /*#__PURE__*/ _react.forwardRef((_ref6, forwardedRef)=>{
         submit(submitter || event.currentTarget, {
             method: submitMethod,
             replace,
+            state,
             relative,
             preventScrollReset
         });
@@ -29755,6 +29856,7 @@ function validateClientSideSubmission() {
             formMethod: options.method || method,
             formEncType: options.encType || encType,
             replace: options.replace,
+            state: options.state,
             fromRouteId: currentRouteId
         });
     }, [
@@ -29974,7 +30076,7 @@ let savedScrollPositions = {};
             }
             // try to scroll to the hash
             if (location.hash) {
-                let el = document.getElementById(location.hash.slice(1));
+                let el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
                 if (el) {
                     el.scrollIntoView();
                     return;
@@ -30688,7 +30790,6 @@ function LoginView({ onLoggedIn  }) {
             access: username,
             secret: password
         };
-        console.log("what is this", data);
         // compares input with database
         fetch(`https://mycf-movie-api.herokuapp.com/login?Username=${username}&Password=${password}`, {
             method: "POST",
@@ -30711,7 +30812,7 @@ function LoginView({ onLoggedIn  }) {
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 43,
+            lineNumber: 42,
             columnNumber: 9
         },
         __self: this
@@ -30719,14 +30820,14 @@ function LoginView({ onLoggedIn  }) {
         controlId: "formUsername",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 44,
+            lineNumber: 43,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 45,
+            lineNumber: 44,
             columnNumber: 17
         },
         __self: this
@@ -30737,7 +30838,7 @@ function LoginView({ onLoggedIn  }) {
         required: true,
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 48,
+            lineNumber: 47,
             columnNumber: 17
         },
         __self: this
@@ -30745,14 +30846,14 @@ function LoginView({ onLoggedIn  }) {
         controlId: "formPassword",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 55,
+            lineNumber: 54,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 56,
+            lineNumber: 55,
             columnNumber: 17
         },
         __self: this
@@ -30763,7 +30864,7 @@ function LoginView({ onLoggedIn  }) {
         required: true,
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 59,
+            lineNumber: 58,
             columnNumber: 17
         },
         __self: this
@@ -30772,7 +30873,7 @@ function LoginView({ onLoggedIn  }) {
         type: "submit",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 66,
+            lineNumber: 65,
             columnNumber: 13
         },
         __self: this
@@ -44560,7 +44661,8 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _favMovie = require("./favMovie/fav-movie");
 var _favMovieDefault = parcelHelpers.interopDefault(_favMovie);
-function ProfileView({ token , user  }) {
+var _reactRouterDom = require("react-router-dom");
+function ProfileView({ token , user , userUnregistered  }) {
     const [userData, setUserData] = (0, _react.useState)(null);
     const [formData, setFormData] = (0, _react.useState)({
         username: "",
@@ -44568,6 +44670,7 @@ function ProfileView({ token , user  }) {
         email: "",
         birthday: ""
     });
+    const [unregistered, setUnregistered] = (0, _react.useState)(false);
     (0, _react.useEffect)(()=>{
         if (!token) return;
         fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
@@ -44615,6 +44718,7 @@ function ProfileView({ token , user  }) {
         });
     };
     /////Unregistering user /////////
+    const navigate = (0, _reactRouterDom.useNavigate)();
     const handleUnregister = ()=>{
         fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
             method: "DELETE",
@@ -44622,19 +44726,34 @@ function ProfileView({ token , user  }) {
                 "Authorization": `Bearer ${token}`
             }
         }).then((response)=>{
-            if (response.ok) // User unregistration was successful
-            // You may want to perform additional actions, such as logging out the user
-            console.log(`${user.Username} was successfully deleted.`);
-            else // Handle error cases, if needed
+            if (response.ok) {
+                // User unregistration was successful
+                setUnregistered(true);
+                console.log(`${user.Username} was successfully deleted.`);
+                // Call the userUnregistered callback function from props to notify MainView
+                userUnregistered();
+            } else // Handle error cases, if needed
             console.error("Error unregistering user:", response.status, response.statusText);
         }).catch((error)=>{
             console.error("Error unregistering user:", error);
         });
     };
+    (0, _react.useEffect)(()=>{
+        // Redirect to the login page when unregistered state is true
+        if (unregistered) {
+            console.log("redirecting to login");
+            setIsUserUnregistered(true);
+            navigate("/login") // Use the navigate function to redirect
+            ;
+        }
+    }, [
+        unregistered,
+        navigate
+    ]);
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 97,
+            lineNumber: 114,
             columnNumber: 12
         },
         __self: this
@@ -44642,14 +44761,14 @@ function ProfileView({ token , user  }) {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 101,
+            lineNumber: 118,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 102,
+            lineNumber: 119,
             columnNumber: 7
         },
         __self: this
@@ -44657,21 +44776,21 @@ function ProfileView({ token , user  }) {
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 103,
+            lineNumber: 120,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 104,
+            lineNumber: 121,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 105,
+            lineNumber: 122,
             columnNumber: 11
         },
         __self: this
@@ -44683,21 +44802,21 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Username,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 106,
+            lineNumber: 123,
             columnNumber: 11
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 114,
+            lineNumber: 131,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 115,
+            lineNumber: 132,
             columnNumber: 11
         },
         __self: this
@@ -44709,21 +44828,21 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Email,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 116,
+            lineNumber: 133,
             columnNumber: 11
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 124,
+            lineNumber: 141,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 125,
+            lineNumber: 142,
             columnNumber: 11
         },
         __self: this
@@ -44735,7 +44854,7 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Birthday,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 126,
+            lineNumber: 143,
             columnNumber: 11
         },
         __self: this
@@ -44743,7 +44862,7 @@ function ProfileView({ token , user  }) {
         type: "submit",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 134,
+            lineNumber: 151,
             columnNumber: 9
         },
         __self: this
@@ -44752,16 +44871,23 @@ function ProfileView({ token , user  }) {
         onClick: handleUnregister,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 135,
+            lineNumber: 152,
             columnNumber: 9
         },
         __self: this
-    }, "Unregister")), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _favMovieDefault.default), {
+    }, "Unregister")), unregistered && /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 156,
+            columnNumber: 24
+        },
+        __self: this
+    }, "Successfully unregistered. Redirecting to login page..."), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _favMovieDefault.default), {
         user: user,
         token: token,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 139,
+            lineNumber: 157,
             columnNumber: 7
         },
         __self: this
@@ -44773,7 +44899,7 @@ function ProfileView({ token , user  }) {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","./favMovie/fav-movie":"kDfvh"}],"kDfvh":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","./favMovie/fav-movie":"kDfvh","react-router-dom":"9xmpe"}],"kDfvh":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4869 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -44798,7 +44924,6 @@ function FavMovies({ token , user  }) {
             }
         }).then((response)=>response.json()).then((movieIds)=>{
             setFavoriteMovies(movieIds);
-            console.log("these are the movie ids:", movieIds);
             // Fetch favorite movie data using the movie IDs
             const fetchFavoriteMoviesData = async ()=>{
                 try {
@@ -44809,7 +44934,6 @@ function FavMovies({ token , user  }) {
                         }).then((response)=>response.json())));
                     setFavoriteMoviesData(moviesData.map((movie)=>movie.Title)) // Extract only the movie names
                     ;
-                    console.log(moviesData);
                 } catch (error) {
                     console.error("Error fetching favorite movies data:", error);
                 }
@@ -44825,7 +44949,7 @@ function FavMovies({ token , user  }) {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 48,
+            lineNumber: 46,
             columnNumber: 5
         },
         __self: this
@@ -44833,14 +44957,14 @@ function FavMovies({ token , user  }) {
         className: "mt-4",
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 49,
+            lineNumber: 47,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 50,
+            lineNumber: 48,
             columnNumber: 9
         },
         __self: this
@@ -44848,7 +44972,7 @@ function FavMovies({ token , user  }) {
         className: "row",
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 51,
+            lineNumber: 49,
             columnNumber: 9
         },
         __self: this
@@ -44857,7 +44981,7 @@ function FavMovies({ token , user  }) {
             className: "col-lg-3 col-md-4 col-sm-6 mb-4",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 54,
+                lineNumber: 52,
                 columnNumber: 15
             },
             __self: this
@@ -44865,7 +44989,7 @@ function FavMovies({ token , user  }) {
             className: "card",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 55,
+                lineNumber: 53,
                 columnNumber: 17
             },
             __self: this
@@ -44875,7 +44999,7 @@ function FavMovies({ token , user  }) {
             alt: movie.title,
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 56,
+                lineNumber: 54,
                 columnNumber: 19
             },
             __self: this
@@ -44883,7 +45007,7 @@ function FavMovies({ token , user  }) {
             className: "card-body",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 61,
+                lineNumber: 59,
                 columnNumber: 19
             },
             __self: this
@@ -44891,7 +45015,7 @@ function FavMovies({ token , user  }) {
             className: "card-title",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 62,
+                lineNumber: 60,
                 columnNumber: 21
             },
             __self: this
@@ -44899,14 +45023,14 @@ function FavMovies({ token , user  }) {
             className: "card-text",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 63,
+                lineNumber: 61,
                 columnNumber: 21
             },
             __self: this
         }, movie.description))))) : /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 69,
+            lineNumber: 67,
             columnNumber: 13
         },
         __self: this

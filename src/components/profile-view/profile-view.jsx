@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import FavMovies from './favMovie/fav-movie'
+import { useNavigate } from 'react-router-dom'
 
-export default function ProfileView({ token, user }) {
+
+export default function ProfileView({ token, user, userUnregistered }) {
   const [userData, setUserData] = useState(null)
   const [formData, setFormData] = useState({
     username: "",
@@ -9,6 +11,8 @@ export default function ProfileView({ token, user }) {
     email: "",
     birthday: ""
   })
+  const [unregistered, setUnregistered] = useState(false)
+
   useEffect(() => {
     if (!token) {
       return
@@ -71,6 +75,7 @@ export default function ProfileView({ token, user }) {
   }
 
   /////Unregistering user /////////
+  const navigate = useNavigate()
   const handleUnregister = () => {
     fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
       method: 'DELETE',
@@ -81,8 +86,10 @@ export default function ProfileView({ token, user }) {
       .then((response) => {
         if (response.ok) {
           // User unregistration was successful
-          // You may want to perform additional actions, such as logging out the user
+          setUnregistered(true)
           console.log(`${user.Username} was successfully deleted.`)
+          // Call the userUnregistered callback function from props to notify MainView
+          userUnregistered()
         } else {
           // Handle error cases, if needed
           console.error('Error unregistering user:', response.status, response.statusText)
@@ -92,6 +99,16 @@ export default function ProfileView({ token, user }) {
         console.error('Error unregistering user:', error)
       })
   }
+
+  useEffect(() => {
+    // Redirect to the login page when unregistered state is true
+    if (unregistered) {
+      console.log('redirecting to login')
+      setIsUserUnregistered(true)
+      navigate('/login') // Use the navigate function to redirect
+    }
+  }, [unregistered, navigate])
+
 
   if (!userData) {
     return <div>Loading...</div>
@@ -133,9 +150,10 @@ export default function ProfileView({ token, user }) {
         </div>
         <button type="submit">Save Changes</button>
         <button type="button" onClick={handleUnregister}>
-        Unregister
-      </button>
+          Unregister
+        </button>
       </form>
+      {unregistered && <p>Successfully unregistered. Redirecting to login page...</p>}
       <FavMovies user={user} token={token} />
     </div>
   )

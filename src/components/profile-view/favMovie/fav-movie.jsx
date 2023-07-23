@@ -18,7 +18,6 @@ export default function FavMovies({ token, user }) {
       .then((response) => response.json())
       .then((movieIds) => {
         setFavoriteMovies(movieIds)
-        console.log('these are the movie ids:',movieIds)
 
         // Fetch favorite movie data using the movie IDs
         const fetchFavoriteMoviesData = async () => {
@@ -31,7 +30,6 @@ export default function FavMovies({ token, user }) {
               )
             )
             setFavoriteMoviesData(moviesData.map(movie => movie.Title)) // Extract only the movie names
-            console.log(moviesData)
           } catch (error) {
             console.error('Error fetching favorite movies data:', error)
           }

@@ -1,12 +1,12 @@
-import { createRoot } from 'react-dom/client'
 import React from 'react'
-
-// Import statement to indicate that you need to bundle `./index.scss`
-import MainView from './components/main-view/main-view'
-import "./index.scss"
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import { createRoot } from 'react-dom/client'
 import { Container } from 'react-bootstrap'
 
-// Main component (will eventually use all the others)
+import MainView from './components/main-view/main-view'
+import './index.scss'
+
 const MyFlixApplication = () => {
   return (
     <Container>
@@ -15,9 +15,14 @@ const MyFlixApplication = () => {
   )
 }
 
-// Finds the root of your app
-const container = document.querySelector("#root")
+const container = document.querySelector('#root')
 const root = createRoot(container)
 
-// Tells React to render your app in the root DOM element
-root.render(<MyFlixApplication />)
+// Wrap the entire MyFlixApplication component with BrowserRouter
+const AppWithRouter = (
+  <BrowserRouter>
+    <MyFlixApplication />
+  </BrowserRouter>
+)
+
+root.render(AppWithRouter)
