@@ -4,7 +4,7 @@ export default function FavMovies({ token, user }) {
   const [userData, setUserData] = useState(null)
 
   const [favoriteMovies, setFavoriteMovies] = useState([])
-  const [favoriteMoviesData, setFavoriteMoviesData] = useState([]);
+  const [favoriteMoviesData, setFavoriteMoviesData] = useState([])
 
   useEffect(() => {
     if (!token) {
@@ -17,7 +17,7 @@ export default function FavMovies({ token, user }) {
     })
       .then((response) => response.json())
       .then((movieIds) => {
-        setFavoriteMovies(movieIds);
+        setFavoriteMovies(movieIds)
         console.log('these are the movie ids:',movieIds)
 
         // Fetch favorite movie data using the movie IDs
@@ -30,18 +30,18 @@ export default function FavMovies({ token, user }) {
                 }).then((response) => response.json())
               )
             )
-            setFavoriteMoviesData(moviesData.map(movie => movie.Title)); // Extract only the movie names
+            setFavoriteMoviesData(moviesData.map(movie => movie.Title)) // Extract only the movie names
             console.log(moviesData)
           } catch (error) {
-            console.error('Error fetching favorite movies data:', error);
+            console.error('Error fetching favorite movies data:', error)
           }
-        };
+        }
 
-        fetchFavoriteMoviesData();
+        fetchFavoriteMoviesData()
       })
       .catch((error) => {
-        console.error('Error fetching favorite movie IDs:', error);
-      });
+        console.error('Error fetching favorite movie IDs:', error)
+      })
   }, [token, user.Username])
 
   return (

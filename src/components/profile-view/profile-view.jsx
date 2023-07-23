@@ -70,6 +70,29 @@ export default function ProfileView({ token, user }) {
     }
   }
 
+  /////Unregistering user /////////
+  const handleUnregister = () => {
+    fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+      .then((response) => {
+        if (response.ok) {
+          // User unregistration was successful
+          // You may want to perform additional actions, such as logging out the user
+          console.log(`${user.Username} was successfully deleted.`)
+        } else {
+          // Handle error cases, if needed
+          console.error('Error unregistering user:', response.status, response.statusText)
+        }
+      })
+      .catch((error) => {
+        console.error('Error unregistering user:', error)
+      })
+  }
+
   if (!userData) {
     return <div>Loading...</div>
   }
@@ -109,6 +132,9 @@ export default function ProfileView({ token, user }) {
           />
         </div>
         <button type="submit">Save Changes</button>
+        <button type="button" onClick={handleUnregister}>
+        Unregister
+      </button>
       </form>
       <FavMovies user={user} token={token} />
     </div>

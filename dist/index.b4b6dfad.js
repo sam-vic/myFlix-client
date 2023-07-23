@@ -44614,10 +44614,27 @@ function ProfileView({ token , user  }) {
             console.error("Error updating user data:", error);
         });
     };
+    /////Unregistering user /////////
+    const handleUnregister = ()=>{
+        fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        }).then((response)=>{
+            if (response.ok) // User unregistration was successful
+            // You may want to perform additional actions, such as logging out the user
+            console.log(`${user.Username} was successfully deleted.`);
+            else // Handle error cases, if needed
+            console.error("Error unregistering user:", response.status, response.statusText);
+        }).catch((error)=>{
+            console.error("Error unregistering user:", error);
+        });
+    };
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 74,
+            lineNumber: 97,
             columnNumber: 12
         },
         __self: this
@@ -44625,14 +44642,14 @@ function ProfileView({ token , user  }) {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 78,
+            lineNumber: 101,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 79,
+            lineNumber: 102,
             columnNumber: 7
         },
         __self: this
@@ -44640,21 +44657,21 @@ function ProfileView({ token , user  }) {
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 80,
+            lineNumber: 103,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 81,
+            lineNumber: 104,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 82,
+            lineNumber: 105,
             columnNumber: 11
         },
         __self: this
@@ -44666,21 +44683,21 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Username,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 83,
+            lineNumber: 106,
             columnNumber: 11
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 91,
+            lineNumber: 114,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 92,
+            lineNumber: 115,
             columnNumber: 11
         },
         __self: this
@@ -44692,21 +44709,21 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Email,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 93,
+            lineNumber: 116,
             columnNumber: 11
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 101,
+            lineNumber: 124,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 102,
+            lineNumber: 125,
             columnNumber: 11
         },
         __self: this
@@ -44718,7 +44735,7 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Birthday,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 103,
+            lineNumber: 126,
             columnNumber: 11
         },
         __self: this
@@ -44726,16 +44743,25 @@ function ProfileView({ token , user  }) {
         type: "submit",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 111,
+            lineNumber: 134,
             columnNumber: 9
         },
         __self: this
-    }, "Save Changes")), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _favMovieDefault.default), {
+    }, "Save Changes"), /*#__PURE__*/ (0, _reactDefault.default).createElement("button", {
+        type: "button",
+        onClick: handleUnregister,
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 135,
+            columnNumber: 9
+        },
+        __self: this
+    }, "Unregister")), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _favMovieDefault.default), {
         user: user,
         token: token,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 113,
+            lineNumber: 139,
             columnNumber: 7
         },
         __self: this
@@ -44781,7 +44807,8 @@ function FavMovies({ token , user  }) {
                                 Authorization: `Bearer ${token}`
                             }
                         }).then((response)=>response.json())));
-                    setFavoriteMoviesData(moviesData.map((movie)=>movie.Title)); // Extract only the movie names
+                    setFavoriteMoviesData(moviesData.map((movie)=>movie.Title)) // Extract only the movie names
+                    ;
                     console.log(moviesData);
                 } catch (error) {
                     console.error("Error fetching favorite movies data:", error);
