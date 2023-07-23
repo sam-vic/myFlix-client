@@ -8,7 +8,9 @@ export default function ProfileView({ token, user }) {
     email: "",
     birthday: ""
   })
+
   const [favoriteMovies, setFavoriteMovies] = useState([])
+  const [favoriteMoviesData, setFavoriteMoviesData] = useState([]);
 
   useEffect(() => {
     if (!token) {
@@ -31,18 +33,37 @@ export default function ProfileView({ token, user }) {
         console.error('Error fetching user data:', error)
       })
 
-      fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}/favoriteMovies`, {
-        headers: { Authorization: `Bearer ${token}` }
+     // Fetch favorite movie IDs
+     fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}/favoriteMovies`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then((response) => response.json())
+      .then((movieIds) => {
+        setFavoriteMovies(movieIds);
+        console.log('these are the movie ids:',movieIds)
+
+        // Fetch favorite movie data using the movie IDs
+        const fetchFavoriteMoviesData = async () => {
+          try {
+            const moviesData = await Promise.all(
+              movieIds.map((id) =>
+                fetch(`https://mycf-movie-api.herokuapp.com/movies/id/${id}`, {
+                  headers: { Authorization: `Bearer ${token}` }
+                }).then((response) => response.json())
+              )
+            )
+            setFavoriteMoviesData(moviesData.map(movie => movie.Title)); // Extract only the movie names
+            console.log(moviesData)
+          } catch (error) {
+            console.error('Error fetching favorite movies data:', error);
+          }
+        };
+
+        fetchFavoriteMoviesData();
       })
-        .then((response) => response.json())
-        .then((movieIds) => {
-          // Fetch the movie details for each movie ID
-          console.log('these are the favMovies',movieIds)
-          setFavoriteMovies(movieIds)
-        })
-        .catch((error) => {
-          console.error('Error fetching favorite movie IDs:', error);
-        });
+      .catch((error) => {
+        console.error('Error fetching favorite movie IDs:', error);
+      });
   }, [token, user.Username])
 
   const handleChange = (e) => {
@@ -85,7 +106,7 @@ export default function ProfileView({ token, user }) {
   }
 
   if (!userData) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   return (
@@ -128,8 +149,8 @@ export default function ProfileView({ token, user }) {
       <div className="mt-4">
         <h2>Favorite Movies</h2>
         <div className="row">
-          {favoriteMovies.length > 0 ? (
-            favoriteMovies.map((movie) => (
+          {favoriteMoviesData.length > 0 ? (
+            favoriteMoviesData.map((movie) => (
               <div key={movie} className="col-lg-3 col-md-4 col-sm-6 mb-4">
                 <div className="card">
                   <img

@@ -44567,6 +44567,7 @@ function ProfileView({ token , user  }) {
         birthday: ""
     });
     const [favoriteMovies, setFavoriteMovies] = (0, _react.useState)([]);
+    const [favoriteMoviesData, setFavoriteMoviesData] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
         if (!token) return;
         fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
@@ -44583,14 +44584,29 @@ function ProfileView({ token , user  }) {
         }).catch((error)=>{
             console.error("Error fetching user data:", error);
         });
+        // Fetch favorite movie IDs
         fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}/favoriteMovies`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>response.json()).then((movieIds)=>{
-            // Fetch the movie details for each movie ID
-            console.log("these are the favMovies", movieIds);
             setFavoriteMovies(movieIds);
+            console.log("these are the movie ids:", movieIds);
+            // Fetch favorite movie data using the movie IDs
+            const fetchFavoriteMoviesData = async ()=>{
+                try {
+                    const moviesData = await Promise.all(movieIds.map((id)=>fetch(`https://mycf-movie-api.herokuapp.com/movies/id/${id}`, {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        }).then((response)=>response.json())));
+                    setFavoriteMoviesData(moviesData.map((movie)=>movie.Title)); // Extract only the movie names
+                    console.log(moviesData);
+                } catch (error) {
+                    console.error("Error fetching favorite movies data:", error);
+                }
+            };
+            fetchFavoriteMoviesData();
         }).catch((error)=>{
             console.error("Error fetching favorite movie IDs:", error);
         });
@@ -44627,7 +44643,7 @@ function ProfileView({ token , user  }) {
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 88,
+            lineNumber: 109,
             columnNumber: 12
         },
         __self: this
@@ -44635,14 +44651,14 @@ function ProfileView({ token , user  }) {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 92,
+            lineNumber: 113,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 93,
+            lineNumber: 114,
             columnNumber: 7
         },
         __self: this
@@ -44650,21 +44666,21 @@ function ProfileView({ token , user  }) {
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 94,
+            lineNumber: 115,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 95,
+            lineNumber: 116,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 96,
+            lineNumber: 117,
             columnNumber: 11
         },
         __self: this
@@ -44676,21 +44692,21 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Username,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 97,
+            lineNumber: 118,
             columnNumber: 11
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 105,
+            lineNumber: 126,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 106,
+            lineNumber: 127,
             columnNumber: 11
         },
         __self: this
@@ -44702,21 +44718,21 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Email,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 107,
+            lineNumber: 128,
             columnNumber: 11
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 115,
+            lineNumber: 136,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 116,
+            lineNumber: 137,
             columnNumber: 11
         },
         __self: this
@@ -44728,7 +44744,7 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Birthday,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 117,
+            lineNumber: 138,
             columnNumber: 11
         },
         __self: this
@@ -44736,7 +44752,7 @@ function ProfileView({ token , user  }) {
         type: "submit",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 125,
+            lineNumber: 146,
             columnNumber: 9
         },
         __self: this
@@ -44744,14 +44760,14 @@ function ProfileView({ token , user  }) {
         className: "mt-4",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 128,
+            lineNumber: 149,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 129,
+            lineNumber: 150,
             columnNumber: 9
         },
         __self: this
@@ -44759,16 +44775,16 @@ function ProfileView({ token , user  }) {
         className: "row",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 130,
+            lineNumber: 151,
             columnNumber: 9
         },
         __self: this
-    }, favoriteMovies.length > 0 ? favoriteMovies.map((movie)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+    }, favoriteMoviesData.length > 0 ? favoriteMoviesData.map((movie)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
             key: movie,
             className: "col-lg-3 col-md-4 col-sm-6 mb-4",
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 133,
+                lineNumber: 154,
                 columnNumber: 15
             },
             __self: this
@@ -44776,7 +44792,7 @@ function ProfileView({ token , user  }) {
             className: "card",
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 134,
+                lineNumber: 155,
                 columnNumber: 17
             },
             __self: this
@@ -44786,7 +44802,7 @@ function ProfileView({ token , user  }) {
             alt: movie.title,
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 135,
+                lineNumber: 156,
                 columnNumber: 19
             },
             __self: this
@@ -44794,7 +44810,7 @@ function ProfileView({ token , user  }) {
             className: "card-body",
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 140,
+                lineNumber: 161,
                 columnNumber: 19
             },
             __self: this
@@ -44802,7 +44818,7 @@ function ProfileView({ token , user  }) {
             className: "card-title",
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 141,
+                lineNumber: 162,
                 columnNumber: 21
             },
             __self: this
@@ -44810,14 +44826,14 @@ function ProfileView({ token , user  }) {
             className: "card-text",
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 142,
+                lineNumber: 163,
                 columnNumber: 21
             },
             __self: this
         }, movie.description))))) : /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 148,
+            lineNumber: 169,
             columnNumber: 13
         },
         __self: this
