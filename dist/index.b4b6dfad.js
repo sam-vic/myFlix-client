@@ -44558,6 +44558,8 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>ProfileView);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _favMovie = require("./favMovie/fav-movie");
+var _favMovieDefault = parcelHelpers.interopDefault(_favMovie);
 function ProfileView({ token , user  }) {
     const [userData, setUserData] = (0, _react.useState)(null);
     const [formData, setFormData] = (0, _react.useState)({
@@ -44566,8 +44568,6 @@ function ProfileView({ token , user  }) {
         email: "",
         birthday: ""
     });
-    const [favoriteMovies, setFavoriteMovies] = (0, _react.useState)([]);
-    const [favoriteMoviesData, setFavoriteMoviesData] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
         if (!token) return;
         fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
@@ -44583,32 +44583,6 @@ function ProfileView({ token , user  }) {
             });
         }).catch((error)=>{
             console.error("Error fetching user data:", error);
-        });
-        // Fetch favorite movie IDs
-        fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}/favoriteMovies`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>response.json()).then((movieIds)=>{
-            setFavoriteMovies(movieIds);
-            console.log("these are the movie ids:", movieIds);
-            // Fetch favorite movie data using the movie IDs
-            const fetchFavoriteMoviesData = async ()=>{
-                try {
-                    const moviesData = await Promise.all(movieIds.map((id)=>fetch(`https://mycf-movie-api.herokuapp.com/movies/id/${id}`, {
-                            headers: {
-                                Authorization: `Bearer ${token}`
-                            }
-                        }).then((response)=>response.json())));
-                    setFavoriteMoviesData(moviesData.map((movie)=>movie.Title)); // Extract only the movie names
-                    console.log(moviesData);
-                } catch (error) {
-                    console.error("Error fetching favorite movies data:", error);
-                }
-            };
-            fetchFavoriteMoviesData();
-        }).catch((error)=>{
-            console.error("Error fetching favorite movie IDs:", error);
         });
     }, [
         token,
@@ -44643,7 +44617,7 @@ function ProfileView({ token , user  }) {
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 109,
+            lineNumber: 74,
             columnNumber: 12
         },
         __self: this
@@ -44651,14 +44625,14 @@ function ProfileView({ token , user  }) {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 113,
+            lineNumber: 78,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 114,
+            lineNumber: 79,
             columnNumber: 7
         },
         __self: this
@@ -44666,21 +44640,21 @@ function ProfileView({ token , user  }) {
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 115,
+            lineNumber: 80,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 116,
+            lineNumber: 81,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 117,
+            lineNumber: 82,
             columnNumber: 11
         },
         __self: this
@@ -44692,21 +44666,21 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Username,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 118,
+            lineNumber: 83,
             columnNumber: 11
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 126,
+            lineNumber: 91,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 127,
+            lineNumber: 92,
             columnNumber: 11
         },
         __self: this
@@ -44718,21 +44692,21 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Email,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 128,
+            lineNumber: 93,
             columnNumber: 11
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 136,
+            lineNumber: 101,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 137,
+            lineNumber: 102,
             columnNumber: 11
         },
         __self: this
@@ -44744,7 +44718,7 @@ function ProfileView({ token , user  }) {
         placeholder: userData.Birthday,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 138,
+            lineNumber: 103,
             columnNumber: 11
         },
         __self: this
@@ -44752,30 +44726,102 @@ function ProfileView({ token , user  }) {
         type: "submit",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 146,
+            lineNumber: 111,
             columnNumber: 9
         },
         __self: this
-    }, "Save Changes")), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
-        className: "mt-4",
+    }, "Save Changes")), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _favMovieDefault.default), {
+        user: user,
+        token: token,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 149,
+            lineNumber: 113,
+            columnNumber: 7
+        },
+        __self: this
+    }));
+}
+
+  $parcel$ReactRefreshHelpers$3c12.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","./favMovie/fav-movie":"kDfvh"}],"kDfvh":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$4869 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$4869.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>FavMovies);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+function FavMovies({ token , user  }) {
+    const [userData, setUserData] = (0, _react.useState)(null);
+    const [favoriteMovies, setFavoriteMovies] = (0, _react.useState)([]);
+    const [favoriteMoviesData, setFavoriteMoviesData] = (0, _react.useState)([]);
+    (0, _react.useEffect)(()=>{
+        if (!token) return;
+        // Fetch favorite movie IDs
+        fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}/favoriteMovies`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>response.json()).then((movieIds)=>{
+            setFavoriteMovies(movieIds);
+            console.log("these are the movie ids:", movieIds);
+            // Fetch favorite movie data using the movie IDs
+            const fetchFavoriteMoviesData = async ()=>{
+                try {
+                    const moviesData = await Promise.all(movieIds.map((id)=>fetch(`https://mycf-movie-api.herokuapp.com/movies/id/${id}`, {
+                            headers: {
+                                Authorization: `Bearer ${token}`
+                            }
+                        }).then((response)=>response.json())));
+                    setFavoriteMoviesData(moviesData.map((movie)=>movie.Title)); // Extract only the movie names
+                    console.log(moviesData);
+                } catch (error) {
+                    console.error("Error fetching favorite movies data:", error);
+                }
+            };
+            fetchFavoriteMoviesData();
+        }).catch((error)=>{
+            console.error("Error fetching favorite movie IDs:", error);
+        });
+    }, [
+        token,
+        user.Username
+    ]);
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        __source: {
+            fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+            lineNumber: 48,
+            columnNumber: 5
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "mt-4",
+        __source: {
+            fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+            lineNumber: 49,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {
         __source: {
-            fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 150,
+            fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+            lineNumber: 50,
             columnNumber: 9
         },
         __self: this
     }, "Favorite Movies"), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         className: "row",
         __source: {
-            fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 151,
+            fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+            lineNumber: 51,
             columnNumber: 9
         },
         __self: this
@@ -44783,16 +44829,16 @@ function ProfileView({ token , user  }) {
             key: movie,
             className: "col-lg-3 col-md-4 col-sm-6 mb-4",
             __source: {
-                fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 154,
+                fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+                lineNumber: 54,
                 columnNumber: 15
             },
             __self: this
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
             className: "card",
             __source: {
-                fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 155,
+                fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+                lineNumber: 55,
                 columnNumber: 17
             },
             __self: this
@@ -44801,46 +44847,46 @@ function ProfileView({ token , user  }) {
             className: "card-img-top",
             alt: movie.title,
             __source: {
-                fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 156,
+                fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+                lineNumber: 56,
                 columnNumber: 19
             },
             __self: this
         }), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
             className: "card-body",
             __source: {
-                fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 161,
+                fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+                lineNumber: 61,
                 columnNumber: 19
             },
             __self: this
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h5", {
             className: "card-title",
             __source: {
-                fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 162,
+                fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+                lineNumber: 62,
                 columnNumber: 21
             },
             __self: this
         }, movie), /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
             className: "card-text",
             __source: {
-                fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 163,
+                fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+                lineNumber: 63,
                 columnNumber: 21
             },
             __self: this
         }, movie.description))))) : /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
-            fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 169,
+            fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+            lineNumber: 69,
             columnNumber: 13
         },
         __self: this
     }, "No favorite movies found."))));
 }
 
-  $parcel$ReactRefreshHelpers$3c12.postlude(module);
+  $parcel$ReactRefreshHelpers$4869.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
