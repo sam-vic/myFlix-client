@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Button, Form } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 import React from 'react'
 
 export default function SignupView() {
@@ -7,6 +8,7 @@ export default function SignupView() {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
     const [birthday, setBirthday] = useState('')
+    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -25,15 +27,23 @@ export default function SignupView() {
             },
             body: JSON.stringify(data)
         })
-            .then((response) => {
-                if (response.ok) {
-                    alert('Sign Up Successful')
+            .then((response) => response.json())
+            .then((data) => {
+                if (data._id) {
+                    console.log('Sign Up Successful:', data)
+                    localStorage.setItem("user", JSON.stringify(data))
+                    localStorage.setItem("token", data.token)
+                    navigate('/') // Navigate to '/' after successful sign-up
                 } else {
+                    console.error('Sign up Error:', data)
                     alert('Sign up Error')
                 }
             })
+            .catch((error) => {
+                console.error('Error signing up:', error)
+            })
     }
-
+    
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formUsername">

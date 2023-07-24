@@ -36,7 +36,7 @@ export default MainView = () => {
         setToken(null)
         localStorage.clear()
         navigate('/login')
-      }
+    }
 
 
     useEffect(() => {

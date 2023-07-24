@@ -24018,6 +24018,10 @@ exports.default = MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const navigate = (0, _reactRouterDom.useNavigate)();
     const [isUserUnregistered, setIsUserUnregistered] = (0, _react.useState)(false);
+    const handleSignUp = (user, token)=>{
+        setUser(user);
+        setToken(token);
+    };
     const onLoggedOut = ()=>{
         setUser(null), setToken(null), localStorage.clear(), navigate("/login");
     };
@@ -24067,7 +24071,7 @@ exports.default = MainView = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 79,
+            lineNumber: 84,
             columnNumber: 9
         },
         __self: undefined
@@ -24076,7 +24080,7 @@ exports.default = MainView = ()=>{
         onLoggedOut: onLoggedOut,
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 80,
+            lineNumber: 85,
             columnNumber: 13
         },
         __self: undefined
@@ -24084,14 +24088,14 @@ exports.default = MainView = ()=>{
         className: "justify-content-md-center",
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 81,
+            lineNumber: 86,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Routes), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 82,
+            lineNumber: 87,
             columnNumber: 17
         },
         __self: undefined
@@ -24101,10 +24105,12 @@ exports.default = MainView = ()=>{
             to: "/"
         }) : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Col), {
             md: 5
-        }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, null, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), null)))),
+        }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, null, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), {
+            onSignUp: handleSignUp
+        })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 83,
+            lineNumber: 88,
             columnNumber: 21
         },
         __self: undefined
@@ -24121,7 +24127,7 @@ exports.default = MainView = ()=>{
         })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 100,
+            lineNumber: 105,
             columnNumber: 21
         },
         __self: undefined
@@ -24139,7 +24145,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 116,
+            lineNumber: 121,
             columnNumber: 21
         },
         __self: undefined
@@ -24170,7 +24176,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 136,
+            lineNumber: 141,
             columnNumber: 21
         },
         __self: undefined
@@ -24187,7 +24193,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 169,
+            lineNumber: 174,
             columnNumber: 21
         },
         __self: undefined
@@ -44250,12 +44256,14 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>SignupView);
 var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
+var _reactRouterDom = require("react-router-dom");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 function SignupView() {
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
     const [birthday, setBirthday] = (0, _react.useState)("");
+    const navigate = (0, _reactRouterDom.useNavigate)();
     const handleSubmit = (event)=>{
         event.preventDefault();
         const data = {
@@ -44270,16 +44278,26 @@ function SignupView() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
-        }).then((response)=>{
-            if (response.ok) alert("Sign Up Successful");
-            else alert("Sign up Error");
+        }).then((response)=>response.json()).then((data)=>{
+            if (data._id) {
+                console.log("Sign Up Successful:", data);
+                localStorage.setItem("user", JSON.stringify(data));
+                localStorage.setItem("token", data.token);
+                navigate("/") // Navigate to '/' after successful sign-up
+                ;
+            } else {
+                console.error("Sign up Error:", data);
+                alert("Sign up Error");
+            }
+        }).catch((error)=>{
+            console.error("Error signing up:", error);
         });
     };
     return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form), {
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 38,
+            lineNumber: 48,
             columnNumber: 9
         },
         __self: this
@@ -44287,14 +44305,14 @@ function SignupView() {
         controlId: "formUsername",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 39,
+            lineNumber: 49,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 40,
+            lineNumber: 50,
             columnNumber: 17
         },
         __self: this
@@ -44306,7 +44324,7 @@ function SignupView() {
         minLength: "3",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 43,
+            lineNumber: 53,
             columnNumber: 17
         },
         __self: this
@@ -44314,14 +44332,14 @@ function SignupView() {
         controlId: "formPassword",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 51,
+            lineNumber: 61,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 52,
+            lineNumber: 62,
             columnNumber: 17
         },
         __self: this
@@ -44332,7 +44350,7 @@ function SignupView() {
         required: true,
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 55,
+            lineNumber: 65,
             columnNumber: 17
         },
         __self: this
@@ -44340,14 +44358,14 @@ function SignupView() {
         controlId: "formEmail",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 62,
+            lineNumber: 72,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 63,
+            lineNumber: 73,
             columnNumber: 17
         },
         __self: this
@@ -44358,7 +44376,7 @@ function SignupView() {
         required: true,
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 66,
+            lineNumber: 76,
             columnNumber: 17
         },
         __self: this
@@ -44366,14 +44384,14 @@ function SignupView() {
         controlId: "formBirthday",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 73,
+            lineNumber: 83,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 74,
+            lineNumber: 84,
             columnNumber: 17
         },
         __self: this
@@ -44384,7 +44402,7 @@ function SignupView() {
         required: true,
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 77,
+            lineNumber: 87,
             columnNumber: 17
         },
         __self: this
@@ -44393,7 +44411,7 @@ function SignupView() {
         type: "submit",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 84,
+            lineNumber: 94,
             columnNumber: 13
         },
         __self: this
@@ -44405,7 +44423,7 @@ function SignupView() {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"i974M":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe"}],"i974M":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0428 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
