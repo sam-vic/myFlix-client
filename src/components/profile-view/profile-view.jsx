@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import FavMovies from './favMovie/fav-movie'
+import { Button } from 'react-bootstrap'
 
 
 export default function ProfileView({ token, user, userUnregistered }) {
@@ -145,10 +146,10 @@ export default function ProfileView({ token, user, userUnregistered }) {
             placeholder={userData.Birthday}
           />
         </div>
-        <button type="submit">Save Changes</button>
-        <button type="button" onClick={handleUnregister}>
+        <Button type="submit">Save Changes</Button>
+        <Button type="button" onClick={handleUnregister}>
           Unregister
-        </button>
+        </Button>
       </form>
       {unregistered && <p>Successfully unregistered. Redirecting to login page...</p>}
       <FavMovies user={user} token={token} />

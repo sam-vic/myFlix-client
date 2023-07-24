@@ -1,0 +1,18 @@
+.detail-button {
+    background-color: rgb(6, 36, 66);
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.detail-button:hover {
+    background-color: #0056b3;
+}
+
+.detail-button:active {
+    background-color: #003973;
+}

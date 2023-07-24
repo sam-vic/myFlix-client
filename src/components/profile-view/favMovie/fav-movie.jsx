@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Button } from 'react-bootstrap'
 
 export default function FavMovies({ token, user }) {
   const [userData, setUserData] = useState(null)
@@ -86,9 +87,9 @@ export default function FavMovies({ token, user }) {
                     <h5 className="card-title">{movie.Title}</h5>
                     {/* Display the movie id (key) */}
                     <p>ID: {movie._id}</p>
-                    <button onClick={() => handleRemoveFromFavorites(movie._id)}>
+                    <Button onClick={() => handleRemoveFromFavorites(movie._id)}>
                       Remove from Favorites
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </div>

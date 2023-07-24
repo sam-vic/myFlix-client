@@ -44491,7 +44491,8 @@ const DetailCard = ({ movie , user , token  })=>{
             columnNumber: 17
         },
         __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("button", {
+        className: "detail-button",
         variant: "link",
         __source: {
             fileName: "src/components/detail-card/detail-card.jsx",
@@ -44661,6 +44662,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _favMovie = require("./favMovie/fav-movie");
 var _favMovieDefault = parcelHelpers.interopDefault(_favMovie);
+var _reactBootstrap = require("react-bootstrap");
 function ProfileView({ token , user , userUnregistered  }) {
     const [userData, setUserData] = (0, _react.useState)(null);
     const [formData, setFormData] = (0, _react.useState)({
@@ -44748,7 +44750,7 @@ function ProfileView({ token , user , userUnregistered  }) {
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 111,
+            lineNumber: 112,
             columnNumber: 12
         },
         __self: this
@@ -44756,14 +44758,14 @@ function ProfileView({ token , user , userUnregistered  }) {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 115,
+            lineNumber: 116,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 116,
+            lineNumber: 117,
             columnNumber: 7
         },
         __self: this
@@ -44771,21 +44773,21 @@ function ProfileView({ token , user , userUnregistered  }) {
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 117,
+            lineNumber: 118,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 118,
+            lineNumber: 119,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 119,
+            lineNumber: 120,
             columnNumber: 11
         },
         __self: this
@@ -44797,21 +44799,21 @@ function ProfileView({ token , user , userUnregistered  }) {
         placeholder: userData.Username,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 120,
+            lineNumber: 121,
             columnNumber: 11
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 128,
+            lineNumber: 129,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 129,
+            lineNumber: 130,
             columnNumber: 11
         },
         __self: this
@@ -44823,21 +44825,21 @@ function ProfileView({ token , user , userUnregistered  }) {
         placeholder: userData.Email,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 130,
+            lineNumber: 131,
             columnNumber: 11
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 138,
+            lineNumber: 139,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 139,
+            lineNumber: 140,
             columnNumber: 11
         },
         __self: this
@@ -44849,31 +44851,31 @@ function ProfileView({ token , user , userUnregistered  }) {
         placeholder: userData.Birthday,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 140,
+            lineNumber: 141,
             columnNumber: 11
         },
         __self: this
-    })), /*#__PURE__*/ (0, _reactDefault.default).createElement("button", {
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
         type: "submit",
-        __source: {
-            fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 148,
-            columnNumber: 9
-        },
-        __self: this
-    }, "Save Changes"), /*#__PURE__*/ (0, _reactDefault.default).createElement("button", {
-        type: "button",
-        onClick: handleUnregister,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
             lineNumber: 149,
             columnNumber: 9
         },
         __self: this
+    }, "Save Changes"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+        type: "button",
+        onClick: handleUnregister,
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 150,
+            columnNumber: 9
+        },
+        __self: this
     }, "Unregister")), unregistered && /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 153,
+            lineNumber: 154,
             columnNumber: 24
         },
         __self: this
@@ -44882,7 +44884,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         token: token,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 154,
+            lineNumber: 155,
             columnNumber: 7
         },
         __self: this
@@ -44894,7 +44896,7 @@ function ProfileView({ token , user , userUnregistered  }) {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","./favMovie/fav-movie":"kDfvh"}],"kDfvh":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","./favMovie/fav-movie":"kDfvh","react-bootstrap":"3AD9A"}],"kDfvh":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4869 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -44906,6 +44908,7 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>FavMovies);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
 function FavMovies({ token , user  }) {
     const [userData, setUserData] = (0, _react.useState)(null);
     const [favoriteMovies, setFavoriteMovies] = (0, _react.useState)([]);
@@ -44964,7 +44967,7 @@ function FavMovies({ token , user  }) {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 72,
+            lineNumber: 73,
             columnNumber: 5
         },
         __self: this
@@ -44972,14 +44975,14 @@ function FavMovies({ token , user  }) {
         className: "mt-4",
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 73,
+            lineNumber: 74,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 74,
+            lineNumber: 75,
             columnNumber: 9
         },
         __self: this
@@ -44987,7 +44990,7 @@ function FavMovies({ token , user  }) {
         className: "row",
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 75,
+            lineNumber: 76,
             columnNumber: 9
         },
         __self: this
@@ -44996,7 +44999,7 @@ function FavMovies({ token , user  }) {
             className: "col-lg-3 col-md-4 col-sm-6 mb-4",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 78,
+                lineNumber: 79,
                 columnNumber: 15
             },
             __self: this
@@ -45004,7 +45007,7 @@ function FavMovies({ token , user  }) {
             className: "card",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 79,
+                lineNumber: 80,
                 columnNumber: 17
             },
             __self: this
@@ -45014,7 +45017,7 @@ function FavMovies({ token , user  }) {
             alt: movie.Title,
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 80,
+                lineNumber: 81,
                 columnNumber: 19
             },
             __self: this
@@ -45022,7 +45025,7 @@ function FavMovies({ token , user  }) {
             className: "card-body",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 85,
+                lineNumber: 86,
                 columnNumber: 19
             },
             __self: this
@@ -45030,29 +45033,29 @@ function FavMovies({ token , user  }) {
             className: "card-title",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 86,
+                lineNumber: 87,
                 columnNumber: 21
             },
             __self: this
         }, movie.Title), /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 88,
+                lineNumber: 89,
                 columnNumber: 21
             },
             __self: this
-        }, "ID: ", movie._id), /*#__PURE__*/ (0, _reactDefault.default).createElement("button", {
+        }, "ID: ", movie._id), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
             onClick: ()=>handleRemoveFromFavorites(movie._id),
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 89,
+                lineNumber: 90,
                 columnNumber: 21
             },
             __self: this
         }, "Remove from Favorites"))))) : /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 97,
+            lineNumber: 98,
             columnNumber: 13
         },
         __self: this
@@ -45064,6 +45067,6 @@ function FavMovies({ token , user  }) {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq"}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
