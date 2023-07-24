@@ -44956,6 +44956,7 @@ function FavMovies({ token , user  }) {
             } else // Handle error cases, if needed
             console.error("Error removing movie from favorites:", response.status, response.statusText);
         }).catch((error)=>{
+            console.error("Error removing movie from favorites:", error);
         });
     };
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
