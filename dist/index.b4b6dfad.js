@@ -44952,6 +44952,8 @@ function FavMovies({ token , user  }) {
             if (response.ok) {
                 // Movie removed successfully, update the favorites list
                 setFavoriteMovies((prevFavorites)=>prevFavorites.filter((id)=>id !== movieId));
+                // Update favoriteMoviesData with the filtered movies data
+                setFavoriteMoviesData((prevMoviesData)=>prevMoviesData.filter((movie)=>movie._id !== movieId));
                 console.log("Movie removed from favorites.");
             } else // Handle error cases, if needed
             console.error("Error removing movie from favorites:", response.status, response.statusText);
@@ -44962,7 +44964,7 @@ function FavMovies({ token , user  }) {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 68,
+            lineNumber: 72,
             columnNumber: 5
         },
         __self: this
@@ -44970,14 +44972,14 @@ function FavMovies({ token , user  }) {
         className: "mt-4",
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 69,
+            lineNumber: 73,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 70,
+            lineNumber: 74,
             columnNumber: 9
         },
         __self: this
@@ -44985,7 +44987,7 @@ function FavMovies({ token , user  }) {
         className: "row",
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 71,
+            lineNumber: 75,
             columnNumber: 9
         },
         __self: this
@@ -44994,7 +44996,7 @@ function FavMovies({ token , user  }) {
             className: "col-lg-3 col-md-4 col-sm-6 mb-4",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 74,
+                lineNumber: 78,
                 columnNumber: 15
             },
             __self: this
@@ -45002,7 +45004,7 @@ function FavMovies({ token , user  }) {
             className: "card",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 75,
+                lineNumber: 79,
                 columnNumber: 17
             },
             __self: this
@@ -45012,7 +45014,7 @@ function FavMovies({ token , user  }) {
             alt: movie.Title,
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 76,
+                lineNumber: 80,
                 columnNumber: 19
             },
             __self: this
@@ -45020,7 +45022,7 @@ function FavMovies({ token , user  }) {
             className: "card-body",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 81,
+                lineNumber: 85,
                 columnNumber: 19
             },
             __self: this
@@ -45028,14 +45030,14 @@ function FavMovies({ token , user  }) {
             className: "card-title",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 82,
+                lineNumber: 86,
                 columnNumber: 21
             },
             __self: this
         }, movie.Title), /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 84,
+                lineNumber: 88,
                 columnNumber: 21
             },
             __self: this
@@ -45043,14 +45045,14 @@ function FavMovies({ token , user  }) {
             onClick: ()=>handleRemoveFromFavorites(movie._id),
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 85,
+                lineNumber: 89,
                 columnNumber: 21
             },
             __self: this
         }, "Remove from Favorites"))))) : /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 93,
+            lineNumber: 97,
             columnNumber: 13
         },
         __self: this

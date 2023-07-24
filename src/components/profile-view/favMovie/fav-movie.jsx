@@ -52,16 +52,20 @@ export default function FavMovies({ token, user }) {
       .then((response) => {
         if (response.ok) {
           // Movie removed successfully, update the favorites list
-          setFavoriteMovies((prevFavorites) => prevFavorites.filter((id) => id !== movieId))
-          console.log('Movie removed from favorites.')
+          setFavoriteMovies((prevFavorites) => prevFavorites.filter((id) => id !== movieId));
+
+          // Update favoriteMoviesData with the filtered movies data
+          setFavoriteMoviesData((prevMoviesData) => prevMoviesData.filter((movie) => movie._id !== movieId));
+
+          console.log('Movie removed from favorites.');
         } else {
           // Handle error cases, if needed
-          console.error('Error removing movie from favorites:', response.status, response.statusText)
+          console.error('Error removing movie from favorites:', response.status, response.statusText);
         }
       })
       .catch((error) => {
-        console.error('Error removing movie from favorites:', error)
-      })
+        console.error('Error removing movie from favorites:', error);
+      });
   }
 
   return (
