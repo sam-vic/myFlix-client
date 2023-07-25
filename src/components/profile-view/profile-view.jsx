@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import FavMovies from './favMovie/fav-movie'
-import { Button } from 'react-bootstrap'
-
+import React, { useState, useEffect } from 'react';
+import FavMovies from './favMovie/fav-movie';
+import { Button, Card } from 'react-bootstrap';
 
 export default function ProfileView({ token, user, userUnregistered }) {
-  const [userData, setUserData] = useState(null)
+  const [userData, setUserData] = useState(null);
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    email: "",
-    birthday: ""
-  })
-  const [unregistered, setUnregistered] = useState(false)
+    username: '',
+    email: '',
+    birthday: ''
+  });
+  const [unregistered, setUnregistered] = useState(false);
 
   useEffect(() => {
     if (!token) {
-      return
+      return;
     }
 
     fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
@@ -23,136 +21,95 @@ export default function ProfileView({ token, user, userUnregistered }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        setUserData(data)
+        setUserData(data);
         setFormData({
           username: data.Username,
           email: data.Email,
           birthday: data.Birthday
-        })
+        });
       })
       .catch((error) => {
-        console.error('Error fetching user data:', error)
-      })
-  }, [token, user.Username])
+        console.error('Error fetching user data:', error);
+      });
+  }, [token, user.Username]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData({
-      ...formData,
-      [name]: value
-    })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    // Only send fields that have changed
-    const updatedData = {}
-    for (const key in formData) {
-      if (formData[key] !== userData[key]) {
-        updatedData[key] = formData[key]
-      }
-    }
-
-    // Update user data if there are changes
-    if (Object.keys(updatedData).length > 0) {
-      fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify(updatedData)
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          setUserData(data)
-        })
-        .catch((error) => {
-          console.error('Error updating user data:', error)
-        })
-    }
-  }
-
-  /////Unregistering user /////////
   const handleUnregister = () => {
     fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
       method: 'DELETE',
       headers: {
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`
       }
     })
       .then((response) => {
         if (response.ok) {
-          // User unregistration was successful
-          setUnregistered(true)
-          console.log(`${user.Username} was successfully deleted.`)
-          // Call the userUnregistered callback function from props to notify MainView
-          userUnregistered()
+          setUnregistered(true);
+          console.log(`${user.Username} was successfully deleted.`);
+          userUnregistered();
         } else {
-          // Handle error cases, if needed
-          console.error('Error unregistering user:', response.status, response.statusText)
+          console.error('Error unregistering user:', response.status, response.statusText);
         }
       })
       .catch((error) => {
-        console.error('Error unregistering user:', error)
-      })
-  }
-
-  useEffect(() => {
-    // Redirect to the login page when unregistered state is true
-    if (unregistered) {
-      console.log('redirecting to login')
-      setIsUserUnregistered(true)
-    }
-  }, [unregistered])
-
+        console.error('Error unregistering user:', error);
+      });
+  };
 
   if (!userData) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   return (
-    <div>
-      <h1>Hello, {userData.Username}!</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            placeholder={userData.Username}
-          />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder={userData.Email}
-          />
-        </div>
-        <div>
-          <label>Birthday:</label>
-          <input
-            type="text"
-            name="birthday"
-            value={formData.birthday}
-            onChange={handleChange}
-            placeholder={userData.Birthday}
-          />
-        </div>
-        <Button type="submit">Save Changes</Button>
-        <Button type="button" onClick={handleUnregister}>
-          Unregister
-        </Button>
-      </form>
+    <div className="row">
+      <div className="col-md-6">
+        <Card>
+          <Card.Body>
+            <Card.Title>Hello, {userData.Username}!</Card.Title>
+            <div>
+              <Card.Text>Email: {userData.Email}</Card.Text>
+              <Card.Text>Birthday: {userData.Birthday}</Card.Text>
+            </div>
+          </Card.Body>
+        </Card>
+      </div>
+      <div className="col-md-6">
+        <Card>
+          <Card.Body>
+            <Card.Title>Update Profile</Card.Title>
+            <form >
+              <div>
+                <label>Username:</label>
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="username"
+                />
+              </div>
+              <div>
+                <label>Email:</label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="email"
+                />
+              </div>
+              <div>
+                <label>Birthday:</label>
+                <input
+                  type="text"
+                  name="birthday"
+                  placeholder="birthday"
+                />
+              </div>
+              <Button type="submit">Save Changes</Button>
+              <Button type="button" onClick={handleUnregister}>
+                Unregister
+              </Button>
+            </form>
+          </Card.Body>
+        </Card>
+      </div>
       {unregistered && <p>Successfully unregistered. Redirecting to login page...</p>}
       <FavMovies user={user} token={token} />
     </div>
-  )
+  );
 }
