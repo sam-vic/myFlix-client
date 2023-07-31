@@ -7,9 +7,11 @@ export default function ProfileView({ token, user, userUnregistered }) {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    birthday: ''
+    month: '',
+    day: '',
+    year: ''
   });
-  const [newUserData, setNewUserData] = useState(null); // New state for updated user data
+  const [newUserData, setNewUserData] = useState(null);
   const [unregistered, setUnregistered] = useState(false);
 
   useEffect(() => {
@@ -26,7 +28,9 @@ export default function ProfileView({ token, user, userUnregistered }) {
         setFormData({
           username: data.Username,
           email: data.Email,
-          birthday: data.Birthday
+          month: data.Birthday ? data.Birthday.split('-')[1] : '',
+          day: data.Birthday ? data.Birthday.split('-')[2] : '',
+          year: data.Birthday ? data.Birthday.split('-')[0] : ''
         });
       })
       .catch((error) => {
@@ -34,13 +38,30 @@ export default function ProfileView({ token, user, userUnregistered }) {
       });
   }, [token, user.Username]);
 
-    // Update form input values when user types in the fields
+
+  // Function to format date in "mm/dd/yyyy" format
+  const formatDate = (month, day, year) => {
+    const formattedMonth = String(month).padStart(2, '0');
+    const formattedDay = String(day).padStart(2, '0');
+    return `${formattedMonth}/${formattedDay}/${year}`;
+  };
+
+  // Update form input values when user types in the fields
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value
-    });
+    }));
+  };
+
+  // Update the form data when the user selects a date from the dropdowns
+  const handleDateChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value
+    }));
   };
 
   // Update user data if there are changes
@@ -51,7 +72,11 @@ export default function ProfileView({ token, user, userUnregistered }) {
     const updatedData = {};
     for (const key in formData) {
       if (formData[key] !== userData[key]) {
-        updatedData[key.charAt(0).toUpperCase() + key.slice(1)] = formData[key];
+        if (key === 'month' || key === 'day' || key === 'year') {
+          updatedData['Birthday'] = formatDate(formData.month, formData.day, formData.year);
+        } else {
+          updatedData[key.charAt(0).toUpperCase() + key.slice(1)] = formData[key];
+        }
       }
     }
 
@@ -76,15 +101,26 @@ export default function ProfileView({ token, user, userUnregistered }) {
     }
   };
 
-  useEffect(() => {
-    if (userData) {
-      setFormData({
-        username: userData.Username,
-        email: userData.Email,
-        birthday: userData.Birthday
-      });
-    }
-  }, [userData]);
+  const getAdjustedDate = (date) => {
+    const offset = new Date().getTimezoneOffset() * 60 * 1000; // Timezone offset in milliseconds
+    return new Date(date.getTime() + offset);
+  };
+
+  const birthday =
+    newUserData && newUserData.Birthday
+      ? Date.parse(newUserData.Birthday)
+      : userData && userData.Birthday
+        ? Date.parse(userData.Birthday)
+        : null;
+  console.log(birthday);
+
+  const months = Array.from({ length: 12 }, (_, i) => new Date(0, i).toLocaleString('default', { month: '2-digit' }));
+  const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'));
+  const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
+
+  if (!userData) {
+    return <div>Loading...</div>;
+  }
 
   ////// unregistering //////
   const handleUnregister = () => {
@@ -108,23 +144,8 @@ export default function ProfileView({ token, user, userUnregistered }) {
       })
   }
 
-
-  const birthday =
-  newUserData && newUserData.Birthday
-    ? Date.parse(newUserData.Birthday)
-    : userData && userData.Birthday
-    ? Date.parse(userData.Birthday)
-    : null
-  console.log(birthday)
-
-  const formattedBirthday = new Date(formData.birthday).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  })
-
   if (!userData) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   return (
@@ -135,7 +156,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
             <Card.Title>Hello, {userData.Username}!</Card.Title>
             <div>
               <Card.Text>Email: {newUserData?.Email || userData.Email}</Card.Text>
-              <Card.Text>Birthday: {birthday ? new Date(birthday).toDateString() : "N/A"}</Card.Text>
+              <Card.Text>Birthday: {birthday ? getAdjustedDate(new Date(birthday)).toDateString() : "N/A"}</Card.Text>
             </div>
           </Card.Body>
         </Card>
@@ -167,13 +188,30 @@ export default function ProfileView({ token, user, userUnregistered }) {
               </div>
               <div>
                 <label>Birthday:</label>
-                <input
-                  type="text"
-                  name="birthday"
-                  placeholder="birthday"
-                  value={formattedBirthday}
-                  onChange={handleChange}
-                />
+                {/* Dropdown for Month */}
+                <select name="month" value={formData.month} onChange={handleDateChange}>
+                  {months.map((month) => (
+                    <option key={month} value={month}>
+                      {month}
+                    </option>
+                  ))}
+                </select>
+                {/* Dropdown for Day */}
+                <select name="day" value={formData.day} onChange={handleDateChange}>
+                  {days.map((day) => (
+                    <option key={day} value={day}>
+                      {day}
+                    </option>
+                  ))}
+                </select>
+                {/* Dropdown for Year */}
+                <select name="year" value={formData.year} onChange={handleDateChange}>
+                  {years.map((year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
               </div>
               <Button type="submit">Save Changes</Button>
               <Button type="button" onClick={handleUnregister}>
@@ -186,5 +224,5 @@ export default function ProfileView({ token, user, userUnregistered }) {
       {unregistered && <p>Successfully unregistered. Redirecting to login page...</p>}
       <FavMovies user={user} token={token} />
     </div>
-  );
+  )
 }
