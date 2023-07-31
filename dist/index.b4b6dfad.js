@@ -44688,6 +44688,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         email: "",
         birthday: ""
     });
+    const [newUserData, setNewUserData] = (0, _react.useState)(null); // New state for updated user data
     const [unregistered, setUnregistered] = (0, _react.useState)(false);
     (0, _react.useEffect)(()=>{
         if (!token) return;
@@ -44709,6 +44710,45 @@ function ProfileView({ token , user , userUnregistered  }) {
         token,
         user.Username
     ]);
+    // Update form input values when user types in the fields
+    const handleChange = (e)=>{
+        const { name , value  } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+    // Update user data if there are changes
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        // Only send fields that have changed
+        const updatedData = {};
+        for(const key in formData)if (formData[key] !== userData[key]) updatedData[key.charAt(0).toUpperCase() + key.slice(1)] = formData[key];
+        // Update user data if there are changes
+        if (Object.keys(updatedData).length > 0) fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(updatedData)
+        }).then((response)=>response.json()).then((data)=>{
+            setNewUserData(data); // Save the updated user data in newUserData state
+            console.log("Update successful:", data);
+        }).catch((error)=>{
+            console.error("Error updating user data:", error);
+        });
+    };
+    (0, _react.useEffect)(()=>{
+        if (userData) setFormData({
+            username: userData.Username,
+            email: userData.Email,
+            birthday: userData.Birthday
+        });
+    }, [
+        userData
+    ]);
+    ////// unregistering //////
     const handleUnregister = ()=>{
         fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
             method: "DELETE",
@@ -44725,10 +44765,12 @@ function ProfileView({ token , user , userUnregistered  }) {
             console.error("Error unregistering user:", error);
         });
     };
+    const birthday = newUserData && newUserData.Birthday ? Date.parse(newUserData.Birthday) : userData && userData.Birthday ? Date.parse(userData.Birthday) : null;
+    console.log(birthday);
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 58,
+            lineNumber: 121,
             columnNumber: 12
         },
         __self: this
@@ -44737,7 +44779,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         className: "row",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 62,
+            lineNumber: 125,
             columnNumber: 5
         },
         __self: this
@@ -44745,99 +44787,100 @@ function ProfileView({ token , user , userUnregistered  }) {
         className: "col-md-6",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 63,
+            lineNumber: 126,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 64,
+            lineNumber: 127,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 65,
+            lineNumber: 128,
             columnNumber: 11
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 66,
+            lineNumber: 129,
             columnNumber: 13
         },
         __self: this
     }, "Hello, ", userData.Username, "!"), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 67,
+            lineNumber: 130,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 68,
+            lineNumber: 131,
             columnNumber: 15
         },
         __self: this
-    }, "Email: ", userData.Email), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
+    }, "Email: ", newUserData?.Email || userData.Email), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 69,
+            lineNumber: 132,
             columnNumber: 15
         },
         __self: this
-    }, "Birthday: ", userData.Birthday))))), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+    }, "Birthday: ", birthday ? new Date(birthday).toDateString() : "N/A"))))), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         className: "col-md-6",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 74,
+            lineNumber: 137,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 75,
+            lineNumber: 138,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 76,
+            lineNumber: 139,
             columnNumber: 11
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 77,
+            lineNumber: 140,
             columnNumber: 13
         },
         __self: this
     }, "Update Profile"), /*#__PURE__*/ (0, _reactDefault.default).createElement("form", {
+        onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 78,
+            lineNumber: 141,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 79,
+            lineNumber: 142,
             columnNumber: 15
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 80,
+            lineNumber: 143,
             columnNumber: 17
         },
         __self: this
@@ -44845,23 +44888,25 @@ function ProfileView({ token , user , userUnregistered  }) {
         type: "text",
         name: "username",
         placeholder: "username",
+        value: formData.username,
+        onChange: handleChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 81,
+            lineNumber: 144,
             columnNumber: 17
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 87,
+            lineNumber: 152,
             columnNumber: 15
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 88,
+            lineNumber: 153,
             columnNumber: 17
         },
         __self: this
@@ -44869,23 +44914,25 @@ function ProfileView({ token , user , userUnregistered  }) {
         type: "text",
         name: "email",
         placeholder: "email",
+        value: formData.email,
+        onChange: handleChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 89,
+            lineNumber: 154,
             columnNumber: 17
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 95,
+            lineNumber: 162,
             columnNumber: 15
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 96,
+            lineNumber: 163,
             columnNumber: 17
         },
         __self: this
@@ -44893,9 +44940,11 @@ function ProfileView({ token , user , userUnregistered  }) {
         type: "text",
         name: "birthday",
         placeholder: "birthday",
+        value: formData.birthday,
+        onChange: handleChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 97,
+            lineNumber: 164,
             columnNumber: 17
         },
         __self: this
@@ -44903,7 +44952,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         type: "submit",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 103,
+            lineNumber: 172,
             columnNumber: 15
         },
         __self: this
@@ -44912,14 +44961,14 @@ function ProfileView({ token , user , userUnregistered  }) {
         onClick: handleUnregister,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 104,
+            lineNumber: 173,
             columnNumber: 15
         },
         __self: this
     }, "Unregister"))))), unregistered && /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 111,
+            lineNumber: 180,
             columnNumber: 24
         },
         __self: this
@@ -44928,7 +44977,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         token: token,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 112,
+            lineNumber: 181,
             columnNumber: 7
         },
         __self: this
