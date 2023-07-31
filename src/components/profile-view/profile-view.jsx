@@ -117,6 +117,12 @@ export default function ProfileView({ token, user, userUnregistered }) {
     : null
   console.log(birthday)
 
+  const formattedBirthday = new Date(formData.birthday).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  })
+
   if (!userData) {
     return <div>Loading...</div>;
   }
@@ -165,7 +171,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
                   type="text"
                   name="birthday"
                   placeholder="birthday"
-                  value={formData.birthday}
+                  value={formattedBirthday}
                   onChange={handleChange}
                 />
               </div>
