@@ -44686,6 +44686,7 @@ function ProfileView({ token , user , userUnregistered  }) {
     const [formData, setFormData] = (0, _react.useState)({
         username: "",
         email: "",
+        password: "",
         month: "",
         day: "",
         year: ""
@@ -44703,6 +44704,7 @@ function ProfileView({ token , user , userUnregistered  }) {
             setFormData({
                 username: data.Username,
                 email: data.Email,
+                password: data.Password,
                 month: data.Birthday ? data.Birthday.split("-")[1] : "",
                 day: data.Birthday ? data.Birthday.split("-")[2] : "",
                 year: data.Birthday ? data.Birthday.split("-")[0] : ""
@@ -44780,7 +44782,7 @@ function ProfileView({ token , user , userUnregistered  }) {
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 122,
+            lineNumber: 124,
             columnNumber: 12
         },
         __self: this
@@ -44805,7 +44807,7 @@ function ProfileView({ token , user , userUnregistered  }) {
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 148,
+            lineNumber: 150,
             columnNumber: 12
         },
         __self: this
@@ -44814,7 +44816,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         className: "row",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 152,
+            lineNumber: 154,
             columnNumber: 5
         },
         __self: this
@@ -44822,49 +44824,49 @@ function ProfileView({ token , user , userUnregistered  }) {
         className: "col-md-6",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 153,
+            lineNumber: 155,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 154,
+            lineNumber: 156,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 155,
+            lineNumber: 157,
             columnNumber: 11
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 156,
+            lineNumber: 158,
             columnNumber: 13
         },
         __self: this
     }, "Hello, ", userData.Username, "!"), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 157,
+            lineNumber: 159,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 158,
+            lineNumber: 160,
             columnNumber: 15
         },
         __self: this
     }, "Email: ", newUserData?.Email || userData.Email), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 159,
+            lineNumber: 161,
             columnNumber: 15
         },
         __self: this
@@ -44872,28 +44874,28 @@ function ProfileView({ token , user , userUnregistered  }) {
         className: "col-md-6",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 164,
+            lineNumber: 166,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 165,
+            lineNumber: 167,
             columnNumber: 9
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 166,
+            lineNumber: 168,
             columnNumber: 11
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 167,
+            lineNumber: 169,
             columnNumber: 13
         },
         __self: this
@@ -44901,21 +44903,21 @@ function ProfileView({ token , user , userUnregistered  }) {
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 168,
+            lineNumber: 170,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 169,
+            lineNumber: 171,
             columnNumber: 15
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 170,
+            lineNumber: 172,
             columnNumber: 17
         },
         __self: this
@@ -44927,21 +44929,47 @@ function ProfileView({ token , user , userUnregistered  }) {
         onChange: handleChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 171,
+            lineNumber: 173,
             columnNumber: 17
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 179,
+            lineNumber: 181,
             columnNumber: 15
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 180,
+            lineNumber: 182,
+            columnNumber: 17
+        },
+        __self: this
+    }, "Password:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("input", {
+        type: "text",
+        name: "password",
+        placeholder: "password",
+        value: formData.password,
+        onChange: handleChange,
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 183,
+            columnNumber: 17
+        },
+        __self: this
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 191,
+            columnNumber: 15
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 192,
             columnNumber: 17
         },
         __self: this
@@ -44953,21 +44981,21 @@ function ProfileView({ token , user , userUnregistered  }) {
         onChange: handleChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 181,
+            lineNumber: 193,
             columnNumber: 17
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 189,
+            lineNumber: 201,
             columnNumber: 15
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 190,
+            lineNumber: 202,
             columnNumber: 17
         },
         __self: this
@@ -44977,7 +45005,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         onChange: handleDateChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 192,
+            lineNumber: 204,
             columnNumber: 17
         },
         __self: this
@@ -44986,7 +45014,7 @@ function ProfileView({ token , user , userUnregistered  }) {
             value: month,
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 194,
+                lineNumber: 206,
                 columnNumber: 21
             },
             __self: this
@@ -44996,7 +45024,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         onChange: handleDateChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 200,
+            lineNumber: 212,
             columnNumber: 17
         },
         __self: this
@@ -45005,7 +45033,7 @@ function ProfileView({ token , user , userUnregistered  }) {
             value: day,
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 202,
+                lineNumber: 214,
                 columnNumber: 21
             },
             __self: this
@@ -45015,7 +45043,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         onChange: handleDateChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 208,
+            lineNumber: 220,
             columnNumber: 17
         },
         __self: this
@@ -45024,7 +45052,7 @@ function ProfileView({ token , user , userUnregistered  }) {
             value: year,
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 210,
+                lineNumber: 222,
                 columnNumber: 21
             },
             __self: this
@@ -45032,7 +45060,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         type: "submit",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 216,
+            lineNumber: 228,
             columnNumber: 15
         },
         __self: this
@@ -45041,14 +45069,14 @@ function ProfileView({ token , user , userUnregistered  }) {
         onClick: handleUnregister,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 217,
+            lineNumber: 229,
             columnNumber: 15
         },
         __self: this
     }, "Unregister"))))), unregistered && /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 224,
+            lineNumber: 236,
             columnNumber: 24
         },
         __self: this
@@ -45057,7 +45085,7 @@ function ProfileView({ token , user , userUnregistered  }) {
         token: token,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 225,
+            lineNumber: 237,
             columnNumber: 7
         },
         __self: this

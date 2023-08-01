@@ -7,6 +7,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
+    password: '',
     month: '',
     day: '',
     year: ''
@@ -28,6 +29,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
         setFormData({
           username: data.Username,
           email: data.Email,
+          password: data.Password,
           month: data.Birthday ? data.Birthday.split('-')[1] : '',
           day: data.Birthday ? data.Birthday.split('-')[2] : '',
           year: data.Birthday ? data.Birthday.split('-')[0] : ''
@@ -173,6 +175,16 @@ export default function ProfileView({ token, user, userUnregistered }) {
                   name="username"
                   placeholder="username"
                   value={formData.username}
+                  onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label>Password:</label>
+                <input
+                  type="text"
+                  name="password"
+                  placeholder="password"
+                  value={formData.password}
                   onChange={handleChange}
                 />
               </div>
