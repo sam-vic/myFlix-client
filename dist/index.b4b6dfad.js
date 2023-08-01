@@ -24018,10 +24018,6 @@ exports.default = MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const navigate = (0, _reactRouterDom.useNavigate)();
     const [isUserUnregistered, setIsUserUnregistered] = (0, _react.useState)(false);
-    const handleSignUp = (user, token)=>{
-        setUser(user);
-        setToken(token);
-    };
     const onLoggedOut = ()=>{
         setUser(null), setToken(null), localStorage.clear(), navigate("/login");
     };
@@ -24071,7 +24067,7 @@ exports.default = MainView = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 84,
+            lineNumber: 79,
             columnNumber: 9
         },
         __self: undefined
@@ -24080,7 +24076,7 @@ exports.default = MainView = ()=>{
         onLoggedOut: onLoggedOut,
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 85,
+            lineNumber: 80,
             columnNumber: 13
         },
         __self: undefined
@@ -24088,14 +24084,14 @@ exports.default = MainView = ()=>{
         className: "justify-content-md-center",
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 86,
+            lineNumber: 81,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Routes), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 87,
+            lineNumber: 82,
             columnNumber: 17
         },
         __self: undefined
@@ -24105,12 +24101,10 @@ exports.default = MainView = ()=>{
             to: "/"
         }) : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Col), {
             md: 5
-        }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, null, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), {
-            onSignUp: handleSignUp
-        })))),
+        }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, null, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), null)))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 88,
+            lineNumber: 83,
             columnNumber: 21
         },
         __self: undefined
@@ -24127,7 +24121,7 @@ exports.default = MainView = ()=>{
         })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 105,
+            lineNumber: 100,
             columnNumber: 21
         },
         __self: undefined
@@ -24145,7 +24139,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 121,
+            lineNumber: 116,
             columnNumber: 21
         },
         __self: undefined
@@ -24176,7 +24170,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 141,
+            lineNumber: 136,
             columnNumber: 21
         },
         __self: undefined
@@ -24193,7 +24187,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 174,
+            lineNumber: 169,
             columnNumber: 21
         },
         __self: undefined
