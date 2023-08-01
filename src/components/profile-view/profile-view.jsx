@@ -14,6 +14,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
   });
   const [newUserData, setNewUserData] = useState(null);
   const [unregistered, setUnregistered] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('')
 
   useEffect(() => {
     if (!token) {
@@ -29,7 +30,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
         setFormData({
           username: data.Username,
           email: data.Email,
-          password: data.Password,
+          password: '',
           month: data.Birthday ? data.Birthday.split('-')[1] : '',
           day: data.Birthday ? data.Birthday.split('-')[2] : '',
           year: data.Birthday ? data.Birthday.split('-')[0] : ''
@@ -47,6 +48,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
     const formattedDay = String(day).padStart(2, '0');
     return `${formattedMonth}/${formattedDay}/${year}`;
   };
+
 
   // Update form input values when user types in the fields
   const handleChange = (e) => {
@@ -68,10 +70,21 @@ export default function ProfileView({ token, user, userUnregistered }) {
 
   // Update user data if there are changes
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
+
+    if (formData.password !== confirmPassword) {
+      alert('Confirm Password not matched')
+      return
+    }
 
     // Only send fields that have changed
-    const updatedData = {};
+    const updatedData = { ...formData }
+
+    delete updatedData['confirmPassword']
+    delete updatedData['day']
+
+    updatedData['Birthday'] = formatDate(formData.month, formData.day, formData.year);
+
     for (const key in formData) {
       if (formData[key] !== userData[key]) {
         if (key === 'month' || key === 'day' || key === 'year') {
@@ -186,6 +199,16 @@ export default function ProfileView({ token, user, userUnregistered }) {
                   placeholder="password"
                   value={formData.password}
                   onChange={handleChange}
+                />
+              </div>
+              <div>
+                <label>Confirm password:</label>
+                <input
+                  type="text"
+                  name="confirm password"
+                  placeholder="confirm password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
               <div>
