@@ -20,33 +20,38 @@ export default function ProfileView({ token, user, userUnregistered }) {
     if (!token) {
       return;
     }
-
+  
     fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => response.json())
       .then((data) => {
         setUserData(data);
-        setFormData({
+        setFormData((prevFormData) => ({
+          ...prevFormData,
           username: data.Username,
           email: data.Email,
           password: '',
           month: data.Birthday ? data.Birthday.split('-')[1] : '',
-          day: data.Birthday ? data.Birthday.split('-')[2] : '',
+          day: data.Birthday ? data.Birthday.split('T')[0].split('-')[2] : '', // Extract day without time component
           year: data.Birthday ? data.Birthday.split('-')[0] : ''
-        });
+        }));
       })
       .catch((error) => {
         console.error('Error fetching user data:', error);
       });
   }, [token, user.Username]);
+  
 
-
+  // Function to format date in "mm/dd/yyyy" format
   // Function to format date in "mm/dd/yyyy" format
   const formatDate = (month, day, year) => {
     const formattedMonth = String(month).padStart(2, '0');
     const formattedDay = String(day).padStart(2, '0');
-    return `${formattedMonth}/${formattedDay}/${year}`;
+    const formattedYear = String(year);
+
+    // Return date in "mm/dd/yyyy" format
+    return `${formattedMonth}/${formattedDay}/${formattedYear}`;
   };
 
 
@@ -59,14 +64,24 @@ export default function ProfileView({ token, user, userUnregistered }) {
     }));
   };
 
-  // Update the form data when the user selects a date from the dropdowns
-  const handleDateChange = (e) => {
-    const { name, value } = e.target;
+ // Update the form data when the user selects a date from the dropdowns
+const handleDateChange = (e) => {
+  const { name, value } = e.target;
+  if (name === 'day') {
+    // Extract the day value from the Date object and remove time component
+    const dayValue = value.split('T')[0];
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value
+      [name]: dayValue,
     }));
-  };
+  } else {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  }
+};
+
 
   // Update user data if there are changes
   const handleSubmit = (e) => {
@@ -81,7 +96,6 @@ export default function ProfileView({ token, user, userUnregistered }) {
     const updatedData = { ...formData }
 
     delete updatedData['confirmPassword']
-    delete updatedData['day']
 
     updatedData['Birthday'] = formatDate(formData.month, formData.day, formData.year);
 
