@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FavMovies from './favMovie/fav-movie';
 import { Button, Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router';
 
 export default function ProfileView({ token, user, userUnregistered }) {
   const [userData, setUserData] = useState(null);
@@ -20,7 +21,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
     if (!token) {
       return;
     }
-  
+
     fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -41,7 +42,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
         console.error('Error fetching user data:', error);
       });
   }, [token, user.Username]);
-  
+
 
   // Function to format date in "mm/dd/yyyy" format
   // Function to format date in "mm/dd/yyyy" format
@@ -64,24 +65,25 @@ export default function ProfileView({ token, user, userUnregistered }) {
     }));
   };
 
- // Update the form data when the user selects a date from the dropdowns
-const handleDateChange = (e) => {
-  const { name, value } = e.target;
-  if (name === 'day') {
-    // Extract the day value from the Date object and remove time component
-    const dayValue = value.split('T')[0];
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: dayValue,
-    }));
-  } else {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
-  }
-};
+  // Update the form data when the user selects a date from the dropdowns
+  const handleDateChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'day') {
+      // Extract the day value from the Date object and remove time component
+      const dayValue = value.split('T')[0];
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: dayValue,
+      }));
+    } else {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: value,
+      }));
+    }
+  };
 
+  const navigate = useNavigate()
 
   // Update user data if there are changes
   const handleSubmit = (e) => {
@@ -96,6 +98,12 @@ const handleDateChange = (e) => {
     const updatedData = { ...formData }
 
     delete updatedData['confirmPassword']
+
+    if (updatedData.password === '') {
+      // Include the password field only if it's not empty
+      updatedData['Password'] = updatedData.password === '' ? ' ' : updatedData.password;
+    }  
+    console.log('Updated Data:', updatedData)
 
     updatedData['Birthday'] = formatDate(formData.month, formData.day, formData.year);
 
@@ -123,6 +131,13 @@ const handleDateChange = (e) => {
         .then((data) => {
           setNewUserData(data); // Save the updated user data in newUserData state
           console.log('Update successful:', data);
+          // Check if the username was updated
+          if (updatedData.Username) {
+            setUserData(data)
+            localStorage.setItem("user", JSON.stringify(data));
+            // Navigate to the new username's profile page
+            navigate(`/users/${updatedData.Username}`);
+          }
         })
         .catch((error) => {
           console.error('Error updating user data:', error);
