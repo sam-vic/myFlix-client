@@ -13,7 +13,6 @@ export default function LoginView({ onLoggedIn }) {
             access: username,
             secret: password
         }
-        console.log('what is this', data)
 
         // compares input with database
         fetch(`https://mycf-movie-api.herokuapp.com/login?Username=${username}&Password=${password}`, {
