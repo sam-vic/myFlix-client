@@ -1,0 +1,54 @@
+.favorite-movies {
+    margin-top: 20px;
+}
+
+.favorite-movies h2 {
+    font-size: 24px;
+    margin: 20px;
+    color: #fff;
+}
+
+.movie-card {
+    background-color: #ffc107; /* Light gray background */
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    margin: 20px;
+}
+.movie-cards-row {
+    display: flex;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-card-img-top {
+    max-height: 300px;
+    object-fit: cover;
+}
+
+.movie-card-body {
+    padding: 20px;
+}
+
+.movie-card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

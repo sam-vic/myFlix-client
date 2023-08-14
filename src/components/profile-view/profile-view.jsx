@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FavMovies from './favMovie/fav-movie';
 import { Button, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
+import './profile-view.scss';
 
 export default function ProfileView({ token, user, userUnregistered }) {
   const [userData, setUserData] = useState(null);
@@ -102,7 +103,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
     if (updatedData.password === '') {
       // Include the password field only if it's not empty
       updatedData['Password'] = updatedData.password === '' ? ' ' : updatedData.password;
-    }  
+    }
     console.log('Updated Data:', updatedData)
 
     updatedData['Birthday'] = formatDate(formData.month, formData.day, formData.year);
@@ -193,100 +194,106 @@ export default function ProfileView({ token, user, userUnregistered }) {
   }
 
   return (
-    <div className="row">
-      <div className="col-md-6">
-        <Card>
-          <Card.Body>
-            <Card.Title>Hello, {userData.Username}!</Card.Title>
-            <div>
-              <Card.Text>Email: {newUserData?.Email || userData.Email}</Card.Text>
-              <Card.Text>Birthday: {birthday ? getAdjustedDate(new Date(birthday)).toDateString() : "N/A"}</Card.Text>
-            </div>
-          </Card.Body>
-        </Card>
+    <div className="profile-view">
+      <div className="row">
+        <div className="col-md-6">
+          <Card className="profile-card">
+            <Card.Body>
+              <Card.Title className="profile-card-title">Hello, {userData.Username}!</Card.Title>
+              <div>
+                <Card.Text className="profile-card-text">Email: {newUserData?.Email || userData.Email}</Card.Text>
+                <Card.Text className="profile-card-text">Birthday: {birthday ? getAdjustedDate(new Date(birthday)).toDateString() : "N/A"}</Card.Text>
+              </div>
+            </Card.Body>
+          </Card>
+        </div>
+        <div className="col-md-6">
+          <Card className="update-profile-card">
+            <Card.Body>
+              <Card.Title className="update-profile-card-title">Update Profile</Card.Title>
+              <form className="update-profile-form" onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label className="form-label">Username:</label>
+                  <input
+                    className="form-control white-input" // Added the class name "white-input"
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    value={formData.username}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Password:</label>
+                  <input
+                    className="form-control white-input" // Added the class name "white-input"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Confirm password:</label>
+                  <input
+                    className="form-control white-input" // Added the class name "white-input"
+                    type="password"
+                    name="confirm password"
+                    placeholder="Confirm Password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Email:</label>
+                  <input
+                    className="form-control white-input" // Added the class name "white-input"
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="form-label">Birthday:</label>
+                  {/* Dropdown for Month */}
+                  <select name="month" value={formData.month} onChange={handleDateChange}>
+                    {months.map((month) => (
+                      <option key={month} value={month}>
+                        {month}
+                      </option>
+                    ))}
+                  </select>
+                  {/* Dropdown for Day */}
+                  <select name="day" value={formData.day} onChange={handleDateChange}>
+                    {days.map((day) => (
+                      <option key={day} value={day}>
+                        {day}
+                      </option>
+                    ))}
+                  </select>
+                  {/* Dropdown for Year */}
+                  <select name="year" value={formData.year} onChange={handleDateChange}>
+                    {years.map((year) => (
+                      <option key={year} value={year}>
+                        {year}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <Button className="btn-save-changes" type="submit">Save Changes</Button>
+                <Button className="btn-unregister" type="button" onClick={handleUnregister}>
+                  Unregister
+                </Button>
+              </form>
+            </Card.Body>
+          </Card>
+          {unregistered && <p>Successfully unregistered. Redirecting to the login page...</p>}
+        </div>
+        <FavMovies user={user} token={token} />
       </div>
-      <div className="col-md-6">
-        <Card>
-          <Card.Body>
-            <Card.Title>Update Profile</Card.Title>
-            <form onSubmit={handleSubmit}>
-              <div>
-                <label>Username:</label>
-                <input
-                  type="text"
-                  name="username"
-                  placeholder="username"
-                  value={formData.username}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label>Password:</label>
-                <input
-                  type="text"
-                  name="password"
-                  placeholder="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label>Confirm password:</label>
-                <input
-                  type="text"
-                  name="confirm password"
-                  placeholder="confirm password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                />
-              </div>
-              <div>
-                <label>Email:</label>
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <label>Birthday:</label>
-                {/* Dropdown for Month */}
-                <select name="month" value={formData.month} onChange={handleDateChange}>
-                  {months.map((month) => (
-                    <option key={month} value={month}>
-                      {month}
-                    </option>
-                  ))}
-                </select>
-                {/* Dropdown for Day */}
-                <select name="day" value={formData.day} onChange={handleDateChange}>
-                  {days.map((day) => (
-                    <option key={day} value={day}>
-                      {day}
-                    </option>
-                  ))}
-                </select>
-                {/* Dropdown for Year */}
-                <select name="year" value={formData.year} onChange={handleDateChange}>
-                  {years.map((year) => (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <Button type="submit">Save Changes</Button>
-              <Button type="button" onClick={handleUnregister}>
-                Unregister
-              </Button>
-            </form>
-          </Card.Body>
-        </Card>
-      </div>
-      {unregistered && <p>Successfully unregistered. Redirecting to login page...</p>}
-      <FavMovies user={user} token={token} />
     </div>
   )
 }

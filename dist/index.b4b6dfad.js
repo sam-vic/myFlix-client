@@ -44715,6 +44715,7 @@ var _favMovie = require("./favMovie/fav-movie");
 var _favMovieDefault = parcelHelpers.interopDefault(_favMovie);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouter = require("react-router");
+var _profileViewScss = require("./profile-view.scss");
 function ProfileView({ token , user , userUnregistered  }) {
     const [userData, setUserData] = (0, _react.useState)(null);
     const [formData, setFormData] = (0, _react.useState)({
@@ -44847,7 +44848,7 @@ function ProfileView({ token , user , userUnregistered  }) {
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 166,
+            lineNumber: 167,
             columnNumber: 12
         },
         __self: this
@@ -44872,222 +44873,255 @@ function ProfileView({ token , user , userUnregistered  }) {
     if (!userData) return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 192,
+            lineNumber: 193,
             columnNumber: 12
         },
         __self: this
     }, "Loading...");
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "profile-view",
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 197,
+            columnNumber: 5
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         className: "row",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 196,
-            columnNumber: 5
+            lineNumber: 198,
+            columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         className: "col-md-6",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 197,
-            columnNumber: 7
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
-        __source: {
-            fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 198,
+            lineNumber: 199,
             columnNumber: 9
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
-        __source: {
-            fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 199,
-            columnNumber: 11
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
+        className: "profile-card",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
             lineNumber: 200,
-            columnNumber: 13
+            columnNumber: 11
         },
         __self: this
-    }, "Hello, ", userData.Username, "!"), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
             lineNumber: 201,
             columnNumber: 13
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
+        className: "profile-card-title",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
             lineNumber: 202,
             columnNumber: 15
         },
         __self: this
-    }, "Email: ", newUserData?.Email || userData.Email), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
+    }, "Hello, ", userData.Username, "!"), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
             lineNumber: 203,
             columnNumber: 15
         },
         __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
+        className: "profile-card-text",
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 204,
+            columnNumber: 17
+        },
+        __self: this
+    }, "Email: ", newUserData?.Email || userData.Email), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
+        className: "profile-card-text",
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 205,
+            columnNumber: 17
+        },
+        __self: this
     }, "Birthday: ", birthday ? getAdjustedDate(new Date(birthday)).toDateString() : "N/A"))))), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         className: "col-md-6",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 208,
-            columnNumber: 7
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
-        __source: {
-            fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 209,
+            lineNumber: 210,
             columnNumber: 9
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
-        __source: {
-            fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 210,
-            columnNumber: 11
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
+        className: "update-profile-card",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
             lineNumber: 211,
-            columnNumber: 13
+            columnNumber: 11
         },
         __self: this
-    }, "Update Profile"), /*#__PURE__*/ (0, _reactDefault.default).createElement("form", {
-        onSubmit: handleSubmit,
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
             lineNumber: 212,
             columnNumber: 13
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
+        className: "update-profile-card-title",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
             lineNumber: 213,
             columnNumber: 15
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
+    }, "Update Profile"), /*#__PURE__*/ (0, _reactDefault.default).createElement("form", {
+        className: "update-profile-form",
+        onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
             lineNumber: 214,
-            columnNumber: 17
+            columnNumber: 15
         },
         __self: this
-    }, "Username:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("input", {
-        type: "text",
-        name: "username",
-        placeholder: "username",
-        value: formData.username,
-        onChange: handleChange,
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "form-group",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
             lineNumber: 215,
             columnNumber: 17
         },
         __self: this
-    })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
+        className: "form-label",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 223,
-            columnNumber: 15
+            lineNumber: 216,
+            columnNumber: 19
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
+    }, "Username:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("input", {
+        className: "form-control white-input" // Added the class name "white-input"
+        ,
+        type: "text",
+        name: "username",
+        placeholder: "Username",
+        value: formData.username,
+        onChange: handleChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 224,
+            lineNumber: 217,
+            columnNumber: 19
+        },
+        __self: this
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "form-group",
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 226,
             columnNumber: 17
         },
         __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
+        className: "form-label",
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 227,
+            columnNumber: 19
+        },
+        __self: this
     }, "Password:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("input", {
-        type: "text",
+        className: "form-control white-input" // Added the class name "white-input"
+        ,
+        type: "password",
         name: "password",
-        placeholder: "password",
+        placeholder: "Password",
         value: formData.password,
         onChange: handleChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 225,
-            columnNumber: 17
+            lineNumber: 228,
+            columnNumber: 19
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "form-group",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 233,
-            columnNumber: 15
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
-        __source: {
-            fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 234,
+            lineNumber: 237,
             columnNumber: 17
         },
         __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
+        className: "form-label",
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 238,
+            columnNumber: 19
+        },
+        __self: this
     }, "Confirm password:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("input", {
-        type: "text",
+        className: "form-control white-input" // Added the class name "white-input"
+        ,
+        type: "password",
         name: "confirm password",
-        placeholder: "confirm password",
+        placeholder: "Confirm Password",
         value: confirmPassword,
         onChange: (e)=>setConfirmPassword(e.target.value),
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 235,
-            columnNumber: 17
+            lineNumber: 239,
+            columnNumber: 19
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "form-group",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 243,
-            columnNumber: 15
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
-        __source: {
-            fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 244,
+            lineNumber: 248,
             columnNumber: 17
         },
         __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
+        className: "form-label",
+        __source: {
+            fileName: "src/components/profile-view/profile-view.jsx",
+            lineNumber: 249,
+            columnNumber: 19
+        },
+        __self: this
     }, "Email:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("input", {
-        type: "text",
+        className: "form-control white-input" // Added the class name "white-input"
+        ,
+        type: "email",
         name: "email",
-        placeholder: "email",
+        placeholder: "Email",
         value: formData.email,
         onChange: handleChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 245,
-            columnNumber: 17
+            lineNumber: 250,
+            columnNumber: 19
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "form-group",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 253,
-            columnNumber: 15
+            lineNumber: 259,
+            columnNumber: 17
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("label", {
+        className: "form-label",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 254,
-            columnNumber: 17
+            lineNumber: 260,
+            columnNumber: 19
         },
         __self: this
     }, "Birthday:"), /*#__PURE__*/ (0, _reactDefault.default).createElement("select", {
@@ -45096,8 +45130,8 @@ function ProfileView({ token , user , userUnregistered  }) {
         onChange: handleDateChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 256,
-            columnNumber: 17
+            lineNumber: 262,
+            columnNumber: 19
         },
         __self: this
     }, months.map((month)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("option", {
@@ -45105,8 +45139,8 @@ function ProfileView({ token , user , userUnregistered  }) {
             value: month,
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 258,
-                columnNumber: 21
+                lineNumber: 264,
+                columnNumber: 23
             },
             __self: this
         }, month))), /*#__PURE__*/ (0, _reactDefault.default).createElement("select", {
@@ -45115,8 +45149,8 @@ function ProfileView({ token , user , userUnregistered  }) {
         onChange: handleDateChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 264,
-            columnNumber: 17
+            lineNumber: 270,
+            columnNumber: 19
         },
         __self: this
     }, days.map((day)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("option", {
@@ -45124,8 +45158,8 @@ function ProfileView({ token , user , userUnregistered  }) {
             value: day,
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 266,
-                columnNumber: 21
+                lineNumber: 272,
+                columnNumber: 23
             },
             __self: this
         }, day))), /*#__PURE__*/ (0, _reactDefault.default).createElement("select", {
@@ -45134,8 +45168,8 @@ function ProfileView({ token , user , userUnregistered  }) {
         onChange: handleDateChange,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 272,
-            columnNumber: 17
+            lineNumber: 278,
+            columnNumber: 19
         },
         __self: this
     }, years.map((year)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("option", {
@@ -45143,44 +45177,46 @@ function ProfileView({ token , user , userUnregistered  }) {
             value: year,
             __source: {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 274,
-                columnNumber: 21
+                lineNumber: 280,
+                columnNumber: 23
             },
             __self: this
         }, year)))), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+        className: "btn-save-changes",
         type: "submit",
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 280,
-            columnNumber: 15
+            lineNumber: 286,
+            columnNumber: 17
         },
         __self: this
     }, "Save Changes"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+        className: "btn-unregister",
         type: "button",
         onClick: handleUnregister,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 281,
-            columnNumber: 15
+            lineNumber: 287,
+            columnNumber: 17
         },
         __self: this
-    }, "Unregister"))))), unregistered && /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
+    }, "Unregister")))), unregistered && /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 288,
-            columnNumber: 24
+            lineNumber: 293,
+            columnNumber: 28
         },
         __self: this
-    }, "Successfully unregistered. Redirecting to login page..."), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _favMovieDefault.default), {
+    }, "Successfully unregistered. Redirecting to the login page...")), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _favMovieDefault.default), {
         user: user,
         token: token,
         __source: {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 289,
-            columnNumber: 7
+            lineNumber: 295,
+            columnNumber: 9
         },
         __self: this
-    }));
+    })));
 }
 
   $parcel$ReactRefreshHelpers$3c12.postlude(module);
@@ -45188,7 +45224,7 @@ function ProfileView({ token , user , userUnregistered  }) {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","./favMovie/fav-movie":"kDfvh","react-bootstrap":"3AD9A","react-router":"dbWyW"}],"kDfvh":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","./favMovie/fav-movie":"kDfvh","react-bootstrap":"3AD9A","react-router":"dbWyW","./profile-view.scss":"eyKYH"}],"kDfvh":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4869 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -45201,6 +45237,7 @@ parcelHelpers.export(exports, "default", ()=>FavMovies);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
+var _favMovieScss = require("./fav-movie.scss");
 function FavMovies({ token , user  }) {
     const [userData, setUserData] = (0, _react.useState)(null);
     const [favoriteMovies, setFavoriteMovies] = (0, _react.useState)([]);
@@ -45257,97 +45294,93 @@ function FavMovies({ token , user  }) {
         });
     };
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "favorite-movies",
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 73,
+            lineNumber: 74,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
-        className: "mt-4",
+        className: "favorite-movies-container",
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 74,
+            lineNumber: 75,
             columnNumber: 7
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {
-        __source: {
-            fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 75,
-            columnNumber: 9
-        },
-        __self: this
-    }, "Favorite Movies"), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
-        className: "row",
+        className: "favorite-movies-heading",
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
             lineNumber: 76,
             columnNumber: 9
         },
         __self: this
+    }, "Favorite Movies"), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "movie-cards-row",
+        __source: {
+            fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
+            lineNumber: 77,
+            columnNumber: 9
+        },
+        __self: this
     }, favoriteMoviesData.length > 0 ? favoriteMoviesData.map((movie)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
             key: movie._id,
-            className: "col-lg-3 col-md-4 col-sm-6 mb-4",
+            className: "movie-card-col col-lg-3 col-md-4 col-sm-6 mb-4",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 79,
+                lineNumber: 80,
                 columnNumber: 15
             },
             __self: this
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
-            className: "card",
+            className: "movie-card",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 80,
+                lineNumber: 81,
                 columnNumber: 17
             },
             __self: this
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement("img", {
             src: movie.ImagePath,
-            className: "card-img-top",
+            className: "movie-card-img-top",
             alt: movie.Title,
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 81,
+                lineNumber: 82,
                 columnNumber: 19
             },
             __self: this
         }), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
-            className: "card-body",
+            className: "movie-card-body",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 86,
+                lineNumber: 87,
                 columnNumber: 19
             },
             __self: this
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h5", {
-            className: "card-title",
+            className: "movie-card-title",
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 87,
+                lineNumber: 88,
                 columnNumber: 21
             },
             __self: this
-        }, movie.Title), /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
+        }, movie.Title), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+            className: "btn-remove",
+            onClick: ()=>handleRemoveFromFavorites(movie._id),
             __source: {
                 fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
                 lineNumber: 89,
                 columnNumber: 21
             },
             __self: this
-        }, "ID: ", movie._id), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
-            onClick: ()=>handleRemoveFromFavorites(movie._id),
-            __source: {
-                fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-                lineNumber: 90,
-                columnNumber: 21
-            },
-            __self: this
         }, "Remove from Favorites"))))) : /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/profile-view/favMovie/fav-movie.jsx",
-            lineNumber: 98,
+            lineNumber: 97,
             columnNumber: 13
         },
         __self: this
@@ -45359,6 +45392,6 @@ function FavMovies({ token , user  }) {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A","./fav-movie.scss":"kUq2U"}],"kUq2U":[function() {},{}],"eyKYH":[function() {},{}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

@@ -170,6 +170,153 @@
   background-color: #ffc107;
 }
 
+.favorite-movies {
+  margin-top: 20px;
+}
+
+.favorite-movies h2 {
+  color: #fff;
+  margin: 20px;
+  font-size: 24px;
+}
+
+.movie-card {
+  background-color: #ffc107;
+  border: none;
+  border-radius: 10px;
+  margin: 20px;
+  transition: transform .3s;
+  overflow: hidden;
+  box-shadow: 0 2px 4px #0000001a;
+}
+
+.movie-cards-row {
+  display: flex;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+}
+
+.movie-card-img-top {
+  object-fit: cover;
+  max-height: 300px;
+}
+
+.movie-card-body {
+  padding: 20px;
+}
+
+.movie-card-title {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.btn-primary {
+  color: #fff;
+  cursor: pointer;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  transition: background-color .3s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.profile-view {
+  padding: 20px;
+}
+
+.profile-card {
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px #0000001a;
+  background-color: #ffc107 !important;
+}
+
+.profile-card-title {
+  color: #000;
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.profile-card-text {
+  color: #000;
+  margin-bottom: 5px;
+}
+
+.update-profile-card {
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px #0000001a;
+  background-color: #ffc107 !important;
+}
+
+.update-profile-card-title {
+  color: #000;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.btn-save-changes {
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  transition: background-color .3s;
+  background-color: #007bff !important;
+}
+
+.btn-unregister {
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: background-color .3s;
+  background-color: #dc3545 !important;
+}
+
+.btn-save-changes:hover, .btn-unregister:hover {
+  background-color: #0056b3;
+}
+
+.update-profile-form .form-group {
+  margin-bottom: 20px;
+}
+
+.update-profile-form .form-group .form-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block;
+}
+
+.update-profile-form .form-group .form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  transition: border-color .3s;
+}
+
+.update-profile-form .form-group .form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.white-input {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
 .light {
   color: #fff !important;
 }

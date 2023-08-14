@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Button } from 'react-bootstrap'
+import './fav-movie.scss'
 
 export default function FavMovies({ token, user }) {
   const [userData, setUserData] = useState(null)
@@ -70,24 +71,22 @@ export default function FavMovies({ token, user }) {
   }
 
   return (
-    <div>
-      <div className="mt-4">
-        <h2>Favorite Movies</h2>
-        <div className="row">
+    <div className="favorite-movies">
+      <div className="favorite-movies-container">
+        <h2 className="favorite-movies-heading">Favorite Movies</h2>
+        <div className="movie-cards-row">
           {favoriteMoviesData.length > 0 ? (
             favoriteMoviesData.map((movie) => (
-              <div key={movie._id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
-                <div className="card">
+              <div key={movie._id} className="movie-card-col col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div className="movie-card">
                   <img
                     src={movie.ImagePath}
-                    className="card-img-top"
+                    className="movie-card-img-top"
                     alt={movie.Title}
                   />
-                  <div className="card-body">
-                    <h5 className="card-title">{movie.Title}</h5>
-                    {/* Display the movie id (key) */}
-                    <p>ID: {movie._id}</p>
-                    <Button onClick={() => handleRemoveFromFavorites(movie._id)}>
+                  <div className="movie-card-body">
+                    <h5 className="movie-card-title">{movie.Title}</h5>
+                    <Button className="btn-remove" onClick={() => handleRemoveFromFavorites(movie._id)}>
                       Remove from Favorites
                     </Button>
                   </div>
@@ -100,5 +99,6 @@ export default function FavMovies({ token, user }) {
         </div>
       </div>
     </div>
+
   )
 }
