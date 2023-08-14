@@ -6,6 +6,18 @@ import { Link } from 'react-router-dom'
 
 export const DetailCard = ({ movie, user, token }) => {
     const [isFavorited, setIsFavorited] = useState(false)
+    const shortenTitle = (title, maxLength) => {
+        if (title.length <= maxLength) {
+            return title;
+        }
+        return `${title.slice(0, maxLength)}...`
+    }
+    const shortenDescription = (description, maxLength) => {
+        if (description.length <= maxLength) {
+            return description;
+        }
+        return `${description.slice(0, maxLength)}...`
+    }
     const handleFavouriteClick = () => {
         // Check if the movie is already in favorites
         if (!isFavorited) {
@@ -33,15 +45,15 @@ export const DetailCard = ({ movie, user, token }) => {
         }
     }
     return (
-        <Card className='h-100'>
+        <Card className='detail-card h-100'>
             <Card.Img variant='top' src={movie.image} />
             <Card.Body>
-                <Card.Title key={movie.id}>{movie.title}</Card.Title>
-                <Card.Text>{movie.desc}</Card.Text>
+                <Card.Title key={movie.id}>{shortenTitle(movie.title, 20)}</Card.Title>
+                <Card.Text>{shortenDescription(movie.desc, 50)}</Card.Text>
                 <Link to={`/movies/${encodeURIComponent(movie.id)}`}>
                     <button className='detail-button' variant='link'>Open</button>
                 </Link>
-                <Button variant='primary' onClick={handleFavouriteClick} disabled={isFavorited}>
+                <Button className='detail-button' onClick={handleFavouriteClick} disabled={isFavorited}>
                     {isFavorited ? 'Favorited' : 'Favourite'}
                 </Button>
             </Card.Body>

@@ -24012,6 +24012,7 @@ var _signUpView = require("../sign-up-view/sign-up-view");
 var _signUpViewDefault = parcelHelpers.interopDefault(_signUpView);
 var _navigationBar = require("../navigation-bar/navigation-bar");
 var _navigationBarDefault = parcelHelpers.interopDefault(_navigationBar);
+var _mainViewScss = require("./main-view.scss");
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 var _profileView = require("../profile-view/profile-view");
@@ -24077,7 +24078,7 @@ exports.default = MainView = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 79,
+            lineNumber: 80,
             columnNumber: 9
         },
         __self: undefined
@@ -24086,7 +24087,7 @@ exports.default = MainView = ()=>{
         onLoggedOut: onLoggedOut,
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 80,
+            lineNumber: 81,
             columnNumber: 13
         },
         __self: undefined
@@ -24094,14 +24095,14 @@ exports.default = MainView = ()=>{
         className: "justify-content-md-center mt-4",
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 81,
+            lineNumber: 82,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Routes), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 82,
+            lineNumber: 83,
             columnNumber: 17
         },
         __self: undefined
@@ -24111,10 +24112,12 @@ exports.default = MainView = ()=>{
             to: "/"
         }) : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Col), {
             md: 5
-        }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, null, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), null)))),
+        }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Title, {
+            className: "light"
+        }, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), null)))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 83,
+            lineNumber: 84,
             columnNumber: 21
         },
         __self: undefined
@@ -24131,7 +24134,7 @@ exports.default = MainView = ()=>{
         })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 100,
+            lineNumber: 101,
             columnNumber: 21
         },
         __self: undefined
@@ -24149,26 +24152,26 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 116,
+            lineNumber: 117,
             columnNumber: 21
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Route), {
         path: "/",
         element: /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, user ? // Render movies list for registered users
-        movies.length === 0 ? /*#__PURE__*/ (0, _reactDefault.default).createElement("div", null, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement("div", null, movies.map((movie)=>{
-            return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Col), {
-                className: "mb-5",
-                key: movie.id,
-                md: 3
+        movies.length === 0 ? /*#__PURE__*/ (0, _reactDefault.default).createElement("div", null, "The list is empty!") : /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+            className: "movies-container"
+        }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+            className: "movies-grid"
+        }, movies.map((movie)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+                className: "movie-item",
+                key: movie.id
             }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _detailCard.DetailCard), {
-                className: "my-flix",
                 movie: movie,
-                key: movie.id,
                 user: user,
                 token: token
-            }));
-        }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+            })))), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+            className: "logout-button",
             variant: "primary",
             onClick: ()=>{
                 setUser(null), setToken(null), localStorage.clear();
@@ -24180,7 +24183,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 136,
+            lineNumber: 137,
             columnNumber: 21
         },
         __self: undefined
@@ -24197,7 +24200,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 169,
+            lineNumber: 164,
             columnNumber: 21
         },
         __self: undefined
@@ -24209,7 +24212,7 @@ exports.default = MainView = ()=>{
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","../info-view/info-view":"iYF6R","../login-view/login-view":"9YtA0","../sign-up-view/sign-up-view":"14l2W","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A","../detail-card/detail-card":"i974M","../navigation-bar/navigation-bar":"bsPVM","react-router-dom":"9xmpe","../profile-view/profile-view":"2vVqf"}],"iYF6R":[function(require,module,exports) {
+},{"react":"21dqq","../info-view/info-view":"iYF6R","../login-view/login-view":"9YtA0","../sign-up-view/sign-up-view":"14l2W","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A","../detail-card/detail-card":"i974M","../navigation-bar/navigation-bar":"bsPVM","react-router-dom":"9xmpe","../profile-view/profile-view":"2vVqf","./main-view.scss":"eBaMl"}],"iYF6R":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$fe79 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -44269,6 +44272,7 @@ var _react = require("react");
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _signUpViewScss = require("./sign-up-view.scss");
 function SignupView() {
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -44308,7 +44312,7 @@ function SignupView() {
         onSubmit: handleSubmit,
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 48,
+            lineNumber: 49,
             columnNumber: 9
         },
         __self: this
@@ -44316,14 +44320,15 @@ function SignupView() {
         controlId: "formUsername",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 49,
+            lineNumber: 50,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
+        className: "label",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 50,
+            lineNumber: 51,
             columnNumber: 17
         },
         __self: this
@@ -44333,9 +44338,10 @@ function SignupView() {
         onChange: (e)=>setUsername(e.target.value),
         required: true,
         minLength: "3",
+        className: "input",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 53,
+            lineNumber: 54,
             columnNumber: 17
         },
         __self: this
@@ -44343,14 +44349,15 @@ function SignupView() {
         controlId: "formPassword",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 61,
+            lineNumber: 63,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
+        className: "label",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 62,
+            lineNumber: 64,
             columnNumber: 17
         },
         __self: this
@@ -44359,9 +44366,10 @@ function SignupView() {
         value: password,
         onChange: (e)=>setPassword(e.target.value),
         required: true,
+        className: "input",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 65,
+            lineNumber: 67,
             columnNumber: 17
         },
         __self: this
@@ -44369,14 +44377,15 @@ function SignupView() {
         controlId: "formEmail",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 72,
+            lineNumber: 75,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
+        className: "label",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 73,
+            lineNumber: 76,
             columnNumber: 17
         },
         __self: this
@@ -44385,9 +44394,10 @@ function SignupView() {
         value: email,
         onChange: (e)=>setEmail(e.target.value),
         required: true,
+        className: "input",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 76,
+            lineNumber: 79,
             columnNumber: 17
         },
         __self: this
@@ -44395,14 +44405,15 @@ function SignupView() {
         controlId: "formBirthday",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 83,
+            lineNumber: 87,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
+        className: "label",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 84,
+            lineNumber: 88,
             columnNumber: 17
         },
         __self: this
@@ -44411,18 +44422,20 @@ function SignupView() {
         value: birthday,
         onChange: (e)=>setBirthday(e.target.value),
         required: true,
+        className: "input",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 87,
+            lineNumber: 91,
             columnNumber: 17
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+        className: "button",
         variant: "primary",
         type: "submit",
         __source: {
             fileName: "src/components/sign-up-view/sign-up-view.jsx",
-            lineNumber: 94,
+            lineNumber: 99,
             columnNumber: 13
         },
         __self: this
@@ -44434,7 +44447,7 @@ function SignupView() {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe"}],"i974M":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A","react-router-dom":"9xmpe","./sign-up-view.scss":"eRWX1"}],"eRWX1":[function() {},{}],"i974M":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$0428 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -44453,6 +44466,14 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRouterDom = require("react-router-dom");
 const DetailCard = ({ movie , user , token  })=>{
     const [isFavorited, setIsFavorited] = (0, _react.useState)(false);
+    const shortenTitle = (title, maxLength)=>{
+        if (title.length <= maxLength) return title;
+        return `${title.slice(0, maxLength)}...`;
+    };
+    const shortenDescription = (description, maxLength)=>{
+        if (description.length <= maxLength) return description;
+        return `${description.slice(0, maxLength)}...`;
+    };
     const handleFavouriteClick = ()=>{
         // Check if the movie is already in favorites
         if (!isFavorited) // Add the movie to the user's favoriteMovies array
@@ -44474,10 +44495,10 @@ const DetailCard = ({ movie , user , token  })=>{
         });
     };
     return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card), {
-        className: "h-100",
+        className: "detail-card h-100",
         __source: {
             fileName: "src/components/detail-card/detail-card.jsx",
-            lineNumber: 36,
+            lineNumber: 48,
             columnNumber: 9
         },
         __self: undefined
@@ -44486,14 +44507,14 @@ const DetailCard = ({ movie , user , token  })=>{
         src: movie.image,
         __source: {
             fileName: "src/components/detail-card/detail-card.jsx",
-            lineNumber: 37,
+            lineNumber: 49,
             columnNumber: 13
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Body, {
         __source: {
             fileName: "src/components/detail-card/detail-card.jsx",
-            lineNumber: 38,
+            lineNumber: 50,
             columnNumber: 13
         },
         __self: undefined
@@ -44501,22 +44522,22 @@ const DetailCard = ({ movie , user , token  })=>{
         key: movie.id,
         __source: {
             fileName: "src/components/detail-card/detail-card.jsx",
-            lineNumber: 39,
+            lineNumber: 51,
             columnNumber: 17
         },
         __self: undefined
-    }, movie.title), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
+    }, shortenTitle(movie.title, 20)), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Card).Text, {
         __source: {
             fileName: "src/components/detail-card/detail-card.jsx",
-            lineNumber: 40,
+            lineNumber: 52,
             columnNumber: 17
         },
         __self: undefined
-    }, movie.desc), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Link), {
+    }, shortenDescription(movie.desc, 50)), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Link), {
         to: `/movies/${encodeURIComponent(movie.id)}`,
         __source: {
             fileName: "src/components/detail-card/detail-card.jsx",
-            lineNumber: 41,
+            lineNumber: 53,
             columnNumber: 17
         },
         __self: undefined
@@ -44525,17 +44546,17 @@ const DetailCard = ({ movie , user , token  })=>{
         variant: "link",
         __source: {
             fileName: "src/components/detail-card/detail-card.jsx",
-            lineNumber: 42,
+            lineNumber: 54,
             columnNumber: 21
         },
         __self: undefined
     }, "Open")), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
-        variant: "primary",
+        className: "detail-button",
         onClick: handleFavouriteClick,
         disabled: isFavorited,
         __source: {
             fileName: "src/components/detail-card/detail-card.jsx",
-            lineNumber: 44,
+            lineNumber: 56,
             columnNumber: 17
         },
         __self: undefined
@@ -45339,6 +45360,6 @@ function FavMovies({ token , user  }) {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}]},["fqdZm","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

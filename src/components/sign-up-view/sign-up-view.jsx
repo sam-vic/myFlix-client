@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Button, Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import React from 'react'
+import './sign-up-view.scss'
 
 export default function SignupView() {
     const [username, setUsername] = useState('')
@@ -47,7 +48,7 @@ export default function SignupView() {
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formUsername">
-                <Form.Label>
+                <Form.Label className="label">
                     Username:
                 </Form.Label>
                 <Form.Control
@@ -56,10 +57,11 @@ export default function SignupView() {
                     onChange={(e) => setUsername(e.target.value)}
                     required
                     minLength="3"
+                    className="input"
                 />
             </Form.Group>
             <Form.Group controlId="formPassword">
-                <Form.Label>
+                <Form.Label className="label">
                     Password:
                 </Form.Label>
                 <Form.Control
@@ -67,10 +69,11 @@ export default function SignupView() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                    className="input"
                 />
             </Form.Group>
             <Form.Group controlId="formEmail">
-                <Form.Label>
+                <Form.Label className="label">
                     Email:
                 </Form.Label>
                 <Form.Control
@@ -78,10 +81,11 @@ export default function SignupView() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
+                    className="input"
                 />
             </Form.Group>
             <Form.Group controlId="formBirthday">
-                <Form.Label>
+                <Form.Label className="label">
                     Birthday:
                 </Form.Label>
                 <Form.Control
@@ -89,9 +93,10 @@ export default function SignupView() {
                     value={birthday}
                     onChange={(e) => setBirthday(e.target.value)}
                     required
+                    className="input"
                 />
             </Form.Group>
-            <Button variant='primary' type='submit'>Submit</Button>
+            <Button className='button' variant='primary' type='submit'>Submit</Button>
         </Form>
     )
 }

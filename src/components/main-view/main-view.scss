@@ -1,0 +1,57 @@
+
+.light {
+    color: white !important;
+}
+
+/* Custom styles for the movies container and grid */
+.movies-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: auto;
+    gap: 20px;
+    width: 100%;
+    max-width: 1300px;
+    margin-bottom: 20px;
+}
+
+.movie-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 400px;
+    max-width: 450px; /* Set a wider maximum width for individual cards */
+    margin: 0 auto; /* Center the cards horizontally */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: hidden; /* Prevent content overflow */
+    transition: transform 0.3s;
+}
+
+.movie-item:hover {
+    transform: translateY(-5px); /* Add a slight hover effect */
+}
+
+
+/* Styling for the logout button */
+.logout-button {
+    background-color: #dc3545 !important;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #c82333 !important;
+}

@@ -4,6 +4,7 @@ import { InfoView } from "../info-view/info-view"
 import LoginView from "../login-view/login-view"
 import SignupView from "../sign-up-view/sign-up-view"
 import NavBar from "../navigation-bar/navigation-bar"
+import "./main-view.scss"
 
 import { Row, Col, Button, Container, Card } from 'react-bootstrap'
 import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom"
@@ -21,13 +22,13 @@ export default MainView = () => {
     const [selectedMovie, setSelectedMovie] = useState(null)
 
     const navigate = useNavigate()
-    const [isUserUnregistered, setIsUserUnregistered] = useState(false) 
+    const [isUserUnregistered, setIsUserUnregistered] = useState(false)
 
     const onLoggedOut = () => {
         setUser(null),
-        setToken(null),
-        localStorage.clear(),
-        navigate('/login')
+            setToken(null),
+            localStorage.clear(),
+            navigate('/login')
     }
 
     const userUnregistered = () => {
@@ -89,7 +90,7 @@ export default MainView = () => {
                                 ) : (
                                     <Col md={5}>
                                         <Row>
-                                            <Card.Title>Sign Up</Card.Title>
+                                            <Card.Title className="light">Sign Up</Card.Title>
                                             <SignupView />
                                         </Row>
                                     </Col>
@@ -142,21 +143,15 @@ export default MainView = () => {
                                     movies.length === 0 ? (
                                         <div>The list is empty!</div>
                                     ) : (
-                                        <div>
-                                            {movies.map((movie) => {
-                                                return (
-                                                    <Col className='mb-5' key={movie.id} md={3}>
-                                                        <DetailCard
-                                                            className='my-flix'
-                                                            movie={movie}
-                                                            key={movie.id}
-                                                            user={user}
-                                                            token={token}
-                                                        />
-                                                    </Col>
-                                                )
-                                            })}
-                                            <Button variant='primary' onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</Button>
+                                        <div className='movies-container'>
+                                            <div className='movies-grid'>
+                                                {movies.map((movie) => (
+                                                    <div className='movie-item' key={movie.id}>
+                                                        <DetailCard movie={movie} user={user} token={token} />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                            <Button className='logout-button' variant='primary' onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</Button>
                                         </div>
                                     )
                                 ) : (
@@ -171,7 +166,7 @@ export default MainView = () => {
                         element={
                             <>
                                 {user ? (
-                                    <ProfileView token={token} user={user} userUnregistered={userUnregistered}/>
+                                    <ProfileView token={token} user={user} userUnregistered={userUnregistered} />
                                 ) : (
                                     // Redirect unregistered users to login page
                                     <Navigate to='/login' replace />
