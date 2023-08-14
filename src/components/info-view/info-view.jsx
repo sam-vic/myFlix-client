@@ -13,16 +13,15 @@ export const InfoView = ({ movies }) => {
     }
 
     return (
-        <div>
-            <div>
+        <div className="info-card">
+            <div className="info-image">
                 <img className='w-100' src={movie.image} alt={movie.title} />
             </div>
-            <div>
-                <span>Title: </span>
-                <span>{movie.title}</span>
-                <div>{movie.desc}</div>
+            <div className="info-details">
+                <h2 className="info-title">{movie.title}</h2>
+                <p className="info-description">{movie.desc}</p>
             </div>
-            <Link to={`/`}>
+            <Link to={`/`} className="back-link">
                 <button variant='primary' className='back-button'>Back</button>
             </Link>
         </div>

@@ -24240,6 +24240,7 @@ const InfoView = ({ movies  })=>{
         __self: undefined
     }, "Movie not found");
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "info-card",
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
             lineNumber: 16,
@@ -24247,6 +24248,7 @@ const InfoView = ({ movies  })=>{
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "info-image",
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
             lineNumber: 17,
@@ -24264,38 +24266,35 @@ const InfoView = ({ movies  })=>{
         },
         __self: undefined
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "info-details",
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
             lineNumber: 20,
             columnNumber: 13
         },
         __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("span", {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("h2", {
+        className: "info-title",
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
             lineNumber: 21,
             columnNumber: 17
         },
         __self: undefined
-    }, "Title: "), /*#__PURE__*/ (0, _reactDefault.default).createElement("span", {
+    }, movie.title), /*#__PURE__*/ (0, _reactDefault.default).createElement("p", {
+        className: "info-description",
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
             lineNumber: 22,
             columnNumber: 17
         },
         __self: undefined
-    }, movie.title), /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
-        __source: {
-            fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 23,
-            columnNumber: 17
-        },
-        __self: undefined
     }, movie.desc)), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Link), {
         to: `/`,
+        className: "back-link",
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 25,
+            lineNumber: 24,
             columnNumber: 13
         },
         __self: undefined
@@ -24304,7 +24303,7 @@ const InfoView = ({ movies  })=>{
         className: "back-button",
         __source: {
             fileName: "src/components/info-view/info-view.jsx",
-            lineNumber: 26,
+            lineNumber: 25,
             columnNumber: 17
         },
         __self: undefined

@@ -1,9 +1,58 @@
+.info-card {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  box-shadow: 0 2px 4px #0000001a;
+}
+
+.info-image {
+  border-radius: 10px;
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.info-image img {
+  width: 100%;
+  height: auto;
+}
+
+.info-details {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.info-title {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.info-description {
+  color: #333;
+  font-size: 16px;
+}
+
+.back-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
 .back-button {
-  color: #f5f5f5;
-  background-color: #074206;
+  color: #fff;
+  cursor: pointer;
+  background-color: #007bff;
   border: none;
-  border-radius: 4px;
-  padding: 4px 12px;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: background-color .3s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
 }
 
 .label {
