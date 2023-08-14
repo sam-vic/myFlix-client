@@ -9,9 +9,11 @@ import './index.scss'
 
 const MyFlixApplication = () => {
   return (
-    <Container>
-      <MainView />
-    </Container>
+    <div className="full-width-container">
+      <Container fluid className="container-fluid-no-padding">
+        <MainView />
+      </Container>
+    </div>
   )
 }
 

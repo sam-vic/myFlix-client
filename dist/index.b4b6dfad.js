@@ -592,21 +592,31 @@ var _mainView = require("./components/main-view/main-view");
 var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
 var _indexScss = require("./index.scss");
 const MyFlixApplication = ()=>{
-    return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Container), {
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        className: "full-width-container",
         __source: {
             fileName: "src/index.jsx",
             lineNumber: 12,
             columnNumber: 5
         },
         __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _mainViewDefault.default), {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Container), {
+        fluid: true,
+        className: "container-fluid-no-padding",
         __source: {
             fileName: "src/index.jsx",
             lineNumber: 13,
             columnNumber: 7
         },
         __self: undefined
-    }));
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _mainViewDefault.default), {
+        __source: {
+            fileName: "src/index.jsx",
+            lineNumber: 14,
+            columnNumber: 9
+        },
+        __self: undefined
+    })));
 };
 const container = document.querySelector("#root");
 const root = (0, _client.createRoot)(container);
@@ -614,14 +624,14 @@ const root = (0, _client.createRoot)(container);
 const AppWithRouter = /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.BrowserRouter), {
     __source: {
         fileName: "src/index.jsx",
-        lineNumber: 23,
+        lineNumber: 25,
         columnNumber: 3
     },
     __self: undefined
 }, /*#__PURE__*/ (0, _reactDefault.default).createElement(MyFlixApplication, {
     __source: {
         fileName: "src/index.jsx",
-        lineNumber: 24,
+        lineNumber: 26,
         columnNumber: 5
     },
     __self: undefined
@@ -24081,7 +24091,7 @@ exports.default = MainView = ()=>{
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Row), {
-        className: "justify-content-md-center",
+        className: "justify-content-md-center mt-4",
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
             lineNumber: 81,
@@ -30780,6 +30790,7 @@ parcelHelpers.export(exports, "default", ()=>LoginView);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
+var _loginViewScss = require("./login-view.scss");
 function LoginView({ onLoggedIn  }) {
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
@@ -30810,9 +30821,10 @@ function LoginView({ onLoggedIn  }) {
     };
     return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form), {
         onSubmit: handleSubmit,
+        className: "center",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 42,
+            lineNumber: 43,
             columnNumber: 9
         },
         __self: this
@@ -30820,14 +30832,15 @@ function LoginView({ onLoggedIn  }) {
         controlId: "formUsername",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 43,
+            lineNumber: 44,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
+        className: "label",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 44,
+            lineNumber: 45,
             columnNumber: 17
         },
         __self: this
@@ -30836,9 +30849,10 @@ function LoginView({ onLoggedIn  }) {
         value: username,
         onChange: (e)=>setUsername(e.target.value),
         required: true,
+        className: "input",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 47,
+            lineNumber: 48,
             columnNumber: 17
         },
         __self: this
@@ -30846,14 +30860,15 @@ function LoginView({ onLoggedIn  }) {
         controlId: "formPassword",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 54,
+            lineNumber: 56,
             columnNumber: 13
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Form).Label, {
+        className: "label",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 55,
+            lineNumber: 57,
             columnNumber: 17
         },
         __self: this
@@ -30862,18 +30877,20 @@ function LoginView({ onLoggedIn  }) {
         value: password,
         onChange: (e)=>setPassword(e.target.value),
         required: true,
+        className: "input",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 58,
+            lineNumber: 60,
             columnNumber: 17
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
         variant: "primary",
         type: "submit",
+        className: "button",
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 65,
+            lineNumber: 68,
             columnNumber: 13
         },
         __self: this
@@ -30885,7 +30902,7 @@ function LoginView({ onLoggedIn  }) {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A"}],"3AD9A":[function(require,module,exports) {
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"c3SDq","react-bootstrap":"3AD9A","./login-view.scss":"e57ax"}],"3AD9A":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Accordion", ()=>(0, _accordionDefault.default));
@@ -44238,7 +44255,7 @@ exports.default = Object.assign(ToggleButtonGroup, {
     Button: (0, _toggleButtonDefault.default)
 });
 
-},{"react":"21dqq","invariant":"d1QgR","uncontrollable":"b3yWY","./createChainedFunction":"1KNLM","./ElementChildren":"fdyAp","./ButtonGroup":"gXYCe","./ToggleButton":"dCmeV","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G"}],"14l2W":[function(require,module,exports) {
+},{"react":"21dqq","invariant":"d1QgR","uncontrollable":"b3yWY","./createChainedFunction":"1KNLM","./ElementChildren":"fdyAp","./ButtonGroup":"gXYCe","./ToggleButton":"dCmeV","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"aJC6G"}],"e57ax":[function() {},{}],"14l2W":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$5a88 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -44561,7 +44578,8 @@ var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 function NavBar({ user , onLoggedOut  }) {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Navbar), {
-        bg: "light",
+        bg: "dark",
+        variant: "dark",
         expand: "lg",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
@@ -44577,7 +44595,8 @@ function NavBar({ user , onLoggedOut  }) {
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Navbar).Brand, {
-        href: "",
+        as: (0, _reactRouterDom.Link),
+        to: "/",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
             lineNumber: 10,
@@ -44588,7 +44607,7 @@ function NavBar({ user , onLoggedOut  }) {
         "aria-controls": "basic-navbar-nav",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 11,
+            lineNumber: 13,
             columnNumber: 17
         },
         __self: this
@@ -44596,7 +44615,7 @@ function NavBar({ user , onLoggedOut  }) {
         id: "basic-navbar-nav",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 12,
+            lineNumber: 14,
             columnNumber: 17
         },
         __self: this
@@ -44604,16 +44623,16 @@ function NavBar({ user , onLoggedOut  }) {
         className: "ml-auto",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 13,
+            lineNumber: 15,
             columnNumber: 21
         },
         __self: this
-    }, !user && /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav).Link, {
+    }, !user ? /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav).Link, {
         as: (0, _reactRouterDom.Link),
         to: "/login",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 16,
+            lineNumber: 18,
             columnNumber: 33
         },
         __self: this
@@ -44622,16 +44641,16 @@ function NavBar({ user , onLoggedOut  }) {
         to: "/signup",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 17,
+            lineNumber: 21,
             columnNumber: 33
         },
         __self: this
-    }, "Sign Up")), user && /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav).Link, {
+    }, "Sign Up")) : /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).Fragment, null, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Nav).Link, {
         as: (0, _reactRouterDom.Link),
         to: "/",
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 22,
+            lineNumber: 27,
             columnNumber: 33
         },
         __self: this
@@ -44640,7 +44659,7 @@ function NavBar({ user , onLoggedOut  }) {
         to: `/users/${user.Username}`,
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 23,
+            lineNumber: 30,
             columnNumber: 33
         },
         __self: this
@@ -44648,7 +44667,7 @@ function NavBar({ user , onLoggedOut  }) {
         onClick: onLoggedOut,
         __source: {
             fileName: "src/components/navigation-bar/navigation-bar.jsx",
-            lineNumber: 24,
+            lineNumber: 33,
             columnNumber: 33
         },
         __self: this

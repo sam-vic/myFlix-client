@@ -78,7 +78,7 @@ export default MainView = () => {
 
         <div>
             <NavBar user={user} onLoggedOut={onLoggedOut} />
-            <Row className="justify-content-md-center">
+            <Row className="justify-content-md-center mt-4">
                 <Routes>
                     <Route
                         path='/signup'
