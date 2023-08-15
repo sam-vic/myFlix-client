@@ -44821,7 +44821,8 @@ function ProfileView({ token , user , userUnregistered  }) {
             },
             body: JSON.stringify(updatedData)
         }).then((response)=>response.json()).then((data)=>{
-            setNewUserData(data); // Save the updated user data in newUserData state
+            setNewUserData(data) // Save the updated user data in newUserData state
+            ;
             console.log("Update successful:", data);
             // Check if the username was updated
             if (updatedData.Username) {
@@ -44835,7 +44836,8 @@ function ProfileView({ token , user , userUnregistered  }) {
         });
     };
     const getAdjustedDate = (date)=>{
-        const offset = new Date().getTimezoneOffset() * 60000; // Timezone offset in milliseconds
+        const offset = new Date().getTimezoneOffset() * 60000 // Timezone offset in milliseconds
+        ;
         return new Date(date.getTime() + offset);
     };
     const birthday = newUserData && newUserData.Birthday ? Date.parse(newUserData.Birthday) : userData && userData.Birthday ? Date.parse(userData.Birthday) : null;

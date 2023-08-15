@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import FavMovies from './favMovie/fav-movie';
-import { Button, Card } from 'react-bootstrap';
-import { useNavigate } from 'react-router';
-import './profile-view.scss';
+import React, { useState, useEffect } from 'react'
+import FavMovies from './favMovie/fav-movie'
+import { Button, Card } from 'react-bootstrap'
+import { useNavigate } from 'react-router'
+import './profile-view.scss'
 
 export default function ProfileView({ token, user, userUnregistered }) {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(null)
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -13,14 +13,14 @@ export default function ProfileView({ token, user, userUnregistered }) {
     month: '',
     day: '',
     year: ''
-  });
-  const [newUserData, setNewUserData] = useState(null);
-  const [unregistered, setUnregistered] = useState(false);
+  })
+  const [newUserData, setNewUserData] = useState(null)
+  const [unregistered, setUnregistered] = useState(false)
   const [confirmPassword, setConfirmPassword] = useState('')
 
   useEffect(() => {
     if (!token) {
-      return;
+      return
     }
 
     fetch(`https://mycf-movie-api.herokuapp.com/users/${user.Username}`, {
@@ -28,7 +28,7 @@ export default function ProfileView({ token, user, userUnregistered }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        setUserData(data);
+        setUserData(data)
         setFormData((prevFormData) => ({
           ...prevFormData,
           username: data.Username,
@@ -37,52 +37,52 @@ export default function ProfileView({ token, user, userUnregistered }) {
           month: data.Birthday ? data.Birthday.split('-')[1] : '',
           day: data.Birthday ? data.Birthday.split('T')[0].split('-')[2] : '', // Extract day without time component
           year: data.Birthday ? data.Birthday.split('-')[0] : ''
-        }));
+        }))
       })
       .catch((error) => {
-        console.error('Error fetching user data:', error);
-      });
-  }, [token, user.Username]);
+        console.error('Error fetching user data:', error)
+      })
+  }, [token, user.Username])
 
 
   // Function to format date in "mm/dd/yyyy" format
   // Function to format date in "mm/dd/yyyy" format
   const formatDate = (month, day, year) => {
-    const formattedMonth = String(month).padStart(2, '0');
-    const formattedDay = String(day).padStart(2, '0');
-    const formattedYear = String(year);
+    const formattedMonth = String(month).padStart(2, '0')
+    const formattedDay = String(day).padStart(2, '0')
+    const formattedYear = String(year)
 
     // Return date in "mm/dd/yyyy" format
-    return `${formattedMonth}/${formattedDay}/${formattedYear}`;
-  };
+    return `${formattedMonth}/${formattedDay}/${formattedYear}`
+  }
 
 
   // Update form input values when user types in the fields
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value
-    }));
-  };
+    }))
+  }
 
   // Update the form data when the user selects a date from the dropdowns
   const handleDateChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     if (name === 'day') {
       // Extract the day value from the Date object and remove time component
-      const dayValue = value.split('T')[0];
+      const dayValue = value.split('T')[0]
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: dayValue,
-      }));
+      }))
     } else {
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: value,
-      }));
+      }))
     }
-  };
+  }
 
   const navigate = useNavigate()
 
@@ -102,18 +102,18 @@ export default function ProfileView({ token, user, userUnregistered }) {
 
     if (updatedData.password === '') {
       // Include the password field only if it's not empty
-      updatedData['Password'] = updatedData.password === '' ? ' ' : updatedData.password;
+      updatedData['Password'] = updatedData.password === '' ? ' ' : updatedData.password
     }
     console.log('Updated Data:', updatedData)
 
-    updatedData['Birthday'] = formatDate(formData.month, formData.day, formData.year);
+    updatedData['Birthday'] = formatDate(formData.month, formData.day, formData.year)
 
     for (const key in formData) {
       if (formData[key] !== userData[key]) {
         if (key === 'month' || key === 'day' || key === 'year') {
-          updatedData['Birthday'] = formatDate(formData.month, formData.day, formData.year);
+          updatedData['Birthday'] = formatDate(formData.month, formData.day, formData.year)
         } else {
-          updatedData[key.charAt(0).toUpperCase() + key.slice(1)] = formData[key];
+          updatedData[key.charAt(0).toUpperCase() + key.slice(1)] = formData[key]
         }
       }
     }
@@ -130,41 +130,41 @@ export default function ProfileView({ token, user, userUnregistered }) {
       })
         .then((response) => response.json())
         .then((data) => {
-          setNewUserData(data); // Save the updated user data in newUserData state
-          console.log('Update successful:', data);
+          setNewUserData(data) // Save the updated user data in newUserData state
+          console.log('Update successful:', data)
           // Check if the username was updated
           if (updatedData.Username) {
             setUserData(data)
-            localStorage.setItem("user", JSON.stringify(data));
+            localStorage.setItem("user", JSON.stringify(data))
             // Navigate to the new username's profile page
-            navigate(`/users/${updatedData.Username}`);
+            navigate(`/users/${updatedData.Username}`)
           }
         })
         .catch((error) => {
-          console.error('Error updating user data:', error);
-        });
+          console.error('Error updating user data:', error)
+        })
     }
-  };
+  }
 
   const getAdjustedDate = (date) => {
-    const offset = new Date().getTimezoneOffset() * 60 * 1000; // Timezone offset in milliseconds
-    return new Date(date.getTime() + offset);
-  };
+    const offset = new Date().getTimezoneOffset() * 60 * 1000 // Timezone offset in milliseconds
+    return new Date(date.getTime() + offset)
+  }
 
   const birthday =
     newUserData && newUserData.Birthday
       ? Date.parse(newUserData.Birthday)
       : userData && userData.Birthday
         ? Date.parse(userData.Birthday)
-        : null;
-  console.log(birthday);
+        : null
+  console.log(birthday)
 
-  const months = Array.from({ length: 12 }, (_, i) => new Date(0, i).toLocaleString('default', { month: '2-digit' }));
-  const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'));
-  const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
+  const months = Array.from({ length: 12 }, (_, i) => new Date(0, i).toLocaleString('default', { month: '2-digit' }))
+  const days = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'))
+  const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i)
 
   if (!userData) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   ////// unregistering //////
