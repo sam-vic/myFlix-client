@@ -24,6 +24,9 @@ export default MainView = () => {
     const navigate = useNavigate()
     const [isUserUnregistered, setIsUserUnregistered] = useState(false)
 
+    const [moviesToShow, setMoviesToShow] = useState(6)
+    const displayedMovies = movies.slice(0, moviesToShow)
+
     const onLoggedOut = () => {
         setUser(null),
             setToken(null),
@@ -145,14 +148,20 @@ export default MainView = () => {
                                     ) : (
                                         <div className='movies-container'>
                                             <div className='movies-grid'>
-                                                {movies.map((movie) => (
+                                                {displayedMovies.map((movie) => (
                                                     <div className='movie-item' key={movie.id}>
                                                         <DetailCard movie={movie} user={user} token={token} />
                                                     </div>
                                                 ))}
                                             </div>
+                                            {moviesToShow < movies.length && (
+                                                <Button className='more-button' variant='primary' onClick={() => setMoviesToShow(moviesToShow + 6)}>
+                                                    More Movies
+                                                </Button>
+                                            )}
                                             <Button className='logout-button' variant='primary' onClick={() => { setUser(null), setToken(null), localStorage.clear() }}>Log Out</Button>
                                         </div>
+
                                     )
                                 ) : (
                                     // Redirect unregistered users to login page

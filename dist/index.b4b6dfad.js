@@ -24029,6 +24029,8 @@ exports.default = MainView = ()=>{
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
     const navigate = (0, _reactRouterDom.useNavigate)();
     const [isUserUnregistered, setIsUserUnregistered] = (0, _react.useState)(false);
+    const [moviesToShow, setMoviesToShow] = (0, _react.useState)(6);
+    const displayedMovies = movies.slice(0, moviesToShow);
     const onLoggedOut = ()=>{
         setUser(null), setToken(null), localStorage.clear(), navigate("/login");
     };
@@ -24078,7 +24080,7 @@ exports.default = MainView = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 80,
+            lineNumber: 83,
             columnNumber: 9
         },
         __self: undefined
@@ -24087,7 +24089,7 @@ exports.default = MainView = ()=>{
         onLoggedOut: onLoggedOut,
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 81,
+            lineNumber: 84,
             columnNumber: 13
         },
         __self: undefined
@@ -24095,14 +24097,14 @@ exports.default = MainView = ()=>{
         className: "justify-content-md-center mt-4",
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 82,
+            lineNumber: 85,
             columnNumber: 13
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactRouterDom.Routes), {
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 83,
+            lineNumber: 86,
             columnNumber: 17
         },
         __self: undefined
@@ -24117,7 +24119,7 @@ exports.default = MainView = ()=>{
         }, "Sign Up"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _signUpViewDefault.default), null)))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 84,
+            lineNumber: 87,
             columnNumber: 21
         },
         __self: undefined
@@ -24134,7 +24136,7 @@ exports.default = MainView = ()=>{
         })))),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 101,
+            lineNumber: 104,
             columnNumber: 21
         },
         __self: undefined
@@ -24152,7 +24154,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 117,
+            lineNumber: 120,
             columnNumber: 21
         },
         __self: undefined
@@ -24163,14 +24165,18 @@ exports.default = MainView = ()=>{
             className: "movies-container"
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
             className: "movies-grid"
-        }, movies.map((movie)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
+        }, displayedMovies.map((movie)=>/*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
                 className: "movie-item",
                 key: movie.id
             }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _detailCard.DetailCard), {
                 movie: movie,
                 user: user,
                 token: token
-            })))), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+            })))), moviesToShow < movies.length && /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
+            className: "more-button",
+            variant: "primary",
+            onClick: ()=>setMoviesToShow(moviesToShow + 6)
+        }, "More Movies"), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactBootstrap.Button), {
             className: "logout-button",
             variant: "primary",
             onClick: ()=>{
@@ -24183,7 +24189,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 137,
+            lineNumber: 140,
             columnNumber: 21
         },
         __self: undefined
@@ -24200,7 +24206,7 @@ exports.default = MainView = ()=>{
         })),
         __source: {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 164,
+            lineNumber: 173,
             columnNumber: 21
         },
         __self: undefined

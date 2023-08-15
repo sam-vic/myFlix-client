@@ -55,3 +55,15 @@
 .logout-button:hover {
     background-color: #c82333 !important;
 }
+
+.more-button {
+    background-color: #007bff !important;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px;
+}
